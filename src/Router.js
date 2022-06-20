@@ -1,14 +1,14 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Main from "./components/Main/Main";
-import Login from "./components/Login/Login";
-import Join from "./components/Join/Join";
-import Nav from "./components/Nav/Nav";
-import ProductCart from "./components/ProductCart/ProductCart";
-import ProductList from "./components/ProductList/ProductList";
-import ProductView from "./components/ProductView/ProductView";
-import Footer from "./components/Footer/Footer";
+import Nav from './components/Nav/Nav';
+import Footer from './components/Footer/Footer';
+import Main from './pages/Main/Main';
+import Login from './pages/Login/Login';
+import Join from './pages/Join/Join';
+import ProductCart from './pages/ProductCart/ProductCart';
+import ProductList from './pages/ProductList/ProductList';
+import ProductView from './pages/ProductView/ProductView';
 
 const Router = () => {
   return (
