@@ -94,13 +94,13 @@ const ProductView = () => {
 
         <div id="delivery">
           <div className="tabBox">
-            <a className="tab" href="#detail">
+            <a className="tab unclicked" href="#detail">
               상품상세정보
             </a>
-            <a className="tab" href="#reviews">
+            <a className="tab unclicked" href="#reviews">
               상품후기
             </a>
-            <a className="tab" href="#delivery">
+            <a className="tab clicked" href="#delivery">
               배송/교환 및 반품안내
             </a>
           </div>
