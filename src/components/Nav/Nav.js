@@ -26,11 +26,7 @@ const Nav = () => {
       </div>
       <ul className="navTitle">
         <li className="navProduct">
-          <Link
-            to="/list"
-            onMouseOver={() => setIsHovering(1)}
-            // onMouseOut={() => setIsHovering(0)}
-          >
+          <Link to="/list" onMouseOver={() => setIsHovering(1)}>
             제품
           </Link>
           <div
@@ -46,12 +42,7 @@ const Nav = () => {
                       <h1 className="title">{el.name}</h1>
                       {el.category.map((ele, i) => {
                         return (
-                          <p
-                            key={i}
-                            className="cateList"
-                            // onMouseOver={() => setIsHovering(1)}
-                            // onMouseOut={() => setIsHovering(0)}
-                          >
+                          <p key={i} className="cateList">
                             {ele.name}
                           </p>
                         );
@@ -93,7 +84,7 @@ const Nav = () => {
           {myHovering ? (
             <ul className="myBox">
               <li className="myList">
-                <Link to="/join" className="goToMy">
+                <Link to="/login" className="goToMy">
                   로그인
                 </Link>
               </li>
@@ -106,14 +97,6 @@ const Nav = () => {
           ) : (
             ''
           )}
-          {/* <ul className="myBox">
-            <li Link to="/login" className="myList">
-              로그인
-            </li>
-            <li Link to="/join" className="myList">
-              회원가입
-            </li>
-          </ul> */}
         </a>
       </div>
     </div>
