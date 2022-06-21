@@ -140,16 +140,20 @@
         width: 200px;
         height: 50px;
         padding: 17px 7px;
-        color: #333;
-        background-color: #fff;
         border: 1px solid #eee;
         font-size: 13px;
         text-align: center;
-      }
 
+        .goToMy {
+          color: #333;
+          text-decoration: none;
+        }
+      }
       .myList:hover {
-        color: #fff;
         background-color: #000;
+        & * {
+          color: #fff;
+        }
       }
     }
   }

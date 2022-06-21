@@ -92,16 +92,15 @@ const Nav = () => {
           />
           {myHovering ? (
             <ul className="myBox">
-              <li Link to="/login" className="myList">
-                로그인
+              <li className="myList">
+                <Link to="/join" className="goToMy">
+                  로그인
+                </Link>
               </li>
-              <li
-                Link
-                to="/join"
-                className="myList"
-                onMouseOut={() => setMyHovering(0)}
-              >
-                회원가입
+              <li className="myList" onMouseOut={() => setMyHovering(0)}>
+                <Link to="/join" className="goToMy">
+                  회원가입
+                </Link>
               </li>
             </ul>
           ) : (
