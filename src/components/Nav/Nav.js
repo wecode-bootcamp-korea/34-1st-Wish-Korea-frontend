@@ -5,6 +5,7 @@ import './Nav.scss';
 const Nav = () => {
   const [navCategory, setNavCategory] = useState([]);
   const [isHovering, setIsHovering] = useState(0);
+  const [myHovering, setMyHovering] = useState(0);
 
   useEffect(() => {
     fetch('./data/Nav.json', {
@@ -18,7 +19,11 @@ const Nav = () => {
 
   return (
     <div className="navBox">
-      <div className="navLogo">WISH</div>
+      <div className="navLogo">
+        <Link to="/" className="logo">
+          WISH
+        </Link>
+      </div>
       <ul className="navTitle">
         <li className="navProduct">
           <Link
@@ -28,9 +33,13 @@ const Nav = () => {
           >
             제품
           </Link>
-          <div className="navCateTitle">
+          <div
+            className="navCateTitle"
+            onMouseOver={() => setIsHovering(1)}
+            onMouseOut={() => setIsHovering(0)}
+          >
             {isHovering ? (
-              <>
+              <div className="navInner">
                 {navCategory.map(el => {
                   return (
                     <div key={el.id} className="cateTitle">
@@ -40,8 +49,8 @@ const Nav = () => {
                           <p
                             key={i}
                             className="cateList"
-                            onMouseOver={() => setIsHovering(1)}
-                            onMouseOut={() => setIsHovering(0)}
+                            // onMouseOver={() => setIsHovering(1)}
+                            // onMouseOut={() => setIsHovering(0)}
                           >
                             {ele.name}
                           </p>
@@ -50,7 +59,7 @@ const Nav = () => {
                     </div>
                   );
                 })}
-              </>
+              </div>
             ) : (
               ''
             )}
@@ -79,9 +88,9 @@ const Nav = () => {
           <img
             src="https://www.lush.co.kr/data/skin/front/howling/_msc/images/header/icon_top_mypage.png"
             alt="mypage"
-            onMouseOver={() => setIsHovering(1)}
+            onMouseOver={() => setMyHovering(1)}
           />
-          {isHovering ? (
+          {myHovering ? (
             <ul className="myBox">
               <li Link to="/login" className="myList">
                 로그인
@@ -90,7 +99,7 @@ const Nav = () => {
                 Link
                 to="/join"
                 className="myList"
-                onMouseOut={() => setIsHovering(0)}
+                onMouseOut={() => setMyHovering(0)}
               >
                 회원가입
               </li>
