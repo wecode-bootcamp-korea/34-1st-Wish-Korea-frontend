@@ -1,0 +1,224 @@
+.subVisual {
+  position: relative;
+  width: 100%;
+  height: 500px;
+
+  .img {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: #000;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1920px;
+      height: 100%;
+      margin-left: -960px;
+    }
+  }
+
+  .svTitle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .innerText {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+
+      h2 {
+        font-size: 68px;
+        line-height: 1.5em;
+        letter-spacing: 0.5em;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      p {
+        font-size: 26px;
+        line-height: 1.5em;
+        letter-spacing: 0.2em;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.subContent {
+  max-width: 1180px;
+  width: 100%;
+  margin: 0 auto;
+
+  .subTitle {
+    position: relative;
+    margin: 77px 0 22px;
+    border-bottom: 2px solid #000;
+
+    h3 {
+      font-size: 30px;
+      line-height: 1.4em;
+      color: #333;
+    }
+
+    .sort {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 110px;
+
+      select {
+        width: 100%;
+        height: 32px;
+        padding: 0 12px;
+        border: 1px solid #ddd;
+        font-size: 14px;
+        line-height: 30px;
+        color: #333;
+      }
+    }
+  }
+
+  .subMenu {
+    position: relative;
+    margin-bottom: 30px;
+
+    ul {
+      display: flex;
+
+      li {
+        padding: 0 16px;
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        a {
+          display: block;
+          font-size: 14px;
+          line-height: 1.4em;
+          color: #8f8f8f;
+          text-decoration: none;
+
+          span {
+            display: inline-block;
+            padding-left: 8px;
+          }
+        }
+      }
+    }
+  }
+
+  .productList {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -15px;
+
+      li {
+        width: 25%;
+        padding: 0 5px;
+        margin-bottom: 30px;
+        text-align: center;
+
+        a {
+          display: block;
+          text-decoration: none;
+
+          .thumb {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            margin-bottom: 25px;
+            background: #dedede;
+            overflow: hidden;
+
+            img {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              width: auto;
+              height: 100%;
+              transform: translate(-50%, -50%);
+              object-fit: cover;
+            }
+          }
+
+          .icons {
+            margin-bottom: 12px;
+
+            span {
+              display: inline-block;
+              width: 74px;
+              height: 23px;
+              margin: 0 2px 2px;
+              border-radius: 11px;
+              border: 1px solid;
+              font-size: 12px;
+              line-height: 23px;
+              text-align: center;
+              color: #fff;
+            }
+            .iconNew {
+              background: #007a29;
+              border-color: #007a29;
+            }
+            .iconVegan {
+              background: #92ac0a;
+              border-color: #92ac0a;
+            }
+            .iconOnline {
+              background: #212121;
+              border-color: #212121;
+            }
+            .iconLocal {
+              background: #fff;
+              border-color: #007a29;
+              color: #007a29;
+            }
+          }
+
+          .title {
+            margin-bottom: 15px;
+
+            h4 {
+              display: block;
+              width: 100%;
+              font-size: 16px;
+              line-height: 22px;
+              color: #333;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+
+            .shotdesc {
+              display: block;
+              width: 100%;
+              font-size: 14px;
+              line-height: 22px;
+              color: #8f8f8f;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+          }
+
+          .price {
+            font-size: 16px;
+            line-height: 30px;
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "name": "배쓰",
+    "content": "당신에게 향기로운 입욕을 선물합니다",
+    "imgUrl": "",
+    "category": [
+      {
+        "id": 1,
+        "menuName": "배쓰 밤",
+        "quantity": 75,
+        "link": ""
+      },
+      {
+        "id": 2,
+        "menuName": "버블 바",
+        "quantity": 34,
+        "link": ""
+      },
+      {
+        "id": 3,
+        "menuName": "버블 바",
+        "quantity": 38,
+        "link": ""
+      },
+      {
+        "id": 4,
+        "menuName": "배쓰 오일",
+        "quantity": 1,
+        "link": ""
+      },
+      {
+        "id": 5,
+        "menuName": "펀",
+        "quantity": 2,
+        "link": ""
+      }
+    ]
+  }
+]
