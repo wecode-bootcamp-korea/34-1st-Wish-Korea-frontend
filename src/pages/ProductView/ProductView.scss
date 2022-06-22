@@ -10,17 +10,27 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    overflow: scroll;
 
     .detailImg {
       width: 350px;
       height: 350px;
-      margin: 0px;
+      margin-right: 120px;
     }
 
     .detailBox {
       position: relative;
-      margin-right: 100px;
+
+      .detailPrices {
+        float: right;
+      }
+      .priceTitle {
+        font-size: 13px;
+        font-weight: 100;
+      }
+      .tPrice {
+        margin-left: 18px;
+        font-size: 25px;
+      }
 
       .detailName {
         font-size: 30px;
@@ -54,6 +64,7 @@
         font-size: 15px;
         margin: 35px 0px 35px 0px;
         color: #343434;
+        position: relative;
 
         .know {
           width: 15px;
@@ -61,27 +72,61 @@
       }
       .detailClass {
         display: inline-block;
-        width: 100px;
+        width: 93px;
       }
       .optionBox {
-        margin-bottom: 40px;
-        .option {
+        margin-bottom: 25px;
+
+        .select {
+          display: inline-block;
           width: 250px;
           height: 30px;
-          -o-appearance: none;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-        }
-        &:focus {
-          border: none;
+          border: 1px solid #b7b7b7;
+          padding: 7px 0 0 0px;
+          font-size: 14px;
+
+          .selectTitle {
+            padding-left: 8px;
+          }
+          .selectFlex {
+            display: flex;
+            justify-content: space-between;
+
+            .arrow {
+              width: 20px;
+              height: 20px;
+            }
+          }
+          .selectList {
+            list-style-type: none;
+            padding-left: 0px;
+            cursor: pointer;
+            width: 250px;
+            border: 1px solid #b7b7b7;
+            background-color: white;
+            position: absolute;
+            .option {
+              width: 250px;
+              height: 30px;
+              border: 1px solid #999;
+              border-radius: 0px;
+              padding-left: 7px;
+              padding-top: 7px;
+              border: none;
+
+              &:hover {
+                background: #e9e9e9;
+              }
+            }
+          }
         }
       }
 
       .detailBtnBox {
+        margin-top: 35px;
         width: 100%;
         .detailBtn {
-          width: 48%;
+          width: calc(50% - 10px);
           padding: 15px;
           margin: 5px;
           font-size: 15px;
@@ -96,6 +141,26 @@
           color: white;
         }
       }
+    }
+    .popBox {
+      border: 1px solid #e6e6e6;
+      position: absolute;
+      left: 19%;
+      top: 0px;
+      z-index: 1;
+      width: 450px;
+      height: 250px;
+      // position :
+    }
+    .knowPop {
+      width: 448px;
+      height: 248px;
+    }
+    .knowX {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #8f8f8f;
     }
   }
 
@@ -126,6 +191,12 @@
         border: solid 1px #e9e9e9;
         border-bottom: solid 1px black;
         color: #8f8f8f;
+      }
+    }
+    .detailContent {
+      width: 100%;
+      .contentImage {
+        width: 100%;
       }
     }
   }
