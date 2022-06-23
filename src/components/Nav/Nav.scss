@@ -6,13 +6,13 @@
   font-style: normal;
 }
 
-@mixin display {
+@mixin flex_space_evenly {
   display: flex;
   justify-content: space-evenly;
 }
 
 .navBox {
-  @include display;
+  @include flex_space_evenly;
   position: relative;
   align-items: center;
   width: 100%;
@@ -22,7 +22,6 @@
   .navLogo {
     width: 80px;
     height: 30px;
-
     font: 28px 'GangwonEduPowerExtraBoldA';
 
     .logo {
@@ -32,7 +31,7 @@
   }
 
   .navTitle {
-    @include display;
+    @include flex_space_evenly;
     width: 700px;
     color: #fff;
     font-size: 16px;
@@ -42,10 +41,10 @@
       color: #fff;
       text-decoration: none;
     }
+
     .navCateTitle {
       position: absolute;
       top: 100px;
-
       height: 300px;
 
       .navInner {
@@ -62,6 +61,7 @@
           background-color: #333;
           margin-right: -100%;
         }
+
         &:after {
           content: '';
           position: absolute;
@@ -89,6 +89,7 @@
             font-size: 18px;
             font-weight: bold;
           }
+
           .cateList {
             color: #717171;
             font-size: 15px;
@@ -103,8 +104,9 @@
       }
     }
   }
+
   .navIcon {
-    @include display;
+    @include flex_space_evenly;
     position: relative;
     width: 200px;
 
@@ -154,6 +156,7 @@
 
       .myList:hover {
         background-color: #000;
+
         & * {
           color: #fff;
         }
