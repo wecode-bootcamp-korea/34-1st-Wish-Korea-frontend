@@ -1,13 +1,18 @@
 import { React, useState, useEffect } from 'react';
-import './ProductView.scss';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
+
+import './ProductView.scss';
+
+import Options from './Options';
+import MultiOption from './OptionBox';
+import DetailProduct from './DetailProduct';
 
 const ProductView = () => {
   const [viewData, setViewData] = useState([]);
   const [knowClick, setKnowClick] = useState(false);
-  const [clickOptions, setClickOptions] = useState(false);
-  const [totalThing, setTotalThing] = useState([]);
+  const [totalList, setTotalList] = useState([]);
   let tPrice = 0;
 
   useEffect(() => {
@@ -18,28 +23,63 @@ const ProductView = () => {
       });
   }, []);
 
-  const totalMap = totalThing.map(el => {
-    return (
-      <div key={el.oid}>
-        수량체크 {el.weight}/{el.price} X버튼
-      </div>
-    );
-  });
+  // 옵션 추가 및 중복 추가 방지
   const handleOptions = el => {
-    const selectArr = [];
-    totalThing.map(el => {
-      selectArr.push(el.oid);
-    });
-    !selectArr.includes(el.oid)
-      ? setTotalThing([...totalThing, el])
-      : alert('안돼!');
+    const selectArr = []; //현제 들어온 데이터들의 옵션 아이디를 배열에 저장
+    totalList.map(value => selectArr.push(value.oid)); //이번에 들어온 옵션아이디가 없으면 추가, 수량 추가
+    if (!selectArr.includes(el.oid)) {
+      setTotalList([...totalList, el]);
+      el.id = viewData.id;
+      el.quantity = 1; // 수량 칼럼 추가
+    } else alert('이미 선택된 옵션입니다.');
   };
 
-  totalThing?.map(el => {
-    tPrice = tPrice + el.price;
+  totalList.sort((a, b) => a.oid - b.oid); //옵션 정렬
+
+  // 클릭 이벤트로 받아온 아이디와 저장한 리스트의 아이디를 비교하여 값 변환
+  const increase = id => {
+    //옵션 증가
+    setTotalList(val =>
+      val.map(el => {
+        if (id === el.oid) el.quantity++; //재고 시스템 도입시 여기에 조건 걸어주면 됨
+        return el;
+      })
+    );
+  };
+
+  const decrease = id => {
+    //옵션 감소
+    setTotalList(val =>
+      val.map(el => {
+        if (id === el.oid && el.quantity > 1) el.quantity--;
+        return el;
+      })
+    );
+  };
+
+  const deleteOption = id => {
+    //옵션 삭제
+    setTotalList(val => {
+      return val.filter(val => val.oid !== id);
+    });
+  };
+
+  // 컴포넌트화 예정인 옵션창, 총 가격 계산
+  const totalMap = totalList.map(el => {
+    tPrice = tPrice + el.price * el.quantity;
+    return (
+      <Options
+        key={el.oid}
+        el={el}
+        increase={increase}
+        decrease={decrease}
+        deleteOption={deleteOption}
+      />
+    );
   });
 
-  console.log(totalThing);
+  // console.log('장바구니에 보내줄거', totalList);
+
   return (
     <div className="productView">
       <div className="detailInfo">
@@ -101,69 +141,13 @@ const ProductView = () => {
             </li>
           </ul>
 
-          <div className="optionBox">
-            <span className="detailClass">용량 </span>
-
-            <div
-              className="select"
-              onClick={() =>
-                clickOptions ? setClickOptions(false) : setClickOptions(true)
-              }
-            >
-              <div className="selectFlex">
-                <div className="selectTitle">= 옵션 : 가격 =</div>
-                <img className="arrow" src="images/arrow.png" alt="arrow" />
-              </div>
-              {clickOptions ? (
-                <ul className="selectList">
-                  <li className="option">= 옵션 : 가격 = </li>
-                  {viewData.option?.map((el, idx) => {
-                    return idx === 0 ? (
-                      <li
-                        name={el.weight}
-                        className="option"
-                        key={el.oid}
-                        onClick={() => {
-                          handleOptions(el);
-                          // handlePrice();
-                        }}
-                      >
-                        {el.weight}
-                      </li>
-                    ) : (
-                      <li
-                        className="option"
-                        key={el.oid}
-                        onClick={() => {
-                          handleOptions(el);
-                          // handlePrice();
-                        }}
-                      >
-                        {el.weight}:{'  '} ₩+
-                        {(el.price - viewData.option[0].price)
-                          .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                      </li>
-                    );
-                  })}
-                </ul>
-              ) : (
-                ''
-              )}
-            </div>
-          </div>
-          <div className="detailTotal">{totalMap}</div>
-
-          {totalThing.length > 0 ? (
-            <div className="detailPrices">
-              <span className="priceTitle">총제품금액</span>
-              <strong className="tPrice">
-                ₩{tPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-              </strong>
-            </div>
-          ) : (
-            ''
-          )}
+          <MultiOption
+            viewData={viewData}
+            handleOptions={handleOptions}
+            totalMap={totalMap}
+            totalList={totalList}
+            tPrice={tPrice}
+          />
 
           <div className="detailBtnBox">
             <button className="detailBtn type1">장바구니</button>
@@ -171,76 +155,19 @@ const ProductView = () => {
           </div>
         </div>
       </div>
-
-      <div className="detailProduct">
-        <div id="detail">
-          <div className="tabBox">
-            <a className="tab clicked" href="#detail">
-              상품상세정보
-            </a>
-            <a className="tab unclicked" href="#reviews">
-              상품후기
-            </a>
-            <a className="tab unclicked" href="#delivery">
-              배송/교환 및 반품안내
-            </a>
-          </div>
-
-          <div className="detailContent">
-            <img
-              className="contentImage"
-              src="images/detail1.png"
-              alt="details"
-            />
-          </div>
-        </div>
-
-        <div id="reviews">
-          <div className="tabBox">
-            <a className="tab unclicked" href="#detail">
-              상품상세정보
-            </a>
-            <a className="tab clicked" href="#reviews">
-              상품후기
-            </a>
-            <a className="tab unclicked" href="#delivery">
-              배송/교환 및 반품안내
-            </a>
-          </div>
-
-          <div className="detailContent">
-            <img
-              className="contentImage"
-              src="images/detail2.png"
-              alt="details"
-            />
-          </div>
-        </div>
-
-        <div id="delivery">
-          <div className="tabBox">
-            <a className="tab unclicked" href="#detail">
-              상품상세정보
-            </a>
-            <a className="tab unclicked" href="#reviews">
-              상품후기
-            </a>
-            <a className="tab clicked" href="#delivery">
-              배송/교환 및 반품안내
-            </a>
-          </div>
-
-          <div className="detailContent">
-            <img
-              className="contentImage"
-              src="images/detail3.png"
-              alt="details"
-            />
-          </div>
-        </div>
-      </div>
+      <DetailProduct />
     </div>
   );
 };
 
 export default ProductView;
+
+// function nice() {
+//   return
+// }
+
+// const sum = (a,b) => {
+//   return a+b
+// }
+
+// const add = (a,b) => a+b
