@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import ProductListDetails from './ProductListDetails';
 import './ProductList.scss';
 
 const ProductList = () => {
-  const [List, setList] = useState([]);
+  // const [List, setList] = useState([]);
 
-  useEffect(() => {
-    fetch('http://localhost:3000/data/listData.json', {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(data => {
-        setList(data);
-      });
-  }, []);
-  console.log(List);
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/data/listData.json', {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setList(data);
+  //     });
+  // }, []);
 
   return (
     <div>
@@ -60,10 +59,10 @@ const ProductList = () => {
             {SUB_MENU_LIST.map(submenu => {
               return (
                 <li key={submenu.id}>
-                  <a href="#">
+                  <p>
                     {submenu.menuName}
                     <span>({submenu.quantity})</span>
-                  </a>
+                  </p>
                 </li>
               );
             })}
@@ -71,26 +70,7 @@ const ProductList = () => {
         </div>
         <div className="productList">
           <ul>
-            <li>
-              <Link to="/view">
-                <div className="thumb">
-                  <div className="img">
-                    <img src="./images/list_img2.jpg" alt="thumb img" />
-                  </div>
-                </div>
-                <div className="icons">
-                  <span className="iconNew">NEW</span>
-                  <span className="iconVegan">VEGAN</span>
-                  <span className="iconOnline">온라인전용</span>
-                  <span className="iconLocal">국내제조</span>
-                </div>
-                <div className="title">
-                  <h4>라이트 더 나이트</h4>
-                  <span className="shotdesc">#배쓰밤 #EID</span>
-                </div>
-                <div className="price">￦ 19,000</div>
-              </Link>
-            </li>
+            <ProductListDetails />
           </ul>
         </div>
       </section>
@@ -127,5 +107,3 @@ const SUB_MENU_LIST = [
     quantity: 2,
   },
 ];
-
-const PRODUCT_LIST = [];

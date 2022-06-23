@@ -2,9 +2,14 @@
   {
     "id": 1,
     "name": "배쓰",
+    "is_new": 0,
+    "is_vegan": 0,
+    "is_only_online": 0,
+    "is_made_in_korea": 0,
     "content": "당신에게 향기로운 입욕을 선물합니다",
-    "imgUrl": "",
-    "category": [
+    "manual": "당신에게 향기로운 입욕을 선물합니다",
+    "tag": "당신에게 향기로운 입욕을 선물합니다",
+    "sub_category_id": [
       {
         "id": 1,
         "menuName": "배쓰 밤",
