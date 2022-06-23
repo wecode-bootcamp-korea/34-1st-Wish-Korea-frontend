@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import './Count.scss';
 
 const ProductCount = props => {
@@ -8,7 +8,11 @@ const ProductCount = props => {
     setCount(count + 1);
   };
   const onDecrease = () => {
-    setCount(count - 1);
+    if (count < 1) {
+      setCount(count - 1);
+    } else {
+      alert('메롱');
+    }
   };
 
   return (

@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Count from './Count';
 import Check from './Check';
@@ -7,16 +7,7 @@ import './ProductCart.scss';
 const ProductCart = () => {
   const [cartList, setCartList] = useState([]);
   const [checkBox, setCheckBox] = useState([]);
-
-  useEffect(() => {
-    fetch('./data/List.json', {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(data => {
-        setCartList(data);
-      });
-  }, []);
+  const [isChecked, setIsChecked] = useState(false);
 
   const confirm = () => {
     if (window.confirm('주문을 완료하시겠습니까?')) {
@@ -25,6 +16,16 @@ const ProductCart = () => {
       alert('주문이 취소되었습니다.');
     }
   };
+
+  useEffect(() => {
+    fetch('/data/List.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setCartList(data);
+      });
+  }, []);
 
   return (
     <section className="contents">
