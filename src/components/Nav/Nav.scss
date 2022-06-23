@@ -30,6 +30,7 @@
       text-decoration: none;
     }
   }
+
   .navTitle {
     @include display;
     width: 700px;
@@ -92,10 +93,11 @@
             color: #717171;
             font-size: 15px;
             line-height: 2;
-          }
-          .cateList:hover {
-            color: #fff;
-            transition: all 0.8s;
+
+            &:hover {
+              color: #fff;
+              transition: all 0.8s;
+            }
           }
         }
       }
@@ -149,6 +151,7 @@
           text-decoration: none;
         }
       }
+
       .myList:hover {
         background-color: #000;
         & * {

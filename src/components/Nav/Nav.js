@@ -1,19 +1,19 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 const Nav = () => {
-  const [navCategory, setNavCategory] = useState([]);
-  const [isHovering, setIsHovering] = useState(0);
-  const [myHovering, setMyHovering] = useState(0);
+  const [categoryList, setCategoryList] = useState([]);
+  const [isHovering, setIsHovering] = useState(false);
+  const [isMyHovering, setIsMyHovering] = useState(false);
 
   useEffect(() => {
-    fetch('./data/Nav.json', {
+    fetch('/data/Nav.json', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
-        setNavCategory(data);
+        setCategoryList(data);
       });
   }, []);
 
@@ -26,17 +26,17 @@ const Nav = () => {
       </div>
       <ul className="navTitle">
         <li className="navProduct">
-          <Link to="/list" onMouseOver={() => setIsHovering(1)}>
+          <Link to="/list" onMouseOver={() => setIsHovering(true)}>
             제품
           </Link>
           <div
             className="navCateTitle"
-            onMouseOver={() => setIsHovering(1)}
-            onMouseOut={() => setIsHovering(0)}
+            onMouseOver={() => setIsHovering(true)}
+            onMouseOut={() => setIsHovering(false)}
           >
-            {isHovering ? (
+            {isHovering && (
               <div className="navInner">
-                {navCategory.map(el => {
+                {categoryList.map(el => {
                   return (
                     <div key={el.id} className="cateTitle">
                       <h1 className="title">{el.name}</h1>
@@ -51,8 +51,6 @@ const Nav = () => {
                   );
                 })}
               </div>
-            ) : (
-              ''
             )}
           </div>
         </li>
@@ -79,23 +77,21 @@ const Nav = () => {
           <img
             src="https://www.lush.co.kr/data/skin/front/howling/_msc/images/header/icon_top_mypage.png"
             alt="mypage"
-            onMouseOver={() => setMyHovering(1)}
+            onMouseOver={() => setIsMyHovering(true)}
           />
-          {myHovering ? (
+          {isMyHovering && (
             <ul className="myBox">
               <li className="myList">
                 <Link to="/login" className="goToMy">
                   로그인
                 </Link>
               </li>
-              <li className="myList" onMouseOut={() => setMyHovering(0)}>
+              <li className="myList" onMouseOut={() => setIsMyHovering(false)}>
                 <Link to="/join" className="goToMy">
                   회원가입
                 </Link>
               </li>
             </ul>
-          ) : (
-            ''
           )}
         </a>
       </div>
