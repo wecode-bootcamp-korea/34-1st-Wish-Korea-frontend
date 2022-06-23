@@ -1,35 +1,27 @@
 import React, { useState } from 'react';
 import './Count.scss';
 
-const ProductCount = props => {
-  const [count, setCount] = useState(1);
-
-  const onIncrease = () => {
-    setCount(count + 1);
-  };
-  const onDecrease = () => {
-    if (count < 1) {
-      setCount(count - 1);
-    } else {
-      alert('메롱');
-    }
-  };
-
+const ProductCount = ({ el, onIncrease, onDecrease, onChange }) => {
   return (
     <div className="totalCount">
       <div className="countBox">
         <button className="dec" onClick={onDecrease}>
           -
         </button>
-        <input type="text" className="countNum" value={count} />
+        <input
+          type="text"
+          className="countNum"
+          value={el.quantity}
+          onChange={onChange}
+        />
 
-        <button className="inc" onClick={onIncrease}>
+        <button className="inc" onClick={() => onIncrease(el.id)}>
           +
         </button>
       </div>
       <p className="prPrice">
         ₩
-        {(props.el.price * count)
+        {(el.price * el.quantity)
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
       </p>
