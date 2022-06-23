@@ -3,5 +3,9 @@
   "img": "images/viewImg.png",
   "name": "드림 크림 셀프-프리저빙",
   "keyword": "#보디로션 #카모마일과라벤더의부드러움",
-  "option": [{ "oid": 1, "price": 14000, "weight": "45g" }]
+  "option": [
+    { "oid": 1, "price": 14000, "weight": "45g" },
+    { "oid": 2, "price": 33000, "weight": "125g" },
+    { "oid": 3, "price": 88000, "weight": "335g" }
+  ]
 }
