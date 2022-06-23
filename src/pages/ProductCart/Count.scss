@@ -1,0 +1,32 @@
+.totalCount {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 400px;
+
+  .countBox {
+    display: flex;
+    justify-content: space-between;
+    width: 120px;
+    height: 35px;
+    margin: 0 70px 0 -70px;
+    border: 1px solid #000;
+
+    .dec,
+    .inc {
+      width: 38px;
+      border: 0;
+      background: none;
+    }
+    .countNum {
+      width: 44px;
+      text-align: center;
+      border: none;
+      outline: none;
+    }
+  }
+  .prPrice {
+    width: 120px;
+    font-size: 18px;
+  }
+}

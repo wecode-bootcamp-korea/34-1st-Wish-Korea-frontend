@@ -1,0 +1,174 @@
+@font-face {
+  font-family: 'GangwonEduPowerExtraBoldA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin btn {
+  width: 280px;
+  height: 63px;
+  border: 1px solid #000;
+}
+
+.contents {
+  width: 1180px;
+  margin: 0 auto;
+
+  .cartTitle {
+    display: flex;
+    align-items: center;
+    width: 1180px;
+    height: 240px;
+
+    .titleBox {
+      width: 1000px;
+      height: 110px;
+      margin-left: 85px;
+
+      h1 {
+        font: 42px 'GangwonEduPowerExtraBoldA';
+        text-align: center;
+      }
+
+      .titleList {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+        height: 30px;
+        margin: 20px auto;
+
+        li {
+          color: lightgray;
+          font-weight: bold;
+          span {
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+  .cartContent {
+    width: 1180px;
+
+    .cartName {
+      width: 1180px;
+      height: 50px;
+      border-bottom: 1px solid #000;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .cartList {
+      width: 1180px;
+      margin-top: 20px;
+      color: #333;
+      font-size: 25px;
+      text-align: center;
+
+      .cartInfo {
+        display: flex;
+        justify-content: space-between;
+        width: 1180px;
+        height: 30px;
+        color: gray;
+        border-bottom: 1px solid #e6e6e6;
+        font-size: 15px;
+
+        .check1 {
+          width: 100px;
+        }
+        .info {
+          width: 400px;
+        }
+        .count,
+        .price {
+          width: 190px;
+        }
+      }
+
+      .productList {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 1180px;
+        border-bottom: 1px solid #e6e6e6;
+
+        .check2 {
+          width: 100px;
+        }
+
+        .prBox {
+          display: flex;
+          align-items: center;
+          width: 400px;
+          font-size: 18px;
+          text-align: left;
+          line-height: 1.5;
+
+          .prCate {
+            color: gray;
+            font-size: 15px;
+          }
+          .prImg {
+            width: 28%;
+          }
+        }
+      }
+    }
+    .cartPrice {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1180px;
+      height: 100px;
+      margin: 30px 0;
+      background-color: #f2f2f2;
+      border-top: 1px solid #e6e6e6;
+
+      .totalPrice {
+        font-weight: bold;
+
+        span {
+          font-size: 25px;
+        }
+      }
+
+      p {
+        margin-right: 30px;
+      }
+    }
+    .delBtn {
+      color: #000;
+      background-color: #fff;
+      border: 0;
+      text-decoration: underline;
+    }
+
+    .cartButton {
+      width: 1180px;
+      height: 210px;
+      padding-top: 6%;
+
+      .goShopping {
+        display: flex;
+        justify-content: space-evenly;
+
+        .going {
+          @include btn;
+          padding-top: 20px;
+          color: #000;
+          background-color: #fff;
+          text-decoration: none;
+          text-align: center;
+        }
+        .orderBtn {
+          @include btn;
+          color: #fff;
+          background-color: #000;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
