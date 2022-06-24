@@ -31,8 +31,6 @@ const ProductView = () => {
       });
   }, []);
 
-  console.log('받은거', prdData);
-
   // 옵션 추가 및 중복 추가 방지
   const handleOptions = el => {
     const selectArr = []; //현제 들어온 데이터들의 옵션 아이디를 배열에 저장
@@ -88,8 +86,7 @@ const ProductView = () => {
     );
   });
 
-  console.log('장바구니에 보내줄거', totalList);
-
+  // console.log('백엔드에서받은거:', prdData, '장바구니 보내줄거:', totalList);
   return (
     <div className="productView">
       <div className="detailInfo">
