@@ -1,45 +1,43 @@
-[
-  {
-    "id": 1,
-    "name": "배쓰",
-    "is_new": 0,
-    "is_vegan": 0,
-    "is_only_online": 0,
-    "is_made_in_korea": 0,
-    "content": "당신에게 향기로운 입욕을 선물합니다",
-    "manual": "당신에게 향기로운 입욕을 선물합니다",
-    "tag": "당신에게 향기로운 입욕을 선물합니다",
-    "sub_category_id": [
-      {
-        "id": 1,
-        "menuName": "배쓰 밤",
-        "quantity": 75,
-        "link": ""
-      },
-      {
-        "id": 2,
-        "menuName": "버블 바",
-        "quantity": 34,
-        "link": ""
-      },
-      {
-        "id": 3,
-        "menuName": "버블 바",
-        "quantity": 38,
-        "link": ""
-      },
-      {
-        "id": 4,
-        "menuName": "배쓰 오일",
-        "quantity": 1,
-        "link": ""
-      },
-      {
-        "id": 5,
-        "menuName": "펀",
-        "quantity": 2,
-        "link": ""
-      }
-    ]
-  }
-]
+{
+  "sub_cateogry_id": 14,
+  "sub_category_name": "샤워젤&젤리",
+  "content": "샤워젤&젤리 샤워젤&젤리 샤워젤&젤리",
+  "image_url": "",
+  "sub_categories": [
+    {
+      "id": 14,
+      "name": "샤워젤&젤리",
+      "product_count": 10
+    },
+    {
+      "id": 15,
+      "name": "솝",
+      "product_count": 0
+    },
+    {
+      "id": 16,
+      "name": "보디 컨디셔너",
+      "product_count": 0
+    },
+    {
+      "id": 17,
+      "name": "샤워 밤",
+      "product_count": 0
+    },
+    {
+      "id": 18,
+      "name": "샤워 오일",
+      "product_count": 0
+    },
+    {
+      "id": 19,
+      "name": "스크럽&버터",
+      "product_count": 0
+    },
+    {
+      "id": 20,
+      "name": "펀",
+      "product_count": 0
+    }
+  ]
+}
