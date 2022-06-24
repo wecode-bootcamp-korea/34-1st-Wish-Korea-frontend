@@ -13,6 +13,7 @@ const ProductView = () => {
   const [viewData, setViewData] = useState([]);
   const [knowClick, setKnowClick] = useState(false);
   const [totalList, setTotalList] = useState([]);
+  const [prdData, setPrdData] = useState([]);
   let tPrice = 0;
 
   useEffect(() => {
@@ -22,6 +23,15 @@ const ProductView = () => {
         setViewData(data);
       });
   }, []);
+  useEffect(() => {
+    fetch('http://10.58.7.183:8000/products?product_id=14', { method: 'GET' })
+      .then(res => res.json())
+      .then(data => {
+        setPrdData(data.result);
+      });
+  }, []);
+
+  console.log('받은거', prdData);
 
   // 옵션 추가 및 중복 추가 방지
   const handleOptions = el => {
@@ -78,7 +88,7 @@ const ProductView = () => {
     );
   });
 
-  // console.log('장바구니에 보내줄거', totalList);
+  console.log('장바구니에 보내줄거', totalList);
 
   return (
     <div className="productView">
@@ -86,18 +96,18 @@ const ProductView = () => {
         <img className="detailImg" src={viewData.img} alt="상세이미지" />
         <div className="detailBox">
           <span className="detailName">
-            {viewData.name}
+            {prdData.name}
             {'   '}
-            {viewData.option?.map((el, idx) => {
+            {/* {viewData.option?.map((el, idx) => {
               return idx === 0 ? (
                 <span key={el.oid}>{el.weight}</span>
               ) : (
                 <span key={el.oid}>/{el.weight}</span>
               );
-            })}
+            })} */}
             <img className="detailShare" src="images/share.png" alt="share" />
           </span>
-          <div className="detailKeyword">{viewData.keyword}</div>
+          <div className="detailKeyword">{prdData.tag}</div>
           <div className="detailText">
             Good to know
             {'  '}
