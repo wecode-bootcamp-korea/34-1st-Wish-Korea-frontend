@@ -57,6 +57,14 @@ const ProductCart = () => {
     );
   }; //수량 감소
 
+  const allDelete = () => {
+    let del = [...cartList];
+    del.splice(cartList);
+    setCartList(del);
+    setIsCheckAll(false);
+    setIsCheck('');
+  }; //전체삭제 하기 버튼 클릭 시 모든 값 0
+
   const confirm = () => {
     if (window.confirm('주문을 완료하시겠습니까?')) {
       alert('주문이 완료되었습니다.');
@@ -103,10 +111,8 @@ const ProductCart = () => {
           </div>
           {/*cartInfo*/}
           {cartList.map((el, i) => {
-            {
-              isCheck.includes(el.id) &&
-                (sumPrice = sumPrice + el.price * el.quantity);
-            }
+            isCheck.includes(el.id) &&
+              (sumPrice = sumPrice + el.price * el.quantity);
 
             // sumPrice = sumPrice + el.price * el.quantity; //총 주문금액
 
@@ -169,15 +175,7 @@ const ProductCart = () => {
           </p>
         </div>
         {/*cartPrice"*/}
-        <button
-          className="delBtn"
-          onClick={() => {
-            let del = [...cartList];
-            del.splice(cartList);
-            setCartList(del);
-            setIsCheckAll(false);
-          }}
-        >
+        <button className="delBtn" onClick={allDelete}>
           전체삭제 하기
         </button>
         {/*cartPrice*/}
