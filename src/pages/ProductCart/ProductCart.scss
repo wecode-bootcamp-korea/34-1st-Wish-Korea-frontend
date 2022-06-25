@@ -133,23 +133,20 @@
     .cartPrice {
       display: flex;
       align-items: center;
-      justify-content: center;
       width: 1180px;
       height: 100px;
       margin: 30px 0;
       background-color: #f2f2f2;
       border-top: 1px solid #e6e6e6;
+      text-align: center;
 
-      .totalPrice {
-        font-weight: bold;
-
-        span {
-          font-size: 25px;
-        }
+      .countPrice {
+        width: 1000px;
       }
 
-      p {
-        margin-right: 30px;
+      .totalPrice {
+        margin: 0 15px;
+        font-weight: bold;
       }
     }
     .delBtn {

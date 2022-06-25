@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Count from './Count';
-import Check from './Check';
 import './ProductCart.scss';
 
 const ProductCart = () => {
   const [cartList, setCartList] = useState([]);
-  const [isCheckALl, setIsCheckALl] = useState(false);
+  const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
+
   let sumPrice = 0;
 
   useEffect(() => {
@@ -20,23 +20,42 @@ const ProductCart = () => {
       });
   }, []);
 
-  const handleCheckALl = e => {
-    setIsCheckALl(!isCheckALl);
+  const handleCheckAll = e => {
+    setIsCheckAll(!isCheckAll);
     setIsCheck(cartList.map(el => el.id));
-    if (isCheckALl) {
+    if (isCheckAll) {
       setIsCheck([]);
     }
   };
+  //전체 체크박스
 
   const handleCheck = e => {
-    const { checked, id } = e.target.checked;
-    setIsCheck([...isCheck, id]);
-    if (!checked) {
-      setIsCheck(isCheck.filter(el => el !== id));
-    }
-  };
+    const { id, checked } = e.target;
 
-  console.log(isCheck);
+    setIsCheck([...isCheck, Number(id)]);
+    if (!checked) {
+      setIsCheck(isCheck.filter(item => item !== Number(id)));
+      setIsCheckAll(false);
+    }
+  }; //개별 체크박스
+
+  const onIncrease = id => {
+    setCartList(cart =>
+      cart.map(onecart => {
+        if (id === onecart.id) onecart.quantity++;
+        return onecart;
+      })
+    );
+  }; //수량 증가
+
+  const onDecrease = id => {
+    setCartList(cart =>
+      cart.map(onecart => {
+        if (id === onecart.id && onecart.quantity > 1) onecart.quantity--;
+        return onecart;
+      })
+    );
+  }; //수량 감소
 
   const confirm = () => {
     if (window.confirm('주문을 완료하시겠습니까?')) {
@@ -44,20 +63,6 @@ const ProductCart = () => {
     } else {
       alert('주문이 취소되었습니다.');
     }
-  };
-
-  const [count, setCount] = useState(1);
-
-  const onIncrease = id => {
-    setCartList(value =>
-      value.map(el => {
-        if (id === el.id) el.quantity++;
-        return el;
-      })
-    );
-  };
-  const onDecrease = () => {
-    setCount(count - 1);
   };
 
   const onChange = e => {};
@@ -87,8 +92,8 @@ const ProductCart = () => {
           <div className="cartInfo">
             <input
               type="checkbox"
-              checked={isCheckALl}
-              onClick={handleCheckALl}
+              checked={isCheckAll}
+              onClick={handleCheckAll}
               className="check1"
               onChange={onChange}
             />
@@ -98,13 +103,19 @@ const ProductCart = () => {
           </div>
           {/*cartInfo*/}
           {cartList.map((el, i) => {
-            sumPrice = sumPrice + el.price * el.quantity;
+            {
+              isCheck.includes(el.id) &&
+                (sumPrice = sumPrice + el.price * el.quantity);
+            }
+
+            // sumPrice = sumPrice + el.price * el.quantity; //총 주문금액
 
             return (
               <div className="productList" key={el.id}>
                 <input
                   key={el.id}
                   type="checkbox"
+                  id={el.id}
                   checked={isCheck.includes(el.id)}
                   onClick={handleCheck}
                   onChange={onChange}
@@ -122,7 +133,6 @@ const ProductCart = () => {
                 <div className="countBox">
                   <Count
                     el={el}
-                    count={count}
                     onIncrease={onIncrease}
                     onDecrease={onDecrease}
                     onChange={onChange}
@@ -145,26 +155,16 @@ const ProductCart = () => {
         </div>
         {/*cartList*/}
         <div className="cartPrice">
-          <p className="countPrice">총 {cartList.length} 개의 금액</p>
           <p className="countPrice">
-            ₩
+            총 {isCheck.length} 개의 금액
+            <span className="totalPrice">₩{sumPrice.toLocaleString()}</span> +
+            배송비
             <span className="totalPrice">
-              {sumPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-            </span>{' '}
-            + 배송비 ₩
-            <span className="totalPrice">
-              {cartList.length === 0 ? 0 : '2,500'}
+              ₩{isCheck.length === 0 ? 0 : '2,500'}
             </span>
-          </p>
-          <p className="totalPrice">
             = &nbsp;총 주문금액&nbsp;&nbsp;{' '}
-            <span>
-              ₩
-              {cartList.length === 0
-                ? 0
-                : (2500 + sumPrice)
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            <span className="totalPrice">
+              ₩{isCheck.length === 0 ? 0 : (2500 + sumPrice).toLocaleString()}
             </span>
           </p>
         </div>
@@ -177,7 +177,7 @@ const ProductCart = () => {
             setCartList(del);
           }}
         >
-          삭제 하기
+          전체삭제 하기
         </button>
         {/*cartPrice*/}
         <div className="cartButton">

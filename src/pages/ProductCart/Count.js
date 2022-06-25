@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Count.scss';
 
 const ProductCount = ({ el, onIncrease, onDecrease, onChange }) => {
   return (
     <div className="totalCount">
       <div className="countBox">
-        <button className="dec" onClick={onDecrease}>
+        <button className="dec" onClick={() => onDecrease(el.id)}>
           -
         </button>
         <input
@@ -19,12 +19,7 @@ const ProductCount = ({ el, onIncrease, onDecrease, onChange }) => {
           +
         </button>
       </div>
-      <p className="prPrice">
-        ₩
-        {(el.price * el.quantity)
-          .toString()
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-      </p>
+      <p className="prPrice">₩{(el.price * el.quantity).toLocaleString()}</p>
     </div>
   );
 };

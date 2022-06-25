@@ -6,7 +6,7 @@
     "category": "핸드 앤 풋",
     "price": 27000,
     "quantity": 1,
-    "isChecked": true
+    "isChecked": false
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "category": "솝",
     "price": 17000,
     "quantity": 1,
-    "isChecked": true
+    "isChecked": false
   },
   {
     "id": 3,
@@ -24,6 +24,15 @@
     "category": "버블 바",
     "price": 35000,
     "quantity": 1,
-    "isChecked": true
+    "isChecked": false
+  },
+  {
+    "id": 4,
+    "img": "images/not.png",
+    "name": "낫 슬리피",
+    "category": "샤워 밤",
+    "price": 8000,
+    "quantity": 1,
+    "isChecked": false
   }
 ]
