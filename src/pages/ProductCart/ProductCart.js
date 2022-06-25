@@ -175,6 +175,7 @@ const ProductCart = () => {
             let del = [...cartList];
             del.splice(cartList);
             setCartList(del);
+            setIsCheckAll(false);
           }}
         >
           전체삭제 하기
