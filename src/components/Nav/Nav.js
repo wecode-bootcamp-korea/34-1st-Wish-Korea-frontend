@@ -6,8 +6,6 @@ const Nav = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [isHovering, setIsHovering] = useState(false);
   const [isMyHovering, setIsMyHovering] = useState(false);
-  const params = useParams();
-  const navigate = useNavigate();
 
   // useEffect(() => {
   //   fetch('http://10.58.1.112:8000/products/categories', {
@@ -27,15 +25,6 @@ const Nav = () => {
         setCategoryList(data);
       });
   }, []);
-  // useEffect(() => {
-  //   fetch(`/data/Nav.json/${params.sub_categories}`)
-  //     .then(res => res.json())
-  //     .then(data => setCategoryList(data));
-  // }, [params.sub_categories]);
-
-  // const goToList = () => {
-  //   navigate('/list');
-  // };
 
   return (
     <div className="navBox">
@@ -45,10 +34,8 @@ const Nav = () => {
         </Link>
       </div>
       <ul className="navTitle">
-        <li className="navProduct">
-          <Link to="/list?" onMouseOver={() => setIsHovering(true)}>
-            제품
-          </Link>
+        <li className="navProduct" onMouseOver={() => setIsHovering(true)}>
+          제품
           <div
             className="navCateTitle"
             onMouseOver={() => setIsHovering(true)}
@@ -60,7 +47,9 @@ const Nav = () => {
                   categoryList.map(el => {
                     return (
                       <div key={el.category_id} className="cateTitle">
-                        <h1 className="title">{el.name}</h1>
+                        <Link to="/list">
+                          <h1 className="title">{el.name}</h1>
+                        </Link>
                         {el.sub_categories.map((ele, i) => {
                           return (
                             <p key={i} className="cateList">

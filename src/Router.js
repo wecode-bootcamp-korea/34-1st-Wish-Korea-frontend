@@ -12,7 +12,7 @@ import ProductView from './pages/ProductView/ProductView';
 const Router = () => {
   return (
     <BrowserRouter>
-      <Nav path="/nav:sub_categories" />
+      <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
