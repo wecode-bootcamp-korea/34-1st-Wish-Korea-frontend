@@ -1,21 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import './Nav.scss';
 
 const Nav = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [isHovering, setIsHovering] = useState(false);
   const [isMyHovering, setIsMyHovering] = useState(false);
+  const params = useParams();
+  const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   fetch('http://10.58.1.112:8000/products/categories', {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setCategoryList(data.result);
+  //     });
+  // }, []);
   useEffect(() => {
-    fetch('http://10.58.1.112:8000/products/categories', {
+    fetch('/data/Nav.json', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
-        setCategoryList(data.result);
+        setCategoryList(data);
       });
   }, []);
+  // useEffect(() => {
+  //   fetch(`/data/Nav.json/${params.sub_categories}`)
+  //     .then(res => res.json())
+  //     .then(data => setCategoryList(data));
+  // }, [params.sub_categories]);
+
+  // const goToList = () => {
+  //   navigate('/list');
+  // };
 
   return (
     <div className="navBox">
@@ -42,7 +62,6 @@ const Nav = () => {
                       <div key={el.category_id} className="cateTitle">
                         <h1 className="title">{el.name}</h1>
                         {el.sub_categories.map((ele, i) => {
-                          console.log('map', ele);
                           return (
                             <p key={i} className="cateList">
                               {ele.name}

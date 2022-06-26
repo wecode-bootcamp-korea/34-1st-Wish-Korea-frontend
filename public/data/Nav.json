@@ -2,7 +2,7 @@
   {
     "category_id": 1,
     "name": "배쓰",
-    "sub_category": [
+    "sub_categories": [
       { "id": 1, "name": "배쓰 밤" },
       { "id": 2, "name": "버블 바" },
       { "id": 3, "name": "배쓰 오일" },
@@ -12,7 +12,7 @@
   {
     "category_id": 2,
     "name": "샤워",
-    "sub_category": [
+    "sub_categories": [
       { "id": 1, "name": "솝" },
       { "id": 2, "name": "샤워 젤&젤리" },
       { "id": 3, "name": "보디 컨디셔너" },
@@ -25,7 +25,7 @@
   {
     "category_id": 3,
     "name": "보디",
-    "sub_category": [
+    "sub_categories": [
       { "id": 1, "name": "클렌저" },
       { "id": 2, "name": "로션" },
       { "id": 3, "name": "핸드 앤 풋" },
