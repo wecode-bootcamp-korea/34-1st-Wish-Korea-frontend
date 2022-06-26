@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './Join.scss';
 
 const Join = () => {
-  return <div>Join</div>;
+  return <div className="join"></div>;
 };
 
 export default Join;
