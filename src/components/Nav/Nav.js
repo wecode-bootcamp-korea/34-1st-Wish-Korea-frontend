@@ -8,12 +8,12 @@ const Nav = () => {
   const [isMyHovering, setIsMyHovering] = useState(false);
 
   useEffect(() => {
-    fetch('/data/Nav.json', {
+    fetch('http://10.58.1.112:8000/products/categories', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
-        setCategoryList(data);
+        setCategoryList(data.result);
       });
   }, []);
 
@@ -26,7 +26,7 @@ const Nav = () => {
       </div>
       <ul className="navTitle">
         <li className="navProduct">
-          <Link to="/list" onMouseOver={() => setIsHovering(true)}>
+          <Link to="/list?" onMouseOver={() => setIsHovering(true)}>
             제품
           </Link>
           <div
@@ -36,20 +36,22 @@ const Nav = () => {
           >
             {isHovering && (
               <div className="navInner">
-                {categoryList.map(el => {
-                  return (
-                    <div key={el.id} className="cateTitle">
-                      <h1 className="title">{el.name}</h1>
-                      {el.category.map((ele, i) => {
-                        return (
-                          <p key={i} className="cateList">
-                            {ele.name}
-                          </p>
-                        );
-                      })}
-                    </div>
-                  );
-                })}
+                {categoryList &&
+                  categoryList.map(el => {
+                    return (
+                      <div key={el.category_id} className="cateTitle">
+                        <h1 className="title">{el.name}</h1>
+                        {el.sub_categories.map((ele, i) => {
+                          console.log('map', ele);
+                          return (
+                            <p key={i} className="cateList">
+                              {ele.name}
+                            </p>
+                          );
+                        })}
+                      </div>
+                    );
+                  })}
               </div>
             )}
           </div>
@@ -81,16 +83,17 @@ const Nav = () => {
           />
           {isMyHovering && (
             <ul className="myBox">
-              <li className="myList">
-                <Link to="/login" className="goToMy">
-                  로그인
-                </Link>
-              </li>
-              <li className="myList" onMouseOut={() => setIsMyHovering(false)}>
-                <Link to="/join" className="goToMy">
+              <Link to="/login" className="goToMy">
+                <li className="myList">로그인</li>
+              </Link>
+              <Link to="/join" className="goToMy">
+                <li
+                  className="myList"
+                  onMouseOut={() => setIsMyHovering(false)}
+                >
                   회원가입
-                </Link>
-              </li>
+                </li>
+              </Link>
             </ul>
           )}
         </a>
