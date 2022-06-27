@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,26 +11,34 @@ import './ProductView.scss';
 
 const ProductView = () => {
   const [viewData, setViewData] = useState([]);
-  const [knowClick, setKnowClick] = useState(false);
+  const [isKnowClick, setIsKnowClick] = useState(false);
   const [totalList, setTotalList] = useState([]);
+  const [thumbnailImage, setThumbnailImage] = useState();
   const navigate = useNavigate();
   let tPrice = 0;
 
   useEffect(() => {
-    fetch('./data/backend.json', { method: 'GET' })
+    fetch('./data/productDetail.json', { method: 'GET' })
       .then(res => res.json())
       .then(data => {
+        data.result.items.length === 1 &&
+          setTotalList([{ ...data.result.items[0], quantity: 1 }]);
         setViewData(data.result);
+        setThumbnailImage(data.result.image);
       });
   }, []);
 
+  // 데이터 받아올 때 fetch
   // useEffect(() => {
-  //   fetch('http://10.58.1.112:8000/products/24', { method: 'GET' })
+  //   fetch('http://10.58.5.14:8000/products/12', { method: 'GET' })
   //     .then(res => res.json())
   //     .then(data => {
   //       setViewData(data.result);
   //     });
   // }, []);
+
+  // 옵션 유무 boolean
+  const isOption = viewData.items && viewData.items.length !== 1;
 
   // 옵션 추가 및 중복 추가 방지
   const handleOptions = el => {
@@ -45,19 +53,19 @@ const ProductView = () => {
 
   totalList.sort((a, b) => a.id - b.id); //옵션 정렬
 
-  // 클릭 이벤트로 받아온 아이디와 저장한 리스트의 아이디를 비교하여 값 변환
-  const increase = id => {
-    //옵션 증가
+  //옵션 증가
+  const increaseOption = id => {
     setTotalList(val =>
       val.map(el => {
+        // 클릭 이벤트로 받아온 아이디와 저장한 리스트의 아이디를 비교하여 값 변환
         if (id === el.id) el.quantity++; //재고 시스템 도입시 여기에 조건 걸어주면 됨
         return el;
       })
     );
   };
 
-  const decrease = id => {
-    //옵션 감소
+  //옵션 감소
+  const decreaseOption = id => {
     setTotalList(val =>
       val.map(el => {
         if (id === el.id && el.quantity > 1) el.quantity--;
@@ -66,8 +74,8 @@ const ProductView = () => {
     );
   };
 
+  //옵션 삭제
   const deleteOption = id => {
-    //옵션 삭제
     setTotalList(val => {
       return val.filter(val => val.id !== id);
     });
@@ -78,27 +86,52 @@ const ProductView = () => {
     alert('미구현');
   };
 
-  // console.log('백엔드에서받은거:', viewData, '장바구니 보내줄거:', totalList);
+  console.log('백엔드에서받은거:', viewData, '장바구니 보내줄거:', totalList);
   return (
     <div className="productView">
       <div className="detailInfo">
-        <img className="detailImg" src={viewData.image} alt="상세이미지" />
+        <div className="detailImgBox">
+          <img className="detailImg" src={thumbnailImage} alt="상세이미지" />
+          <div className="detailThumbnailBox">
+            <img
+              className="detailThumbnail"
+              src={viewData.image}
+              alt="상품이미지"
+              onClick={() => setThumbnailImage(viewData.image)}
+            />
+            {viewData.items?.length > 1 &&
+              viewData.items?.map(option => (
+                <img
+                  key={option.id}
+                  className="detailThumbnail"
+                  src={option.image}
+                  alt="상품이미지"
+                  onClick={() => setThumbnailImage(option.image)}
+                />
+              ))}
+          </div>
+        </div>
         <div className="detailBox">
           <span className="detailName">
-            {viewData.name}
-            {'   '}
-            {viewData.products?.map((el, idx) => {
-              return idx === 0 ? (
-                <span key={el.id}>{el.size_g}g</span>
-              ) : (
-                <span key={el.id}>/{el.size_g}g</span>
+            {viewData.name}&nbsp;
+            {viewData.items?.map(el => {
+              return (
+                <span className="detailGram" key={el.id}>
+                  {el.size_g}g
+                </span>
               );
             })}
             <img
               className="detailShare"
-              src="images/share.png"
+              src="/images/view/share.png"
               alt="share"
               onClick={() => alert('복사')}
+            />
+            <img
+              className="detailHeart"
+              src="/images/view/heart.png"
+              alt="heart"
+              onClick={() => alert('좋아요 ~')}
             />
           </span>
           <div className="detailKeyword">{viewData.tag}</div>
@@ -107,19 +140,21 @@ const ProductView = () => {
             {'  '}
             <img
               className="know"
-              src="images/know.png"
+              src="/images/view/know.png"
               alt="know"
-              onClick={() =>
-                knowClick ? setKnowClick(false) : setKnowClick(true)
-              }
+              onClick={() => setIsKnowClick(!isKnowClick)}
             />
-            {knowClick && (
+            {isKnowClick && (
               <div className="popBox">
-                <img className="knowPop" src="images/knowImg.png" alt="know" />
+                <img
+                  className="knowPop"
+                  src="/images/view/knowImg.png"
+                  alt="know"
+                />
                 <FontAwesomeIcon
                   className="knowX"
                   icon={faX}
-                  onClick={() => setKnowClick(false)}
+                  onClick={() => setIsKnowClick(false)}
                 />
               </div>
             )}
@@ -128,36 +163,37 @@ const ProductView = () => {
             <li className="detailText">
               <span className="detailClass">판매가</span>
               <span className="detailPrice">
-                ₩
-                {viewData.products &&
-                  viewData.products[0].price.toLocaleString()}
+                ₩{viewData.items && viewData.items[0].price.toLocaleString()}
               </span>
             </li>
             <li className="detailText">
-              <span className="detailClass">상품 무게</span>{' '}
-              {viewData.products && viewData.products[0].size_g}g
+              <span className="detailClass">상품 무게</span>
+              {viewData.items && viewData.items[0].size_g}g
             </li>
           </ul>
-          <OptionSelect
-            viewData={viewData}
-            handleOptions={handleOptions}
-            totalList={totalList}
-            tPrice={tPrice}
-          />
-
+          {isOption && (
+            <OptionSelect
+              viewData={viewData}
+              handleOptions={handleOptions}
+              totalList={totalList}
+              tPrice={tPrice}
+            />
+          )}
           {/* 옵션 선택시 추가되는 input  */}
           {totalList.length > 0 && (
             <>
               <div className="detailTotal">
-                {totalList.map(el => {
-                  tPrice = tPrice + el.price * el.quantity;
+                {totalList.map(selectedOption => {
+                  tPrice =
+                    tPrice + selectedOption.price * selectedOption.quantity;
                   return (
                     <OptionAddLine
-                      key={el.id}
-                      el={el}
-                      increase={increase}
-                      decrease={decrease}
-                      deleteOption={deleteOption}
+                      key={selectedOption.id}
+                      isOption={isOption}
+                      selectedOption={selectedOption}
+                      increaseOption={() => increaseOption(selectedOption.id)}
+                      decreaseOption={() => decreaseOption(selectedOption.id)}
+                      deleteOption={() => deleteOption(selectedOption.id)}
                     />
                   );
                 })}

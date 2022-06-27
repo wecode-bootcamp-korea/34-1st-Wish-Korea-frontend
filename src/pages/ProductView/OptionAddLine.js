@@ -1,41 +1,40 @@
 import React from 'react';
 
-const OptionAddLine = ({ el, increase, decrease, deleteOption }) => {
-  const onChange = e => {};
-
+const OptionAddLine = ({
+  isOption,
+  selectedOption,
+  increaseOption,
+  decreaseOption,
+  deleteOption,
+}) => {
   return (
-    <div className="optionLine" key={el.id}>
-      <span className="detailClass" />
+    <div className={isOption ? 'optionLine' : 'noOptionLine'}>
+      <span className="detailClass">용량</span>
       <span className="countLine">
-        <button
-          className="optionBtn"
-          onClick={() => {
-            decrease(el.id);
-          }}
-        >
+        <button className="optionBtn" onClick={decreaseOption}>
           -
         </button>
         <input
           className="optionCount"
           type="text"
-          value={el.quantity}
-          onChange={onChange}
+          value={selectedOption.quantity}
+          onChange={() => {}}
         />
-        <button
-          className="optionBtn"
-          onClick={() => {
-            increase(el.id);
-          }}
-        >
+        <button className="optionBtn" onClick={increaseOption}>
           +
         </button>
       </span>
-      <span className="optionText">
-        {el.size_g}g/ ₩{(el.price * el.quantity).toLocaleString()}
-      </span>
-      <button className="optionDelete" onClick={() => deleteOption(el.id)}>
-        X
-      </button>
+      {isOption && (
+        <>
+          <span className="optionText">
+            {selectedOption.size_g}g/ ₩
+            {(selectedOption.price * selectedOption.quantity).toLocaleString()}
+          </span>
+          <button className="optionDelete" onClick={deleteOption}>
+            X
+          </button>
+        </>
+      )}
     </div>
   );
 };

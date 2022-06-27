@@ -14,9 +14,10 @@ const DetailProduct = ({ viewData }) => {
         </div>
 
         <div className="detailContent">
+          <div className="contentTitle">{viewData.name}</div>
           <img
             className="contentImage"
-            src="images/detail1.png"
+            src="/images/view/detail1.png"
             alt="details"
           />
           <div className="detailComponents">
@@ -27,36 +28,37 @@ const DetailProduct = ({ viewData }) => {
               대표 성분
               <div>
                 {viewData &&
-                  viewData.components?.map((val, idx) => {
-                    if (val.important === true && idx === 0) {
-                      return idx === 0 ? (
-                        <span key={idx}>{val.name}</span>
-                      ) : (
-                        <span key={idx}>, {val.name}</span>
-                      );
-                    } else {
-                      return '';
-                    }
+                  viewData.components?.map(val => {
+                    return (
+                      val.important && (
+                        <span className="importantCompo" key={val.id}>
+                          {val.name}
+                        </span>
+                      )
+                    );
                   })}
               </div>
               <br />전 성분 표기
               <div>
-                {viewData &&
-                  viewData.components?.map((val, idx) => {
-                    return idx === 0 ? (
-                      <span key={idx}>{val.name}</span>
-                    ) : (
-                      <span key={idx}>, {val.name}</span>
-                    );
-                  })}
+                {viewData.components?.map(val => {
+                  return (
+                    <span className="importantCompo" key={val.id}>
+                      {val.name}
+                    </span>
+                  );
+                })}
               </div>
               <img
                 className="compoImg2"
-                src="images/comImg2.png"
+                src="/images/view/comImg2.png"
                 alt="성분이야"
               />
             </div>
-            <img className="compoImg" src="images/comImg.png" alt="이미지야" />
+            <img
+              className="compoImg"
+              src="/images/view/comImg.png"
+              alt="이미지야"
+            />
           </div>
         </div>
       </div>
@@ -74,7 +76,7 @@ const DetailProduct = ({ viewData }) => {
         <div className="detailContent">
           <img
             className="contentImage"
-            src="images/detail3.png"
+            src="/images/view/detail2.png"
             alt="details"
           />
         </div>

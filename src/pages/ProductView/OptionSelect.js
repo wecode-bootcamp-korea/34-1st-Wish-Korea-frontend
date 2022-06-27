@@ -1,45 +1,54 @@
 import React, { useState } from 'react';
 
 const OptionSelect = ({ viewData, handleOptions }) => {
-  const [clickOptions, setClickOptions] = useState(false);
+  const [isClickOptions, setIsClickOptions] = useState(false);
   return (
     <div className="optionBox">
       <span className="detailClass">용량 </span>
 
       <div
         className="select"
-        onClick={() =>
-          clickOptions ? setClickOptions(false) : setClickOptions(true)
-        }
+        onClick={() => setIsClickOptions(!isClickOptions)}
       >
         <div className="selectFlex">
           <div className="selectTitle">= 옵션 : 가격 =</div>
-          <img className="arrow" src="images/arrow.png" alt="arrow" />
+          <img className="arrow" src="/images/view/arrow.png" alt="arrow" />
         </div>
-        {clickOptions && (
+        {isClickOptions && (
           <ul className="selectList">
             <li className="option">= 옵션 : 가격 = </li>
-            {viewData.products?.map((el, idx) => {
+            {viewData.items?.map((option, idx) => {
               return idx === 0 ? (
                 <li
                   className="option"
-                  key={el.id}
+                  key={option.id}
                   onClick={() => {
-                    handleOptions(el);
+                    handleOptions(option);
                   }}
                 >
-                  {el.size_g}g
+                  <img
+                    className="optionImage"
+                    src={option.image}
+                    alt="상품이미지"
+                  />
+                  {option.size_g}g
                 </li>
               ) : (
                 <li
                   className="option"
-                  key={el.id}
+                  key={option.id}
                   onClick={() => {
-                    handleOptions(el);
+                    handleOptions(option);
                   }}
                 >
-                  {el.size_g}g :{'  '} ₩+
-                  {(el.price - viewData.products[0].price).toLocaleString()}
+                  {' '}
+                  <img
+                    className="optionImage"
+                    src={option.image}
+                    alt="상품이미지"
+                  />
+                  {option.size_g}g :&nbsp; ₩+
+                  {(option.price - viewData.items[0].price).toLocaleString()}
                 </li>
               );
             })}

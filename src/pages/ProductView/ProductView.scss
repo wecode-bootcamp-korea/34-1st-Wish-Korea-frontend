@@ -11,18 +11,36 @@
     justify-content: center;
     align-items: center;
 
-    .detailImg {
-      width: 350px;
-      height: 350px;
-      margin-right: 120px;
+    .detailImgBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .detailImg {
+        width: 350px;
+        height: 350px;
+      }
+
+      .detailThumbnailBox {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+
+        .detailThumbnail {
+          width: 60px;
+          margin: 10px;
+          border: 1px solid #e9e9e9;
+        }
+      }
     }
 
     .detailBox {
       position: relative;
+      margin-left: 120px;
 
       .detailTotalPrice {
-        // margin-top: 300px;
-        float: right;
+        margin-top: 20px;
+        text-align: right;
       }
 
       .priceTitle {
@@ -36,48 +54,53 @@
       }
 
       .optionLine {
-        padding: 10px 0 10px 0;
+        padding: 10px 0;
         border-top: 0.5px solid gray;
+      }
 
-        .countLine {
-          display: inline-block;
-          width: 140px;
-          margin-right: 15px;
-          border: 0.5px solid gray;
+      .noOptionLine {
+        padding-bottom: 15px;
+        border-bottom: 0.5px solid gray;
+      }
+
+      .countLine {
+        display: inline-block;
+        width: 140px;
+        margin-right: 15px;
+        border: 0.5px solid gray;
+      }
+
+      .optionCount {
+        width: 45px;
+        height: 35px;
+        border: none;
+        text-align: center;
+
+        &:focus {
+          outline: none;
         }
+      }
 
-        .optionCount {
-          width: 45px;
-          height: 35px;
-          border: none;
-          text-align: center;
+      .optionBtn {
+        width: 45px;
+        height: 35px;
+        background-color: white;
+        border: none;
+        font-size: 15px;
+      }
 
-          &:focus {
-            outline: none;
-          }
-        }
+      .optionText {
+        margin-right: 15px;
+        font-size: 15px;
+      }
 
-        .optionBtn {
-          width: 45px;
-          height: 35px;
-          background-color: white;
-          border: none;
-          font-size: 15px;
-        }
-
-        .optionText {
-          margin-right: 15px;
-          font-size: 15px;
-        }
-
-        .optionDelete {
-          width: 25px;
-          height: 25px;
-          background-color: white;
-          border: 0.5px solid gray;
-          font-size: 7px;
-          font-weight: 900;
-        }
+      .optionDelete {
+        width: 25px;
+        height: 25px;
+        background-color: white;
+        border: 0.5px solid gray;
+        font-size: 7px;
+        font-weight: 900;
       }
 
       .detailName {
@@ -94,7 +117,15 @@
       }
 
       .detailShare {
-        width: 80px;
+        width: 40px;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        right: 40px;
+      }
+
+      .detailHeart {
+        width: 40px;
         height: 50px;
         position: absolute;
         top: 0;
@@ -114,8 +145,7 @@
 
       .detailText {
         position: relative;
-        margin: 35px 0px 35px 0px;
-        color: #343434;
+        margin: 35px 0px;
         font-size: 15px;
 
         .know {
@@ -126,6 +156,7 @@
       .detailClass {
         display: inline-block;
         width: 93px;
+        color: #343434;
       }
 
       .optionBox {
@@ -135,7 +166,6 @@
           display: inline-block;
           width: 250px;
           height: 40px;
-          padding: 10px 0 0 0px; //옵션 글씨 조정
           border: 1px solid #b7b7b7;
           font-size: 14px;
 
@@ -147,6 +177,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 40px;
 
             .arrow {
               width: 20px;
@@ -156,6 +187,9 @@
 
           .selectList {
             position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             width: 250px;
             padding-left: 0px;
             background-color: white;
@@ -164,17 +198,24 @@
             cursor: pointer;
 
             .option {
+              display: flex;
+              align-items: center;
               width: 250px;
               height: 30px;
-              padding-top: 7px;
+              margin: 3px;
               padding-left: 7px;
-              border: 1px solid #999;
-              border-radius: 0px;
               border: none;
 
               &:hover {
+                width: 242px;
                 background: #e9e9e9;
               }
+            }
+
+            .optionImage {
+              margin: 0;
+              padding: 0;
+              height: 20px;
             }
           }
         }
@@ -257,6 +298,12 @@
     }
 
     .detailContent {
+      .contentTitle {
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+      }
+
       .detailComponents {
         display: flex;
         flex-direction: row;
@@ -269,6 +316,18 @@
           color: #898989;
           font-size: 17px;
           text-align: left;
+
+          .importantCompo {
+            &:after {
+              content: ',';
+              display: inline-block;
+              padding-right: 5px;
+            }
+
+            &:last-child::after {
+              display: none;
+            }
+          }
 
           .compoTitle {
             color: black;
@@ -295,5 +354,15 @@
         width: 100%;
       }
     }
+  }
+}
+.detailGram {
+  &:before {
+    content: '/';
+    display: inline-block;
+  }
+
+  &:first-child::before {
+    content: none;
   }
 }
