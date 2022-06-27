@@ -88,14 +88,13 @@ const ProductCart = () => {
             <li>Order confirmed</li>
           </ul>
         </div>
-        {/*titleBox*/}
       </div>
-      {/*cartTitle*/}
+
       <div className="cartContent">
         <div className="cartName">
           <p>제품</p>
         </div>
-        {/*cartName*/}
+
         <div className="cartList">
           <div className="cartInfo">
             <input
@@ -109,12 +108,10 @@ const ProductCart = () => {
             <p className="count">수량</p>
             <p className="price">금액</p>
           </div>
-          {/*cartInfo*/}
+
           {cartList.map((el, i) => {
             isCheck.includes(el.id) &&
               (sumPrice = sumPrice + el.price * el.quantity);
-
-            // sumPrice = sumPrice + el.price * el.quantity; //총 주문금액
 
             return (
               <div className="productList" key={el.id}>
@@ -135,7 +132,7 @@ const ProductCart = () => {
                     <span className="prCate">{el.category}</span>
                   </h1>
                 </div>
-                {/*prBox*/}
+
                 <div className="countBox">
                   <Count
                     el={el}
@@ -154,12 +151,11 @@ const ProductCart = () => {
                 >
                   X
                 </button>
-                {/*countBox*/}
               </div>
             );
           })}
         </div>
-        {/*cartList*/}
+
         <div className="cartPrice">
           <p className="countPrice">
             총 {isCheck.length} 개의 금액
@@ -174,11 +170,11 @@ const ProductCart = () => {
             </span>
           </p>
         </div>
-        {/*cartPrice"*/}
+
         <button className="delBtn" onClick={allDelete}>
           전체삭제 하기
         </button>
-        {/*cartPrice*/}
+
         <div className="cartButton">
           <div className="goShopping">
             <Link to="/" className="going">
@@ -188,7 +184,6 @@ const ProductCart = () => {
               주문하기
             </button>
           </div>
-          {/*goShopping*/}
         </div>
       </div>
     </section>
