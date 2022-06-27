@@ -1,80 +1,79 @@
-[
-  {
-    "id": 1,
-    "name": "라이트 더 나이트",
-    "is_new": 1,
-    "is_vegan": 1,
-    "is_only_online": 0,
-    "is_made_in_korea": 0,
-    "is_sold_out": 0,
-    "shotdesc": "#배쓰밤 #EID",
-    "price": "8,000",
-    "stock": 99,
-    "image_url": "/images/list_img2.jpg"
-  },
-  {
-    "id": 2,
-    "name": "라이트 더 나이트",
-    "is_new": 0,
-    "is_vegan": 0,
-    "is_only_online": 1,
-    "is_made_in_korea": 1,
-    "is_sold_out": 0,
-    "shotdesc": "#배쓰밤 #EID",
-    "price": "13,000",
-    "stock": 10,
-    "image_url": "/images/list_img2.jpg"
-  },
-  {
-    "id": 3,
-    "name": "라이트 더 나이트",
-    "is_new": 0,
-    "is_vegan": 0,
-    "is_only_online": 0,
-    "is_made_in_korea": 0,
-    "is_sold_out": 1,
-    "shotdesc": "#배쓰밤 #EID",
-    "price": "19,000",
-    "stock": 76,
-    "image_url": "/images/list_img2.jpg"
-  },
-  {
-    "id": 4,
-    "name": "라이트 더 나이트",
-    "is_new": 1,
-    "is_vegan": 1,
-    "is_only_online": 0,
-    "is_made_in_korea": 0,
-    "is_sold_out": 0,
-    "shotdesc": "#배쓰밤 #EID",
-    "price": "14,000",
-    "stock": 77,
-    "image_url": "/images/list_img2.jpg"
-  },
-  {
-    "id": 5,
-    "name": "라이트 더 나이트",
-    "is_new": 1,
-    "is_vegan": 0,
-    "is_only_online": 1,
-    "is_made_in_korea": 1,
-    "is_sold_out": 0,
-    "shotdesc": "#배쓰밤 #EID",
-    "price": "19,000",
-    "stock": 1,
-    "image_url": "/images/list_img2.jpg"
-  },
-  {
-    "id": 6,
-    "name": "라이트 더 나이트",
-    "is_new": 0,
-    "is_vegan": 0,
-    "is_only_online": 0,
-    "is_made_in_korea": 0,
-    "is_sold_out": 1,
-    "shotdesc": "#배쓰밤 #EID",
-    "price": "12,000",
-    "stock": 40,
-    "image_url": "/images/list_img2.jpg"
-  }
-]
+{
+  "category_id": 1,
+  "content": "어ㅏ쩌고 저쩌고",
+  "image_url": " 어쩌고 저쩌고",
+  "products": [
+    {
+      "id": 1,
+      "name": "라이트 더 나이트",
+      "is_new": 1,
+      "is_vegan": 1,
+      "is_only_online": 0,
+      "is_made_in_korea": 0,
+      "is_sold_out": 0,
+      "tag": "#배쓰밤 #EID",
+      "price": "8,000",
+      "image_url": "/images/list_img2.jpg"
+    },
+    {
+      "id": 2,
+      "name": "라이트 더 나이트",
+      "is_new": 0,
+      "is_vegan": 0,
+      "is_only_online": 1,
+      "is_made_in_korea": 1,
+      "is_sold_out": 0,
+      "tag": "#배쓰밤 #EID",
+      "price": "13,000",
+      "image_url": "/images/list_img2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "라이트 더 나이트",
+      "is_new": 0,
+      "is_vegan": 0,
+      "is_only_online": 0,
+      "is_made_in_korea": 0,
+      "is_sold_out": 1,
+      "tag": "#배쓰밤 #EID",
+      "price": "19,000",
+      "image_url": "/images/list_img2.jpg"
+    },
+    {
+      "id": 4,
+      "name": "라이트 더 나이트",
+      "is_new": 1,
+      "is_vegan": 1,
+      "is_only_online": 0,
+      "is_made_in_korea": 0,
+      "is_sold_out": 0,
+      "tag": "#배쓰밤 #EID",
+      "price": "14,000",
+      "image_url": "/images/list_img2.jpg"
+    },
+    {
+      "id": 5,
+      "name": "라이트 더 나이트",
+      "is_new": 1,
+      "is_vegan": 0,
+      "is_only_online": 1,
+      "is_made_in_korea": 1,
+      "is_sold_out": 0,
+      "tag": "#배쓰밤 #EID",
+      "price": "19,000",
+      "image_url": "/images/list_img2.jpg"
+    },
+    {
+      "id": 6,
+      "name": "라이트 더 나이트",
+      "is_new": 0,
+      "is_vegan": 0,
+      "is_only_online": 0,
+      "is_made_in_korea": 0,
+      "is_sold_out": 1,
+      "tag": "#배쓰밤 #EID",
+      "price": "12,000",
+      "image_url": "/images/list_img2.jpg"
+    }
+  ]
+}
