@@ -17,9 +17,20 @@ const ProductList = () => {
       .then(res => res.json())
       .then(data => {
         console.log('111', data);
-        setCategoryList(data[0]);
+        setCategoryList(data[0].result);
       });
   }, []);
+
+  // 데이터 통신용
+  // useEffect(() => {
+  //   fetch('http://10.58.5.14:8000/products?category_id=4', {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setCategoryList(data.result);
+  //     });
+  // }, []);
 
   const goToMenu = () => {
     navigate(`/list${categoryList.sub_categories.id}`); //이부분도 구현중입니다 :)

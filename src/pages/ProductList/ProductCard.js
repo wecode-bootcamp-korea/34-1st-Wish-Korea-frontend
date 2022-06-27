@@ -16,6 +16,17 @@ const ProductListDetails = ({ sort }) => {
       });
   }, []);
 
+  // 데이터 통신용
+  // useEffect(() => {
+  //   fetch('http://10.58.5.14:8000/products?category_id=4', {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setDetails(data.result);
+  //     });
+  // }, []);
+
   const goToDetail = () => {
     navigate(`/view/${details.id}`);
   };
@@ -72,7 +83,7 @@ const ProductListDetails = ({ sort }) => {
               </div>
               <div className="title">
                 <h4>{list.name}</h4>
-                <span className="shotdesc">{list.shotdesc}</span>
+                <span className="shotdesc">{list.tag}</span>
               </div>
               <div className="price">￦ {list.price}</div>
             </div>

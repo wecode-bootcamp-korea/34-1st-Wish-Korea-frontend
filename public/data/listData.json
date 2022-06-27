@@ -1,134 +1,48 @@
 [
   {
-    "cateogry_id": 1,
-    "name": "샤워젤&젤리",
-    "content": "샤워젤&젤리 샤워젤&젤리 샤워젤&젤리",
-    "image_url": "/images/vs1.jpg",
-    "product_count": 10,
-    "sub_categories": [
-      {
-        "id": 14,
-        "name": "샤워젤&젤리",
-        "product_count": 10
-      },
-      {
-        "id": 15,
-        "name": "솝",
-        "product_count": 0
-      },
-      {
-        "id": 16,
-        "name": "보디 컨디셔너",
-        "product_count": 0
-      },
-      {
-        "id": 17,
-        "name": "샤워 밤",
-        "product_count": 0
-      },
-      {
-        "id": 18,
-        "name": "샤워 오일",
-        "product_count": 0
-      },
-      {
-        "id": 19,
-        "name": "스크럽&버터",
-        "product_count": 0
-      },
-      {
-        "id": 20,
-        "name": "펀",
-        "product_count": 0
-      }
-    ]
-  },
-  {
-    "cateogry_id": 2,
-    "name": "솝",
-    "content": "솝솝소솝",
-    "image_url": "/images/vs1.jpg",
-    "product_count": 10,
-    "sub_categories": [
-      {
-        "id": 14,
-        "name": "샤워젤&젤리",
-        "product_count": 10
-      },
-      {
-        "id": 15,
-        "name": "솝",
-        "product_count": 0
-      },
-      {
-        "id": 16,
-        "name": "보디 컨디셔너",
-        "product_count": 0
-      },
-      {
-        "id": 17,
-        "name": "샤워 밤",
-        "product_count": 0
-      },
-      {
-        "id": 18,
-        "name": "샤워 오일",
-        "product_count": 0
-      },
-      {
-        "id": 19,
-        "name": "스크럽&버터",
-        "product_count": 0
-      },
-      {
-        "id": 20,
-        "name": "펀",
-        "product_count": 0
-      }
-    ]
-  },
-  {
-    "cateogry_id": 3,
-    "name": "보디컨디셔너",
-    "content": "보디보디보디",
-    "image_url": "/images/vs1.jpg",
-    "product_count": 10,
-    "sub_categories": [
-      {
-        "id": 14,
-        "name": "샤워젤&젤리",
-        "product_count": 10
-      },
-      {
-        "id": 15,
-        "name": "솝",
-        "product_count": 0
-      },
-      {
-        "id": 16,
-        "name": "보디 컨디셔너",
-        "product_count": 0
-      },
-      {
-        "id": 17,
-        "name": "샤워 밤",
-        "product_count": 0
-      },
-      {
-        "id": 18,
-        "name": "샤워 오일",
-        "product_count": 0
-      },
-      {
-        "id": 19,
-        "name": "스크럽&버터",
-        "product_count": 0
-      },
-      {
-        "id": 20,
-        "name": "펀",
-        "product_count": 0
-      }
-    ]
+    "result": {
+      "cateogry_id": 1,
+      "name": "샤워젤&젤리",
+      "content": "샤워젤&젤리 샤워젤&젤리 샤워젤&젤리",
+      "image_url": "/images/vs1.jpg",
+      "product_count": 10,
+      "sub_categories": [
+        {
+          "id": 14,
+          "name": "샤워젤&젤리",
+          "product_count": 10
+        },
+        {
+          "id": 15,
+          "name": "솝",
+          "product_count": 0
+        },
+        {
+          "id": 16,
+          "name": "보디 컨디셔너",
+          "product_count": 0
+        },
+        {
+          "id": 17,
+          "name": "샤워 밤",
+          "product_count": 0
+        },
+        {
+          "id": 18,
+          "name": "샤워 오일",
+          "product_count": 0
+        },
+        {
+          "id": 19,
+          "name": "스크럽&버터",
+          "product_count": 0
+        },
+        {
+          "id": 20,
+          "name": "펀",
+          "product_count": 0
+        }
+      ]
+    }
   }
 ]
