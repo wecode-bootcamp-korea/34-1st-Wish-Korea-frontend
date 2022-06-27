@@ -9,7 +9,7 @@ const Footer = () => {
           <img src="./images/footImg.png" alt="img" />
         </p>
       </div>
-      {/*footIcon*/}
+
       <div className="footInfo">
         <div className="footTitle">
           <h1 className="footLogo">WISH</h1>
@@ -19,7 +19,7 @@ const Footer = () => {
             })}
           </ul>
         </div>
-        {/*footTitle*/}
+
         <div className="footBox">
           <div className="innerBox">
             <div className="center">
@@ -39,7 +39,7 @@ const Footer = () => {
                 상담톡 10:00~16:00(평일)
               </p>
             </div>
-            {/*center*/}
+
             <div className="present">
               <p className="text1">
                 기업선물 &nbsp;&nbsp;<a href="tel:01098743299">010-9874-3299</a>
@@ -53,9 +53,8 @@ const Footer = () => {
               </a>
               <p className="text2">상담전화 13:00~16:00(평일)</p>
             </div>
-            {/*present*/}
           </div>
-          {/*innerBox */}
+
           <ul className="footCopy">
             {COPY_LIST.map((el, text) => {
               return <li key={text}>{el.text}</li>;
@@ -64,11 +63,8 @@ const Footer = () => {
               COPYRIGHT &copy; WISH KOREA CO.LTD.ALL RIGHTS RESERVED
             </p>
           </ul>
-          {/*footCopy*/}
         </div>
-        {/*footBox*/}
       </div>
-      {/*footInfo*/}
     </footer>
   );
 };
