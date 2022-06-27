@@ -2,26 +2,6 @@ import React from 'react';
 import './Footer.scss';
 
 const Footer = () => {
-  const TITLE_LIST = [
-    { id: 1, title: '스카우트' },
-    { id: 2, title: '회사소개' },
-    { id: 3, title: '개인정보처리방침' },
-    { id: 4, title: '영상정보관리지침' },
-    { id: 5, title: '이용약관' },
-    { id: 6, title: '고객센터' },
-  ];
-
-  const COPY_LIST = [
-    {
-      id: 1,
-      text: '서울특별시 강남구 테헤란로 427 위코드 | 운영자: 주식회사 위시코리아',
-    },
-    { id: 2, text: '대표이사 : 정진관(Backend Developer)' },
-    { id: 3, text: '사업자 등록번호:523-34-20226' },
-    { id: 4, text: '통신판매업 신고번호 : 2022-안중영-02857' },
-    { id: 5, text: '개인정보보호책임자 : 정예지' },
-  ];
-
   return (
     <footer className="footer">
       <div className="footIcon">
@@ -34,8 +14,8 @@ const Footer = () => {
         <div className="footTitle">
           <h1 className="footLogo">WISH</h1>
           <ul className="footList">
-            {TITLE_LIST.map((ele, idx) => {
-              return <li key={idx}>{ele.title}</li>;
+            {TITLE_LIST.map((ele, title) => {
+              return <li key={title}>{ele.title}</li>;
             })}
           </ul>
         </div>
@@ -77,8 +57,8 @@ const Footer = () => {
           </div>
           {/*innerBox */}
           <ul className="footCopy">
-            {COPY_LIST.map((el, i) => {
-              return <li key={i}>{el.text}</li>;
+            {COPY_LIST.map((el, text) => {
+              return <li key={text}>{el.text}</li>;
             })}
             <p className="copy">
               COPYRIGHT &copy; WISH KOREA CO.LTD.ALL RIGHTS RESERVED
@@ -92,5 +72,25 @@ const Footer = () => {
     </footer>
   );
 };
+
+const TITLE_LIST = [
+  { id: 1, title: '스카우트' },
+  { id: 2, title: '회사소개' },
+  { id: 3, title: '개인정보처리방침' },
+  { id: 4, title: '영상정보관리지침' },
+  { id: 5, title: '이용약관' },
+  { id: 6, title: '고객센터' },
+];
+
+const COPY_LIST = [
+  {
+    id: 1,
+    text: '서울특별시 강남구 테헤란로 427 위코드 | 운영자: 주식회사 위시코리아',
+  },
+  { id: 2, text: '대표이사 : 정진관(Backend Developer)' },
+  { id: 3, text: '사업자 등록번호:523-34-20226' },
+  { id: 4, text: '통신판매업 신고번호 : 2022-안중영-02857' },
+  { id: 5, text: '개인정보보호책임자 : 정예지' },
+];
 
 export default Footer;
