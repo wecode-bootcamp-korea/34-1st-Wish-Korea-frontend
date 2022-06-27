@@ -79,7 +79,6 @@ const ProductCart = () => {
 
   const onChange = e => {};
 
-  console.log('데이터', cartList);
   return (
     <section className="productCart">
       {/* 컴포넌트명과 동일한 className (수정)*/}
