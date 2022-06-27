@@ -1,11 +1,12 @@
 import React from 'react';
-import './Count.scss';
+import './ProductCount.scss';
 
-const ProductCount = ({ el, onIncrease, onDecrease, onChange }) => {
+// 컴포넌트명, 파일명 맞추기
+const ProductCount = ({ el, addCount, minusCount, onChange }) => {
   return (
     <div className="totalCount">
       <div className="countBox">
-        <button className="dec" onClick={() => onDecrease(el.id)}>
+        <button className="countBtn" onClick={minusCount}>
           -
         </button>
         <input
@@ -15,7 +16,7 @@ const ProductCount = ({ el, onIncrease, onDecrease, onChange }) => {
           onChange={onChange}
         />
 
-        <button className="inc" onClick={() => onIncrease(el.id)}>
+        <button className="countBtn" onClick={addCount}>
           +
         </button>
       </div>

@@ -12,7 +12,7 @@
   border: 1px solid #000;
 }
 
-.contents {
+.productCart {
   width: 1180px;
   margin: 0 auto;
 
@@ -27,23 +27,23 @@
       height: 110px;
       margin-left: 85px;
 
-      h1 {
+      .title {
         font: 42px 'GangwonEduPowerExtraBoldA';
         text-align: center;
       }
 
-      .titleList {
+      .listBox {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         width: 300px;
         height: 30px;
         margin: 20px auto;
 
-        li {
+        .titleList {
           color: lightgray;
           font-weight: bold;
 
-          span {
+          .firstList {
             color: #000;
           }
         }
@@ -68,29 +68,23 @@
       font-size: 25px;
       text-align: center;
 
+      .checkBox {
+        width: 295px;
+        margin-left: -10%;
+      }
+
       .cartInfo {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         width: 1180px;
         height: 30px;
         color: gray;
         border-bottom: 1px solid #e6e6e6;
         font-size: 15px;
 
-        .check1 {
-          width: 180px;
-        }
-
-        .info {
-          width: 500px;
-        }
-
-        .count {
-          width: 250px;
-        }
-
-        .price {
-          width: 250px;
+        .infoBox {
+          width: 295px;
+          text-align: center;
         }
       }
 
@@ -100,10 +94,6 @@
         align-items: center;
         width: 1180px;
         border-bottom: 1px solid #e6e6e6;
-
-        .check2 {
-          width: 180px;
-        }
 
         .prBox {
           display: flex;
@@ -123,13 +113,20 @@
             margin-right: 30px;
           }
         }
+
         .listDelete {
           background: none;
           border: 1px solid #ddd;
           font-weight: bold;
         }
       }
+      .cartEmpty {
+        margin: 30px auto;
+        color: #333;
+        font-size: 20px;
+      }
     }
+
     .cartPrice {
       display: flex;
       align-items: center;
@@ -174,6 +171,7 @@
           text-decoration: none;
           text-align: center;
         }
+
         .orderBtn {
           @include btn;
           color: #fff;
