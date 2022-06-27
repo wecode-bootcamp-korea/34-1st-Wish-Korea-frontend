@@ -97,6 +97,7 @@ const Nav = () => {
               <Link to="/join" className="goToMy">
                 <li
                   className="myList"
+                  onMouseOver={() => setIsMyHovering(true)}
                   onMouseOut={() => setIsMyHovering(false)}
                 >
                   회원가입
