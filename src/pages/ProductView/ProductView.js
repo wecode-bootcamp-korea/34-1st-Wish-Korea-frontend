@@ -86,7 +86,7 @@ const ProductView = () => {
     alert('미구현');
   };
 
-  console.log('백엔드에서받은거:', viewData, '장바구니 보내줄거:', totalList);
+  // console.log('백엔드에서받은거:', viewData, '장바구니 보내줄거:', totalList);
   return (
     <div className="productView">
       <div className="detailInfo">
