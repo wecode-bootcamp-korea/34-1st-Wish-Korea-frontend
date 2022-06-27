@@ -7,8 +7,8 @@ const DELIVERY_FEE = 2500;
 
 const ProductCart = () => {
   const [cartList, setCartList] = useState([]);
-  // const [isCheckAll, setIsCheckAll] = useState(false); // 아래 state로 계산이 가능하기 때문에 불필요!
   const [checkedBox, setCheckedBox] = useState([]); // isCheck => boolean naming convention이라서 수정! (수정)
+  const isAllCheck = cartList.length === checkedBox.length;
 
   let sumPrice = 0; // 아래 map메서드에서 계산할 필요 없이 여기서 reduce로만 할 수 있음.(참고)
 
@@ -24,19 +24,12 @@ const ProductCart = () => {
 
   const handleCheckAll = () => {
     setCheckedBox(cartList.map(el => el.id));
-    if (checkedBox.length === cartList.length) {
+    if (isAllCheck) {
       setCheckedBox([]);
     }
   };
-  // const handleCheckAll = () => {
-  //   setIsCheckAll(!isCheckAll);
-  //   setIsCheck(cartList.map(el => el.id));
-  //   if (isCheckAll) {
-  //     setIsCheck([]);
-  //   }
-  // };
   //전체 체크박스
-  console.log(checkedBox);
+
   const handleCheck = e => {
     const { id, checked } = e.target;
     setCheckedBox([...checkedBox, Number(id)]);
@@ -86,6 +79,7 @@ const ProductCart = () => {
 
   const onChange = e => {};
 
+  console.log('데이터', cartList);
   return (
     <section className="productCart">
       {/* 컴포넌트명과 동일한 className (수정)*/}
@@ -109,7 +103,7 @@ const ProductCart = () => {
           <div className="cartInfo">
             <input
               type="checkbox"
-              checked={checkedBox}
+              checked={isAllCheck}
               onClick={handleCheckAll}
               className="checkBox"
               onChange={onChange}
