@@ -21,9 +21,9 @@ const ProductList = () => {
       });
   }, []);
 
-  // 데이터 통신용
+  //데이터 통신용
   // useEffect(() => {
-  //   fetch('http://10.58.5.14:8000/products?category_id=4', {
+  //   fetch('http://10.58.5.14:8000/products?category_id=', {
   //     method: 'GET',
   //   })
   //     .then(res => res.json())
