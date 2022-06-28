@@ -6,20 +6,18 @@ const Login = () => {
   const [userPw, setUserPw] = useState('');
 
   const regex = /[~!@#$%";'^,&*()_+|</>=>`?:{[\}]/g;
-  const isInputIdValid = userId && !regex.test(userId); // 최소한개이상의 입력값 + 특수문자 안씀
+  const isInputIdValid = userId && !regex.test(userId);
   const regex2 = /[0-9]/gi;
   const regex3 = /[a-z]/gi;
   const isInputPwValid =
-    regex.test(userPw) && regex2.test(userPw) && regex3.test(userPw); // 숫자,문자,특수문자 1개이상 포함
+    regex.test(userPw) && regex2.test(userPw) && regex3.test(userPw);
   const inputId = e => {
-    console.log('ㅎㅎㅎ', e.target);
     setUserId(e.target.value);
   };
   const inputPw = e => {
     setUserPw(e.target.value);
   };
 
-  // console.log('ggg', userId);
   return (
     <div className="login">
       <div className="header">로그인</div>
