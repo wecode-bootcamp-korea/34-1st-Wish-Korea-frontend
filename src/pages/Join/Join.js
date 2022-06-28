@@ -107,7 +107,6 @@ const Join = () => {
             <colgroup>
               <col />
               <col />
-              {/* style="width: 155px;" */}
             </colgroup>
             <tbody>
               <tr>
@@ -123,7 +122,7 @@ const Join = () => {
                   </div>
                 </td>
               </tr>
-              {/* 아이디 */}
+
               <tr>
                 <th className="ta-1 required">비밀번호</th>
                 <td>
@@ -137,7 +136,7 @@ const Join = () => {
                   </div>
                 </td>
               </tr>
-              {/* 비밀번호 */}
+
               <tr>
                 <th className="ta-1 required">비밀번호 확인</th>
                 <td>
@@ -150,12 +149,11 @@ const Join = () => {
                   </div>
                 </td>
               </tr>
-              {/* 비밀번호 확인 */}
+
               <tr>
                 <th className="ta-1 required">이름</th>
                 <td>
                   <div className="txt-field">
-                    {/* style="border: 1px solid rgb(204, 204, 204);" 위의 div태그옆자리 */}
                     <input
                       type="text"
                       className="text"
@@ -165,7 +163,7 @@ const Join = () => {
                   </div>
                 </td>
               </tr>
-              {/* 이름 */}
+
               <tr>
                 <th className="ta-1">닉네임</th>
                 <td>
@@ -179,7 +177,7 @@ const Join = () => {
                   </div>
                 </td>
               </tr>
-              {/* 닉네임 */}
+
               <tr>
                 <th className="ta-1 required">이메일</th>
                 <td>
@@ -212,16 +210,14 @@ const Join = () => {
                       value="y"
                     />
                     <label>정보/이벤트 메일 수신에 동의합니다.</label>
-                    {/* for="mailingF1" */}
                   </div>
                 </td>
               </tr>
-              {/* 이메일 */}
+
               <tr>
                 <th className="ta-1 required">휴대폰번호</th>
                 <td>
                   <div className="txt-field">
-                    {/* style="display: inline-block;" */}
                     <input
                       type="text"
                       id="cellPhone"
@@ -231,33 +227,29 @@ const Join = () => {
                       placeholder="-없이 입력하세요."
                     />
                   </div>
-                  <div className="form-element">
-                    <input
-                      type="checkbox"
-                      className="checkbox"
-                      id="smsF1"
-                      name="smsF1"
-                      value="y"
-                    />
-                    <label>정보/이벤트 SMS 수신에 동의합니다.</label>
-                    {/* for="smsF1" */}
-                  </div>
+
+                  <input
+                    type="checkbox"
+                    className="checkbox"
+                    id="smsF1"
+                    name="smsF1"
+                    value="y"
+                  />
+                  <label>정보/이벤트 SMS 수신에 동의합니다.</label>
                 </td>
               </tr>
-              {/* 휴대폰번호 */}
+
               <tr>
                 <th className="ta-1">주소</th>
                 <td>
                   <div className="post">
                     <div className="txt-field">
-                      {/* style="width:250px;" */}
                       <input type="text" className="text" name="zonecode" />
                       <input type="hidden" name="zipcode" />
                     </div>
                   </div>
                 </td>
               </tr>
-              {/* 주소 */}
             </tbody>
           </table>
         </div>
@@ -265,7 +257,6 @@ const Join = () => {
           <button className="button">회원가입</button>
         </div>
       </div>
-      {/* userinformation종료태그 */}
     </div>
   );
 };
