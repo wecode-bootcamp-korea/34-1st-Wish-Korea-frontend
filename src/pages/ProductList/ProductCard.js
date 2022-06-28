@@ -2,20 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProductCard.scss';
 
-const ProductListDetails = ({ sort }) => {
-  const [details, setDetails] = useState([]);
+const ProductListDetails = ({ sort, details }) => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    fetch('/data/detailsData.json', {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(data => {
-        setDetails(data);
-      });
-  }, []);
-
   // 데이터 통신용
   // useEffect(() => {
   //   fetch('http://10.58.5.14:8000/products?category_id=4', {
@@ -26,9 +14,8 @@ const ProductListDetails = ({ sort }) => {
   //       setDetails(data.result);
   //     });
   // }, []);
-
-  const goToDetail = () => {
-    navigate(`/view/${details.id}`);
+  const goToDetail = id => {
+    navigate(`/view/${id}`);
   };
 
   sort === 'lowprice' &&
@@ -51,8 +38,12 @@ const ProductListDetails = ({ sort }) => {
     <ul className="productCard">
       {details.products?.map(list => {
         return (
-          <li className="productListItem" key={list.id}>
-            <div className="innerBox" onClick={goToDetail}>
+          <li
+            className="productListItem"
+            onClick={() => goToDetail(list.id)}
+            key={list.id}
+          >
+            <div className="innerBox">
               <div className="thumb">
                 <div className="img">
                   <img src={list.image_url} alt="thumb" />

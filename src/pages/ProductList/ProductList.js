@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import './ProductList.scss';
 
 const ProductList = () => {
   const [categoryList, setCategoryList] = useState({});
-  const [searchParams, setSearchParams] = useSearchParams(); //이부분은 구현중입니다 :)
+  const [details, setDetails] = useState({});
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [sort, setSort] = useState();
 
@@ -16,14 +17,23 @@ const ProductList = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('111', data);
-        setCategoryList(data[0].result);
+        setCategoryList(data[1]);
       });
   }, []);
 
-  //데이터 통신용
+  useEffect(() => {
+    fetch('/data/detailsData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setDetails(data);
+      });
+  }, []);
+
+  // 데이터 통신용
   // useEffect(() => {
-  //   fetch('http://10.58.5.14:8000/products?category_id=', {
+  //   fetch('http://10.58.7.14:8000/products?category_id=3', {
   //     method: 'GET',
   //   })
   //     .then(res => res.json())
@@ -31,21 +41,26 @@ const ProductList = () => {
   //       setCategoryList(data.result);
   //     });
   // }, []);
+  // console.log(categoryList);
 
-  const goToMenu = () => {
-    navigate(`/list${categoryList.sub_categories.id}`); //이부분도 구현중입니다 :)
+  const goToMenu = id => {
+    navigate(`/list?categoryId=${id}`); //이부분도 구현중입니다 :)
   };
+
+  const params = new URLSearchParams(location.search);
+
+  console.log(params.getAll('categoryId'));
 
   return (
     <>
       <section className="subVisual">
         <div className="img">
-          <img src={categoryList.image_url} alt="sub visual" />
+          <img src={details.category?.image_url} alt="sub visual" />
         </div>
         <div className="svTitle">
           <div className="innerText">
             <h2>{categoryList.name}</h2>
-            <p>{categoryList.content}</p>
+            <p>{details.category?.content}</p>
           </div>
         </div>
       </section>
@@ -68,19 +83,31 @@ const ProductList = () => {
         </div>
         <div className="subMenu">
           <ul>
+            <li onClick={() => goToMenu(categoryList.category_id)}>
+              <p>
+                전체
+                <span>({categoryList.products_count})</span>
+              </p>
+            </li>
             {categoryList.sub_categories?.map(submenu => {
               return (
-                <li key={submenu.id} onClick={goToMenu}>
+                <li
+                  key={submenu.id}
+                  onClick={() => goToMenu(submenu.id)}
+                  className={
+                    submenu.id === params.getAll('categoryId') ? 'active' : ''
+                  }
+                >
                   <p>
                     {submenu.name}
-                    <span>({submenu.product_count})</span>
+                    <span>({submenu.products_count})</span>
                   </p>
                 </li>
               );
             })}
           </ul>
         </div>
-        <ProductCard sort={sort} />
+        <ProductCard sort={sort} details={details} />
       </section>
     </>
   );

@@ -1,7 +1,9 @@
 {
-  "category_id": 1,
-  "content": "어ㅏ쩌고 저쩌고",
-  "image_url": " 어쩌고 저쩌고",
+  "category": {
+    "id": 1,
+    "content": "어ㅏ쩌고 저쩌고",
+    "image_url": " /images/vs1.jpg"
+  },
   "products": [
     {
       "id": 1,

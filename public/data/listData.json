@@ -1,48 +1,40 @@
 [
   {
-    "result": {
-      "cateogry_id": 1,
-      "name": "샤워젤&젤리",
-      "content": "샤워젤&젤리 샤워젤&젤리 샤워젤&젤리",
-      "image_url": "/images/vs1.jpg",
-      "product_count": 10,
-      "sub_categories": [
-        {
-          "id": 14,
-          "name": "샤워젤&젤리",
-          "product_count": 10
-        },
-        {
-          "id": 15,
-          "name": "솝",
-          "product_count": 0
-        },
-        {
-          "id": 16,
-          "name": "보디 컨디셔너",
-          "product_count": 0
-        },
-        {
-          "id": 17,
-          "name": "샤워 밤",
-          "product_count": 0
-        },
-        {
-          "id": 18,
-          "name": "샤워 오일",
-          "product_count": 0
-        },
-        {
-          "id": 19,
-          "name": "스크럽&버터",
-          "product_count": 0
-        },
-        {
-          "id": 20,
-          "name": "펀",
-          "product_count": 0
-        }
-      ]
-    }
+    "category_id": 1,
+    "name": "배쓰",
+    "products_count": 40,
+    "sub_categories": [
+      { "id": 1, "name": "배쓰 밤", "products_count": 10 },
+      { "id": 2, "name": "버블 바", "products_count": 10 },
+      { "id": 3, "name": "배쓰 오일", "products_count": 10 },
+      { "id": 4, "name": "펀", "products_count": 10 }
+    ]
+  },
+  {
+    "category_id": 2,
+    "name": "샤워",
+    "products_count": 70,
+    "sub_categories": [
+      { "id": 1, "name": "솝", "products_count": 10 },
+      { "id": 2, "name": "샤워 젤&젤리", "products_count": 10 },
+      { "id": 3, "name": "보디 컨디셔너", "products_count": 10 },
+      { "id": 4, "name": "샤워 밤", "products_count": 10 },
+      { "id": 5, "name": "샤워 오일", "products_count": 10 },
+      { "id": 6, "name": "스크럽&버터", "products_count": 10 },
+      { "id": 7, "name": "펀", "products_count": 10 }
+    ]
+  },
+  {
+    "category_id": 3,
+    "name": "보디",
+    "products_count": 60,
+    "sub_categories": [
+      { "id": 1, "name": "클렌저", "products_count": 10 },
+      { "id": 2, "name": "로션", "products_count": 10 },
+      { "id": 3, "name": "핸드 앤 풋", "products_count": 10 },
+      { "id": 4, "name": "마사지 바", "products_count": 10 },
+      { "id": 5, "name": "더스팅 파우더", "products_count": 10 },
+      { "id": 6, "name": "쉐이빙 크림", "products_count": 10 }
+    ]
   }
 ]
