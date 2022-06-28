@@ -1,38 +1,50 @@
-[
-  {
-    "id": 1,
-    "img": "images/lovely.png",
-    "name": "러블리",
-    "category": "핸드 앤 풋",
-    "price": 27000,
-    "quantity": 1,
-    "isChecked": false
-  },
-  {
-    "id": 2,
-    "img": "images/soap.png",
-    "name": "빅 머스타시",
-    "category": "솝",
-    "price": 17000,
-    "quantity": 1,
-    "isChecked": false
-  },
-  {
-    "id": 3,
-    "img": "images/bubble.png",
-    "name": "디어 존 퍼퓸 버블 보틀",
-    "category": "버블 바",
-    "price": 35000,
-    "quantity": 1,
-    "isChecked": false
-  },
-  {
-    "id": 4,
-    "img": "images/not.png",
-    "name": "낫 슬리피",
-    "category": "샤워 밤",
-    "price": 8000,
-    "quantity": 1,
-    "isChecked": false
+{
+  "result": {
+    "cart": [
+      {
+        "cart_id": 1,
+        "item_id": 1,
+        "name": "러블리",
+        "price": "27000.00",
+        "stock": 20,
+        "image_url": "/images/lovely.png",
+        "size": [123, 515, 1000],
+        "sub_catgory_name": "핸드 앤 풋",
+        "quantity": 1
+      },
+      {
+        "cart_id": 2,
+        "item_id": 2,
+        "name": "빅 머스타시",
+        "price": "17000.00",
+        "stock": 20,
+        "image_url": "/images/soap.png",
+        "size": [123, 515, 1000],
+        "sub_catgory_name": "솝",
+        "quantity": 1
+      },
+      {
+        "cart_id": 3,
+        "item_id": 3,
+        "name": "디어 존 퍼퓸 버블 보틀",
+        "price": "35000.00",
+        "stock": 20,
+        "image_url": "/images/bubble.png",
+        "size": [123, 515, 1000],
+        "sub_catgory_name": "버블 바",
+        "quantity": 1
+      },
+      {
+        "cart_id": 4,
+        "item_id": 4,
+        "name": "낫 슬리피",
+        "price": "8000.00",
+        "stock": 20,
+        "image_url": "/images/not.png",
+        "size": [123, 515, 1000],
+        "sub_catgory_name": "샤워 밤",
+        "quantity": 1
+      }
+    ]
   }
-]
+}

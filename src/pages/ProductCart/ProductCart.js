@@ -8,7 +8,7 @@ const DELIVERY_FEE = 2500;
 const ProductCart = () => {
   const [cartList, setCartList] = useState([]);
   const [checkedBox, setCheckedBox] = useState([]); // isCheck => boolean naming convention이라서 수정! (수정)
-  const isAllCheck = cartList.length === checkedBox.length;
+  const isAllCheck = cartList && cartList.length === checkedBox.length;
 
   let sumPrice = 0; // 아래 map메서드에서 계산할 필요 없이 여기서 reduce로만 할 수 있음.(참고)
 
@@ -18,12 +18,12 @@ const ProductCart = () => {
     })
       .then(res => res.json())
       .then(data => {
-        setCartList(data);
+        setCartList(data.result.cart);
       });
   }, []);
 
   const handleCheckAll = () => {
-    setCheckedBox(cartList.map(el => el.id));
+    setCheckedBox(cartList.map(el => el.cart_id));
     if (isAllCheck) {
       setCheckedBox([]);
     }
@@ -42,7 +42,7 @@ const ProductCart = () => {
     // 어떤 걸 증가, 감소시키는지 명확하게 이름짓기. 동사형으로(수정)
     setCartList(cart =>
       cart.map(onecart => {
-        if (id === onecart.id) onecart.quantity++;
+        if (id === onecart.cart_id) onecart.quantity++;
         return onecart;
       })
     );
@@ -51,7 +51,7 @@ const ProductCart = () => {
   const minusCount = id => {
     setCartList(cart =>
       cart.map(onecart => {
-        if (id === onecart.id && onecart.quantity > 1) onecart.quantity--;
+        if (id === onecart.cart_id && onecart.quantity > 1) onecart.quantity--;
         return onecart;
       })
     );
@@ -113,41 +113,43 @@ const ProductCart = () => {
           </div>
           {cartList.length !== 0 ? (
             cartList.map((cart, i) => {
-              checkedBox.includes(cart.id) &&
+              checkedBox.includes(cart.cart_id) &&
                 (sumPrice = sumPrice + cart.price * cart.quantity);
 
               return (
-                <div className="productList" key={cart.id}>
+                <div className="productList" key={cart.cart_id}>
                   <input
-                    key={cart.id}
+                    key={cart.cart_id}
                     type="checkbox"
-                    id={cart.id}
-                    checked={checkedBox.includes(cart.id)}
+                    id={cart.cart_id}
+                    checked={checkedBox.includes(cart.cart_id)}
                     onClick={handleCheck}
                     onChange={onChange}
                     className="checkBox"
                   />
                   <div className="prBox">
-                    <img src={cart.img} alt="img" className="prImg" />
+                    <img src={cart.image_url} alt="img" className="prImg" />
                     <h1 className="prTitle">
                       {cart.name}
                       <br />
-                      <span className="prCate">{cart.category}</span>
+                      <span className="prCate">{cart.sub_catgory_name}</span>
                     </h1>
                   </div>
 
                   <div className="countBox">
                     <ProductCount
                       el={cart} // 매개변수명도 명확하게(수정)
-                      addCount={() => addCount(cart.id)}
-                      minusCount={() => minusCount(cart.id)}
+                      addCount={() => addCount(cart.cart_id)}
+                      minusCount={() => minusCount(cart.cart_id)}
                       onChange={onChange}
                     />
                   </div>
                   <button
                     className="listDelete"
                     onClick={() => {
-                      setCartList(cartList.filter(el => el.id !== cart.id)); //참고!
+                      setCartList(
+                        cartList.filter(el => el.cart_id !== cart.cart_id)
+                      ); //참고!
                       // const del = [...cartList];
                       // del.splice(i, 1);
                       // setCartList(del);
