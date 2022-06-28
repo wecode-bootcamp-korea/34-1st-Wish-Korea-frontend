@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footIcon">
         <p className="icon">
-          <img src="./images/footImg.png" alt="img" />
+          <img src="/images/footImg.png" alt="img" />
         </p>
       </div>
 
@@ -14,8 +14,8 @@ const Footer = () => {
         <div className="footTitle">
           <h1 className="footLogo">WISH</h1>
           <ul className="footList">
-            {TITLE_LIST.map((ele, title) => {
-              return <li key={title}>{ele.title}</li>;
+            {TITLE_LIST.map((list, i) => {
+              return <li key={i}>{list.title}</li>;
             })}
           </ul>
         </div>
@@ -56,8 +56,8 @@ const Footer = () => {
           </div>
 
           <ul className="footCopy">
-            {COPY_LIST.map((el, text) => {
-              return <li key={text}>{el.text}</li>;
+            {COPY_LIST.map((copy, idx) => {
+              return <li key={idx}>{copy.text}</li>;
             })}
             <p className="copy">
               COPYRIGHT &copy; WISH KOREA CO.LTD.ALL RIGHTS RESERVED
