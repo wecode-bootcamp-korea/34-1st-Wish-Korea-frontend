@@ -11,14 +11,25 @@ const ProductCart = () => {
   const isAllChecked = cartList.length === checkedBox.length;
 
   let sumPrice = 0;
+  // eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.1xXqNmRbFrtT2HDALfjPWlxFNV367oVs9z77NlMWnHM
+  // useEffect(() => {
+  //   fetch('/data/List.json', {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setCartList(data.result.cart);
+  //     });
+  // }, []);
 
   useEffect(() => {
-    fetch('/data/List.json', {
+    fetch('http://10.58.7.14:8000/orders/carts', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
-        setCartList(data.result.cart);
+        setCartList(data.result.carts);
+        console.log(data);
       });
   }, []);
 
@@ -146,6 +157,12 @@ const ProductCart = () => {
                     onClick={() => {
                       setCartList(
                         cartList.filter(el => el.cart_id !== cart.cart_id)
+                      );
+                      fetch(
+                        `http://10.58.7.14:8000/orders/carts/${cart.cart_id}`,
+                        {
+                          method: 'DELETE',
+                        }
                       );
                     }}
                   >

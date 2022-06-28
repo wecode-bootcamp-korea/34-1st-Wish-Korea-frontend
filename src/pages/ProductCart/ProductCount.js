@@ -6,7 +6,16 @@ const ProductCount = ({ el, addCount, minusCount, onChange }) => {
   return (
     <div className="totalCount">
       <div className="countBox">
-        <button className="countBtn" onClick={minusCount}>
+        <button
+          className="countBtn"
+          onClick={() => {
+            minusCount();
+            fetch('http://10.58.7.14:8000/orders/carts', {
+              method: 'PATCH',
+              body: JSON.stringify({ item_id: el.items, quantity: -1 }),
+            });
+          }}
+        >
           -
         </button>
         <input
@@ -16,7 +25,16 @@ const ProductCount = ({ el, addCount, minusCount, onChange }) => {
           onChange={onChange}
         />
 
-        <button className="countBtn" onClick={addCount}>
+        <button
+          className="countBtn"
+          onClick={() => {
+            addCount();
+            fetch('http://10.58.7.14:8000/orders/carts', {
+              method: 'PATCH',
+              body: JSON.stringify({ item_id: el.items, quantity: 1 }),
+            });
+          }}
+        >
           +
         </button>
       </div>
