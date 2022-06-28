@@ -124,6 +124,10 @@
     width: 200px;
     height: 100%;
 
+    .search {
+      cursor: pointer;
+    }
+
     .count {
       display: inline-block;
       width: 15px;
@@ -139,6 +143,7 @@
       position: relative;
       height: 100%;
       padding-top: 38px;
+      cursor: pointer;
     }
 
     .myBox {

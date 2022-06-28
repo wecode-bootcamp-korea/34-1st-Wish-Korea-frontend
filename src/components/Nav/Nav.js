@@ -71,7 +71,7 @@ const Nav = () => {
         <li>이벤트</li>
       </ul>
       <div className="navIcon">
-        <span>
+        <span className="search">
           <img
             src="https://www.lush.co.kr/data/skin/front/howling/_msc/images/header/icon_top_search.png"
             alt="search"
