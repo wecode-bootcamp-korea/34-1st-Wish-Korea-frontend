@@ -35,10 +35,18 @@
 
   .navTitle {
     @include flex_space_evenly;
+    align-items: center;
     width: 700px;
+    height: 100%;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+
+    .navProduct {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
 
     a {
       color: #fff;
@@ -111,8 +119,10 @@
 
   .navIcon {
     @include flex_space_evenly;
+    align-items: center;
     position: relative;
     width: 200px;
+    height: 100%;
 
     .count {
       display: inline-block;
@@ -125,10 +135,16 @@
       text-align: center;
     }
 
+    .user {
+      position: relative;
+      height: 100%;
+      padding-top: 38px;
+    }
+
     .myBox {
       position: absolute;
-      top: 63px;
-      right: 20px;
+      top: 100px;
+      right: -5px;
       width: 200px;
       height: 100px;
       z-index: 12;

@@ -34,32 +34,33 @@ const Nav = () => {
         </Link>
       </div>
       <ul className="navTitle">
-        <li className="navProduct" onMouseOver={() => setIsHovering(true)}>
+        <li
+          className="navProduct"
+          onMouseOver={() => setIsHovering(true)}
+          onMouseOut={() => setIsHovering(false)}
+        >
           제품
-          <div
-            className="navCateTitle"
-            onMouseOver={() => setIsHovering(true)}
-            onMouseOut={() => setIsHovering(false)}
-          >
+          <div className="navCateTitle">
             {isHovering && (
               <div className="navInner">
-                {categoryList &&
-                  categoryList.map(el => {
-                    return (
-                      <div key={el.category_id} className="cateTitle">
-                        <Link to="/list">
-                          <h1 className="title">{el.name}</h1>
-                        </Link>
-                        {el.sub_categories.map((ele, i) => {
-                          return (
-                            <p key={i} className="cateList">
-                              {ele.name}
-                            </p>
-                          );
-                        })}
-                      </div>
-                    );
-                  })}
+                {categoryList.map(category => {
+                  const { category_id, name, sub_categories } = category;
+
+                  return (
+                    <div key={category_id} className="cateTitle">
+                      <Link to="/list">
+                        <h1 className="title">{name}</h1>
+                      </Link>
+                      {sub_categories.map(subCategory => {
+                        return (
+                          <p key={subCategory.id} className="cateList">
+                            {subCategory.name}
+                          </p>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>
@@ -70,12 +71,12 @@ const Nav = () => {
         <li>이벤트</li>
       </ul>
       <div className="navIcon">
-        <a href="#">
+        <span>
           <img
             src="https://www.lush.co.kr/data/skin/front/howling/_msc/images/header/icon_top_search.png"
             alt="search"
           />
-        </a>
+        </span>
         <Link to="/cart">
           <img
             src="https://www.lush.co.kr/data/skin/front/howling/_msc/images/header/icon_top_cart.png"
@@ -83,11 +84,14 @@ const Nav = () => {
           />
           <span className="count">0</span>
         </Link>
-        <a href="#">
+        <span
+          className="user"
+          onMouseOver={() => setIsMyHovering(true)}
+          onMouseOut={() => setIsMyHovering(false)}
+        >
           <img
             src="https://www.lush.co.kr/data/skin/front/howling/_msc/images/header/icon_top_mypage.png"
             alt="mypage"
-            onMouseOver={() => setIsMyHovering(true)}
           />
           {isMyHovering && (
             <ul className="myBox">
@@ -95,17 +99,11 @@ const Nav = () => {
                 <li className="myList">로그인</li>
               </Link>
               <Link to="/join" className="goToMy">
-                <li
-                  className="myList"
-                  onMouseOver={() => setIsMyHovering(true)}
-                  onMouseOut={() => setIsMyHovering(false)}
-                >
-                  회원가입
-                </li>
+                <li className="myList">회원가입</li>
               </Link>
             </ul>
           )}
-        </a>
+        </span>
       </div>
     </div>
   );
