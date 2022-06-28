@@ -121,11 +121,16 @@ const ProductView = () => {
                 </span>
               );
             })}
+            {/* 수정중~!~!~!~! */}
             <img
               className="detailShare"
               src="/images/view/share.png"
               alt="share"
-              onClick={() => alert('복사')}
+              onClick={e => {
+                e.preventDefault();
+                // navigator.clipboard.writeText(window.location.href);
+                alert(window.location.href);
+              }}
             />
             <img
               className="detailHeart"
