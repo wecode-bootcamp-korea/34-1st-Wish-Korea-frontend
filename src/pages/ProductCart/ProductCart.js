@@ -8,7 +8,8 @@ const DELIVERY_FEE = 2500;
 const ProductCart = () => {
   const [cartList, setCartList] = useState([]);
   const [checkedBox, setCheckedBox] = useState([]);
-  const isAllChecked = cartList.length === checkedBox.length;
+  const isAllChecked =
+    cartList.length !== 0 && cartList.length === checkedBox.length;
 
   let sumPrice = 0;
 
@@ -94,8 +95,19 @@ const ProductCart = () => {
 
   const deleteAll = () => {
     if (window.confirm('모든 상품을 장바구니에서 삭제 하시겠습니까?')) {
-      setCartList([]);
-      setCheckedBox('');
+      fetch(`http://10.58.2.87:8080/orders/carts`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: localStorage.getItem('Authorization'),
+        },
+      }).then(res => {
+        if (res.status === 204) {
+          setCartList([]);
+          setCheckedBox('');
+        } else {
+          alert('다시 시도해주세요!');
+        }
+      });
     }
   };
 
