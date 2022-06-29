@@ -1,0 +1,46 @@
+{
+  "result": {
+    "product_id": 123,
+    "name": "야미 커스터드",
+    "tag": "#보디워시 #진짜바닐라",
+    "image": "/images/view/viewImg.png",
+    "manual": "",
+    "content": "",
+    "items": [
+      {
+        "id": 1,
+        "size_g": 270,
+        "price": 19000,
+        "stock": 0,
+        "image": "/images/view/viewImg1.png"
+      }
+    ],
+    "components": [
+      {
+        "id": 62,
+        "name": "제라니올",
+        "important": true
+      },
+      {
+        "id": 99,
+        "name": "적색104호",
+        "important": true
+      },
+      {
+        "id": 101,
+        "name": "로드우드오일",
+        "important": false
+      },
+      {
+        "id": 44,
+        "name": "카카오씨버터",
+        "important": false
+      },
+      {
+        "id": 33,
+        "name": "감자튀김",
+        "important": false
+      }
+    ]
+  }
+}
