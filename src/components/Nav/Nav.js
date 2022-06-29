@@ -6,25 +6,25 @@ const Nav = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [isHovering, setIsHovering] = useState(false);
   const [isMyHovering, setIsMyHovering] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
-  // useEffect(() => {
-  //   fetch('http://10.58.1.112:8000/products/categories', {
-  //     method: 'GET',
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setCategoryList(data.result);
-  //     });
-  // }, []);
+
   useEffect(() => {
-    fetch('/data/Nav.json', {
+    fetch('http://10.58.2.87:8000/products/categories', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
-        setCategoryList(data);
+        setCategoryList(data.result);
       });
   }, []);
+  // useEffect(() => {
+  //   fetch('/data/Nav.json', {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setCategoryList(data);
+  //     });
+  // }, []);
 
   return (
     <div className="navBox">
@@ -95,9 +95,30 @@ const Nav = () => {
           />
           {isMyHovering && (
             <ul className="myBox">
-              <Link to="/login" className="goToMy">
-                <li className="myList">로그인</li>
-              </Link>
+              {/* 로그인 페이지에서 로그인 했을떄 */}
+              {/* <button
+                onClick={() => {
+                  localStorage.setItem('Authorization', '1234');
+                }}
+              >
+                테스트로그인
+              </button> */}
+              {localStorage.getItem('Authorization') ? (
+                <Link
+                  to="/"
+                  className="goToMy"
+                  onClick={() => {
+                    localStorage.removeItem('Authorization');
+                  }}
+                >
+                  <li className="myList">로그아웃</li>
+                </Link>
+              ) : (
+                <Link to="/login" className="goToMy">
+                  <li className="myList">로그인</li>
+                </Link>
+              )}
+
               <Link to="/join" className="goToMy">
                 <li className="myList">회원가입</li>
               </Link>
