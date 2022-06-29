@@ -41,7 +41,6 @@ const OptionSelect = ({ viewData, handleOptions }) => {
                     handleOptions(option);
                   }}
                 >
-                  {' '}
                   <img
                     className="optionImage"
                     src={option.image}
