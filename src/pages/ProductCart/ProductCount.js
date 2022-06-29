@@ -10,7 +10,7 @@ const ProductCount = ({ el, addCount, minusCount, onChange }) => {
           className="countBtn"
           onClick={() => {
             minusCount();
-            fetch('http://10.58.7.14:8000/orders/carts', {
+            fetch('http://10.58.2.87:8000/orders/carts', {
               method: 'PATCH',
               body: JSON.stringify({ item_id: el.items, quantity: -1 }),
             });
@@ -29,7 +29,7 @@ const ProductCount = ({ el, addCount, minusCount, onChange }) => {
           className="countBtn"
           onClick={() => {
             addCount();
-            fetch('http://10.58.7.14:8000/orders/carts', {
+            fetch('http://10.58.2.87:8000/orders/carts', {
               method: 'PATCH',
               body: JSON.stringify({ item_id: el.items, quantity: 1 }),
             });

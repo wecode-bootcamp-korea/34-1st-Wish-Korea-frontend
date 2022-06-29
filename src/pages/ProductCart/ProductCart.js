@@ -23,7 +23,7 @@ const ProductCart = () => {
   // }, []);
 
   useEffect(() => {
-    fetch('http://10.58.7.14:8000/orders/carts', {
+    fetch('http://10.58.2.87:8000/orders/carts', {
       method: 'GET',
     })
       .then(res => res.json())
@@ -158,7 +158,7 @@ const ProductCart = () => {
                         cartList.filter(el => el.cart_id !== cart.cart_id)
                       );
                       fetch(
-                        `http://10.58.7.14:8000/orders/carts/${cart.cart_id}`,
+                        `http://10.58.2.87:8000/orders/carts/${cart.cart_id}`,
                         {
                           method: 'DELETE',
                         }
