@@ -1,38 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProductCard.scss';
 
 const ProductListDetails = ({ sort, details }) => {
   const navigate = useNavigate();
-  // 데이터 통신용
-  // useEffect(() => {
-  //   fetch('http://10.58.5.14:8000/products?category_id=4', {
-  //     method: 'GET',
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setDetails(data.result);
-  //     });
-  // }, []);
+
   const goToDetail = id => {
     navigate(`/view/${id}`);
   };
 
-  sort === 'lowprice' &&
-    details.sort((a, b) => {
-      if (a.price > b.price) {
-        return 1;
-      }
-      return 0;
-    });
+  // sort === 'lowprice' &&
+  //   details.sort((a, b) => {
+  //     if (a.price > b.price) {
+  //       return -1;
+  //     }
+  //     if (a.price < b.price) {
+  //       return 1;
+  //     }
+  //     return 0;
+  //   });
 
-  sort === 'highprice' &&
-    details.sort((a, b) => {
-      if (a.price > b.price) {
-        return -1;
-      }
-      return 0;
-    });
+  // sort === 'highprice' &&
+  //   details.sort((a, b) => {
+  //     if (a.price > b.price) {
+  //       return -1;
+  //     }
+  //     return 0;
+  //   });
 
   return (
     <ul className="productCard">
@@ -76,7 +70,9 @@ const ProductListDetails = ({ sort, details }) => {
                 <h4>{list.name}</h4>
                 <span className="shotdesc">{list.tag}</span>
               </div>
-              <div className="price">￦ {list.price}</div>
+              <div className="price">
+                ￦ {Number(list.price[0]).toLocaleString()}
+              </div>
             </div>
           </li>
         );
