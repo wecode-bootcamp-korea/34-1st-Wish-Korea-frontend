@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 const Nav = () => {
@@ -14,18 +14,8 @@ const Nav = () => {
       .then(res => res.json())
       .then(data => {
         setCategoryList(data.result);
-        console.log(data);
       });
   }, []);
-  // useEffect(() => {
-  //   fetch('/data/Nav.json', {
-  //     method: 'GET',
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setCategoryList(data);
-  //     });
-  // }, []);
 
   return (
     <div className="navBox">
@@ -46,7 +36,7 @@ const Nav = () => {
               <div className="navInner">
                 {categoryList.map(category => {
                   const { category_id, name, sub_categories } = category;
-                  //134.151.515.15:8000/products?category_id=1
+
                   return (
                     <div key={category_id} className="cateTitle">
                       <Link to={`/list?category_id=${category_id}`}>
@@ -55,7 +45,7 @@ const Nav = () => {
                       {sub_categories.map(subCategory => {
                         return (
                           <Link
-                            to={`/list?sub_category_id=${subCategory.id}`}
+                            to={`/list?category_id=${category_id}&sub_category_id=${subCategory.id}`}
                             key={subCategory.id}
                           >
                             <p className="cateList">{subCategory.name}</p>
