@@ -22,9 +22,9 @@ const Main = () => {
   const [moveClass, setMoveClass] = useState('');
   const [carouselItems, setCarouselItems] = useState(SLIDER_LIST);
 
-  useEffect(() => {
-    document.documentElement.style.setProperty('--num', carouselItems.length);
-  }, [carouselItems]);
+  // useEffect(() => {
+  //   document.documentElement.style.setProperty('--num', carouselItems.length);
+  // }, [carouselItems]);
 
   useEffect(() => {
     fetch('/data/productsData.json', {
