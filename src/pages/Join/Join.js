@@ -1,11 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Join.scss';
 
 const Join = () => {
+  const [userId, setUserId] = useState('');
+  const [userPw, setUserPw] = useState('');
+  const [userFirstname, setUserFirstname] = useState('');
+  const [userLastname, setUserLastname] = useState('');
+  const [userNickname, setUserNickname] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [userPhonenumber, setUserPhonenumber] = useState('');
+  const [userAddress, setUserAddress] = useState('');
+
+  const USERNAME_REGEX = /^[가-힣a-zA-Z0-9]+$/;
+  const PASSWORD_REGEX =
+    /^(?=.*[A-Za-z])(?=.*d)(?=.*[$@$!%*#?&])[A-Za-zd$@$!%*#?&]{8,}$/;
+  const NAMES_REGEX = /^[가-힣a-zA-Z]+$/;
+  const NICK_NAME_REGEX = /^[가-힣a-zA-Z0-9]*$/;
+  const EMAIL_REGEX = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
+  const PHONE_NUMBER_REGEX = /d{3}-d{3,4}-d{4}/;
+
+  const isInputIdValid = USERNAME_REGEX.test(userId);
+  const isInputPwValid = USERNAME_REGEX.test(userPw);
+  const isInputFirstnameValid = USERNAME_REGEX.test(userFirstname);
+  const isInputLastnameValid = USERNAME_REGEX.test(userLastname);
+  const isInputNicknameValid = USERNAME_REGEX.test(userNickname);
+  const isInputEmailValid = USERNAME_REGEX.test(userEmail);
+  const isInputPhonenumberValid = USERNAME_REGEX.test(userPhonenumber);
+  const inputId = e => {
+    setUserId(e.target.value);
+  };
+  const inputPw = e => {
+    setUserPw(e.target.value);
+  };
+  const inputFirstname = e => {
+    setUserFirstname(e.target.value);
+  };
+  const inputLastname = e => {
+    setUserLastname(e.target.value);
+  };
+  const inputNickname = e => {
+    setUserNickname(e.target.value);
+  };
+  const inputEmail = e => {
+    setUserEmail(e.target.value);
+  };
+  const inputPhonenumber = e => {
+    setUserPhonenumber(e.target.value);
+  };
+  const inputAddress = e => {
+    setUserAddress(e.target.value);
+  };
+
   return (
     <div className="join">
       <div className="joinTitle">
-        <h2>JOIN US</h2>
+        <h1>JOIN US</h1>
       </div>
       <div className="termsAgreement">
         <div className="agreementTitle">
@@ -62,7 +111,13 @@ const Join = () => {
             <br />
             3. ‘회원’이란 러쉬의 사이트를 통해 본 약관에서 정의하고 있는 가입
             절차에 따라 회원가입하여 정상적으로 서비스를 이용할 수 있는 권한을
-            부여 받은 고객을 말합니다.
+            부여 받은 고객을 말합니다. <br />
+            <br />
+            4. ‘사이트’란 러쉬에서 컴퓨터 등 정보 통신 설비와 정보 통신망을
+            이용하여 정보 및 서비스를 이용자에게 제공하고 재화 또는 용역(이하
+            “재화 등”이라 함)을 거래할 수 있도록 설정한 가상의 영업장을
+            말합니다. 2. ‘이용자’란 본 약관을 따라 러쉬가 제공하는 서비스를 받는
+            회원 및 비회원을 말합니다.
           </div>
           <div className="optionalInformation">
             <input type="checkbox" />
@@ -81,17 +136,17 @@ const Join = () => {
             회원에게 제공하는 뱃지 또는 그 뱃지와 관련한 서비스를 말합니다.
             <br />
             <br />
-            1. ‘사이트’란 러쉬에서 컴퓨터 등 정보 통신 설비와 정보 통신망을
+            4. ‘사이트’란 러쉬에서 컴퓨터 등 정보 통신 설비와 정보 통신망을
             이용하여 정보 및 서비스를 이용자에게 제공하고 재화 또는 용역(이하
             “재화 등”이라 함)을 거래할 수 있도록 설정한 가상의 영업장을
             말합니다.
             <br />
             <br />
-            2. ‘이용자’란 본 약관을 따라 러쉬가 제공하는 서비스를 받는 회원 및
+            5. ‘이용자’란 본 약관을 따라 러쉬가 제공하는 서비스를 받는 회원 및
             비회원을 말합니다.
             <br />
             <br />
-            3. ‘회원’이란 러쉬의 사이트를 통해 본 약관에서 정의하고 있는 가입
+            6. ‘회원’이란 러쉬의 사이트를 통해 본 약관에서 정의하고 있는 가입
             절차에 따라 회원가입하여 정상적으로 서비스를 이용할 수 있는 권한을
             부여 받은 고객을 말합니다.
           </div>
@@ -100,7 +155,10 @@ const Join = () => {
       <div className="userInfomation">
         <div className="informationTitle">
           <h3>기본정보</h3>
-          <p>표시는 반드시 입력하셔야 하는 항목입니다.</p>
+          <p>
+            <span className="must">*</span>표시는 반드시 입력하셔야 하는
+            항목입니다.
+          </p>
         </div>
         <div className="tableForm">
           <table>
@@ -110,142 +168,147 @@ const Join = () => {
             </colgroup>
             <tbody>
               <tr>
-                <th className="ta-1 required">아이디</th>
+                <th className="inputBox">
+                  <span className="must">*</span> 아이디
+                </th>
                 <td>
-                  <div className="txt-field">
-                    <input
-                      type="text"
-                      className="text"
-                      name="memId"
-                      id="memID"
-                    />
+                  <div className="information">
+                    <input type="text" className="text" onChange={inputId} />
                   </div>
                 </td>
+                {userId && !isInputIdValid && (
+                  <td>한글, 영문, 숫자만 입력 가능합니다.</td>
+                )}
               </tr>
 
               <tr>
-                <th className="ta-1 required">비밀번호</th>
+                <th className="inputBox">
+                  <span className="must">*</span> 비밀번호
+                </th>
                 <td>
-                  <div className="txt-field">
+                  <div className="information">
                     <input
                       type="password"
                       className="text"
-                      id="newPassword"
-                      name="memPw"
+                      onChange={inputPw}
                     />
                   </div>
                 </td>
               </tr>
 
               <tr>
-                <th className="ta-1 required">비밀번호 확인</th>
+                <th className="inputBox">&nbsp;&nbsp;비밀번호 확인</th>
                 <td>
-                  <div className="txt-field">
-                    <input
-                      type="password"
-                      className="text check-id"
-                      name="memPwRe"
-                    />
+                  <div className="information">
+                    <input type="password" className="text" />
                   </div>
                 </td>
               </tr>
 
               <tr>
-                <th className="ta-1 required">이름</th>
+                <th className="inputBox">
+                  <span className="must">*</span> 성
+                </th>
                 <td>
-                  <div className="txt-field">
+                  <div className="information">
                     <input
                       type="text"
                       className="text"
-                      name="memNm"
                       maxLength="30"
+                      onChange={inputFirstname}
                     />
                   </div>
                 </td>
               </tr>
 
               <tr>
-                <th className="ta-1">닉네임</th>
+                <th className="inputBox">
+                  <span className="must">*</span> 이름
+                </th>
                 <td>
-                  <div className="txt-field">
+                  <div className="information">
                     <input
                       type="text"
                       className="text"
-                      name="nickNm"
-                      maxLength="20"
+                      maxLength="30"
+                      onChange={inputLastname}
                     />
                   </div>
                 </td>
               </tr>
 
               <tr>
-                <th className="ta-1 required">이메일</th>
+                <th className="inputBox">&nbsp;&nbsp;닉네임</th>
+                <td>
+                  <div className="information">
+                    <input
+                      type="text"
+                      className="text"
+                      maxLength="20"
+                      onChange={inputNickname}
+                    />
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <th className="inputBox">
+                  <span className="must">*</span> 이메일
+                </th>
                 <td>
                   <div className="email">
-                    <div className="txt-field">
+                    <div className="information">
                       <input
                         type="text"
                         className="text"
-                        name="email"
-                        id="email"
+                        onChange={inputEmail}
                       />
                     </div>
-                    <div className="choice-select">
-                      <div
-                        className="chosen-container chosen-container-single chosen-container-single-nosearch"
-                        id="emailDomain_chosen"
-                      >
-                        <div className="chosen-drop">
-                          <ul className="chosen-results" />
-                        </div>
-                      </div>
-                    </div>
                   </div>
-                  <div className="form-element">
-                    <input
-                      type="checkbox"
-                      className="checkbox"
-                      id="maillingF1"
-                      name="mailingF1"
-                      value="y"
-                    />
+                </td>
+                <td>
+                  <div className="receiveEvent">
+                    <input type="checkbox" className="checkbox" value="y" />
                     <label>정보/이벤트 메일 수신에 동의합니다.</label>
                   </div>
                 </td>
               </tr>
 
               <tr>
-                <th className="ta-1 required">휴대폰번호</th>
+                <th className="inputBox">
+                  <span className="must">*</span> 휴대폰번호
+                </th>
                 <td>
-                  <div className="txt-field">
+                  <div className="information">
                     <input
                       type="text"
-                      id="cellPhone"
-                      name="cellPhone"
                       className="text"
                       maxLength="12"
-                      placeholder="-없이 입력하세요."
+                      placeholder="-와 같이 입력하세요."
+                      onChange={inputPhonenumber}
                     />
                   </div>
-
-                  <input
-                    type="checkbox"
-                    className="checkbox"
-                    id="smsF1"
-                    name="smsF1"
-                    value="y"
-                  />
-                  <label>정보/이벤트 SMS 수신에 동의합니다.</label>
+                </td>
+                <td>
+                  <div className="receiveEvent">
+                    <input type="checkbox" className="checkbox" value="y" />
+                    <label>정보/이벤트 SMS 수신에 동의합니다.</label>
+                  </div>
                 </td>
               </tr>
 
               <tr>
-                <th className="ta-1">주소</th>
+                <th className="inputBox">
+                  <span className="must">*</span> 주소
+                </th>
                 <td>
                   <div className="post">
-                    <div className="txt-field">
-                      <input type="text" className="text" name="zonecode" />
-                      <input type="hidden" name="zipcode" />
+                    <div className="information">
+                      <input
+                        type="text"
+                        className="text"
+                        onChange={inputAddress}
+                      />
                     </div>
                   </div>
                 </td>
@@ -254,7 +317,31 @@ const Join = () => {
           </table>
         </div>
         <div className="joinButton">
-          <button className="button">회원가입</button>
+          <button
+            onClick={e => {
+              fetch('http://10.58.2.87:8000/users/signup', {
+                method: 'POST',
+                body: JSON.stringify({
+                  username: userId,
+                  password: userPw,
+                  email: userEmail,
+                  phone_number: userPhonenumber,
+                  first_name: userFirstname,
+                  last_name: userLastname,
+                  nick_name: userNickname,
+                  address: userAddress,
+                }),
+              })
+                .then(response => response.json())
+                .then(data => {
+                  console.log(data);
+                })
+                .catch(error => console.log(error));
+            }}
+            className="button"
+          >
+            회원가입
+          </button>
         </div>
       </div>
     </div>

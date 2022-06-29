@@ -5,15 +5,17 @@ const Login = () => {
   const [userId, setUserId] = useState('');
   const [userPw, setUserPw] = useState('');
 
-  const regex = /[~!@#$%";'^,&*()_+|</>=>`?:{[\}]/g;
-  const isInputIdValid = userId && !regex.test(userId);
-  const regex2 = /[0-9]/gi;
-  const regex3 = /[a-z]/gi;
-  const isInputPwValid =
-    regex.test(userPw) && regex2.test(userPw) && regex3.test(userPw);
+  const USERNAME_REGEX = /^[가-힣a-zA-Z0-9]+$/;
+  const PASSWORD_REGEX =
+    /^(?=.*[A-Za-z])(?=.*d)(?=.*[$@$!%*#?&])[A-Za-zd$@$!%*#?&]{8,}$/;
+
+  const isInputIdValid = USERNAME_REGEX.test(userId);
+  const isInputPwValid = PASSWORD_REGEX.test(userPw);
+
   const inputId = e => {
     setUserId(e.target.value);
   };
+
   const inputPw = e => {
     setUserPw(e.target.value);
   };
@@ -24,14 +26,14 @@ const Login = () => {
       <div className="loginInput">
         <form className="inputForm">
           <input
-            className="identification"
+            className="userInput"
             type="text"
             placeholder="아이디"
             onChange={inputId}
           />
 
           <input
-            className="password"
+            className="userInput"
             type="password"
             placeholder="비밀번호"
             onChange={inputPw}
@@ -42,12 +44,29 @@ const Login = () => {
             <label>아이디 저장</label>
           </div>
           <input
-            className="loginButton"
+            className="userInput"
             type="submit"
             value="로그인"
             disabled={!isInputIdValid || !isInputPwValid}
+            onClick={e => {
+              e.preventDefault();
+              fetch('http://10.58.2.87:8000/users/signin', {
+                method: 'POST',
+                body: JSON.stringify({
+                  username: userId,
+                  password: userPw,
+                }),
+              })
+                .then(response => response.json())
+                .then(data => {
+                  console.log('결과', data);
+                })
+                .catch(error => console.log(error));
+            }}
           />
-          <div className="link">회원가입 | 아이디 찾기 | 비밀번호 찾기 |</div>
+          <div className="userInput">
+            회원가입 | 아이디 찾기 | 비밀번호 찾기 |
+          </div>
         </form>
       </div>
     </div>
