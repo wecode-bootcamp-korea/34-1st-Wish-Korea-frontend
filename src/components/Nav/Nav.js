@@ -46,17 +46,20 @@ const Nav = () => {
               <div className="navInner">
                 {categoryList.map(category => {
                   const { category_id, name, sub_categories } = category;
-
+                  //134.151.515.15:8000/products?category_id=1
                   return (
                     <div key={category_id} className="cateTitle">
-                      <Link to="/list">
+                      <Link to={`/list?category_id=${category_id}`}>
                         <h1 className="title">{name}</h1>
                       </Link>
                       {sub_categories.map(subCategory => {
                         return (
-                          <p key={subCategory.id} className="cateList">
-                            {subCategory.name}
-                          </p>
+                          <Link
+                            to={`/list?sub_category_id=${subCategory.id}`}
+                            key={subCategory.id}
+                          >
+                            <p className="cateList">{subCategory.name}</p>
+                          </Link>
                         );
                       })}
                     </div>
@@ -96,14 +99,6 @@ const Nav = () => {
           />
           {isMyHovering && (
             <ul className="myBox">
-              {/* 로그인 페이지에서 로그인 했을떄 */}
-              {/* <button
-                onClick={() => {
-                  localStorage.setItem('Authorization', '1234');
-                }}
-              >
-                테스트로그인
-              </button> */}
               {localStorage.getItem('Authorization') ? (
                 <Link
                   to="/"
@@ -119,7 +114,6 @@ const Nav = () => {
                   <li className="myList">로그인</li>
                 </Link>
               )}
-
               <Link to="/join" className="goToMy">
                 <li className="myList">회원가입</li>
               </Link>
