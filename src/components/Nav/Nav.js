@@ -14,6 +14,7 @@ const Nav = () => {
       .then(res => res.json())
       .then(data => {
         setCategoryList(data.result);
+        console.log(data);
       });
   }, []);
   // useEffect(() => {
@@ -82,7 +83,7 @@ const Nav = () => {
             src="https://www.lush.co.kr/data/skin/front/howling/_msc/images/header/icon_top_cart.png"
             alt="cart"
           />
-          <span className="count">0</span>
+          {/* <span className="count">0</span> */}
         </Link>
         <span
           className="user"
