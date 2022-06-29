@@ -6,7 +6,7 @@ const Nav = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [isHovering, setIsHovering] = useState(false);
   const [isMyHovering, setIsMyHovering] = useState(false);
-
+  const [cartCount, setCartCount] = useState(0);
   // useEffect(() => {
   //   fetch('http://10.58.1.112:8000/products/categories', {
   //     method: 'GET',
