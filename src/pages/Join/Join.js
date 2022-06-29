@@ -4,6 +4,7 @@ import './Join.scss';
 const Join = () => {
   const [userId, setUserId] = useState('');
   const [userPw, setUserPw] = useState('');
+  const [userPwCheck, setUserPwCheck] = useState('');
   const [userFirstname, setUserFirstname] = useState('');
   const [userLastname, setUserLastname] = useState('');
   const [userNickname, setUserNickname] = useState('');
@@ -49,6 +50,21 @@ const Join = () => {
   };
   const inputAddress = e => {
     setUserAddress(e.target.value);
+  };
+  const passwordCheck = e => {
+    setUserPwCheck(e.target.value);
+  };
+
+  const SIGN_ERROR_MESSAGE = {
+    'Duplicated email': '중복된 email입니다',
+    'Duplicated phone number': '중복된 phone number입니다',
+    'Invalid Username': '부적절한 Username입니다',
+    'Invalid Nick Name': 'Nick Name입니다',
+    'Invalid Last Name': '부적절한 Last Name입니다',
+    'Invalid First Name': '부적절한 First Name입니다',
+    'Invalid Email': '부적절한 Email입니다',
+    'Invalid Password': '부적절한 Password입니다',
+    'Invalid PhoneNumber': '부적절한 PhoneNumber입니다',
   };
 
   return (
@@ -194,13 +210,20 @@ const Join = () => {
                     />
                   </div>
                 </td>
+                {!isInputPwValid && (
+                  <td>영문,숫자,특수문자를 조합하여 8자리상 입력해주세요</td>
+                )}
               </tr>
 
               <tr>
                 <th className="inputBox">&nbsp;&nbsp;비밀번호 확인</th>
                 <td>
                   <div className="information">
-                    <input type="password" className="text" />
+                    <input
+                      type="password"
+                      className="text"
+                      onChange={passwordCheck}
+                    />
                   </div>
                 </td>
               </tr>
@@ -249,6 +272,9 @@ const Join = () => {
                     />
                   </div>
                 </td>
+                {userNickname && !isInputNicknameValid && (
+                  <td>특수문자는 사용하실 수 없습니다</td>
+                )}
               </tr>
 
               <tr>
@@ -266,6 +292,11 @@ const Join = () => {
                     </div>
                   </div>
                 </td>
+                {userEmail && !isInputEmailValid && (
+                  <td>@를 제외한 특수문자는 사용할 수 없습니다</td>
+                )}
+              </tr>
+              <tr>
                 <td>
                   <div className="receiveEvent">
                     <input type="checkbox" className="checkbox" value="y" />
@@ -283,12 +314,17 @@ const Join = () => {
                     <input
                       type="text"
                       className="text"
-                      maxLength="12"
+                      maxLength="30"
                       placeholder="-와 같이 입력하세요."
                       onChange={inputPhonenumber}
                     />
                   </div>
                 </td>
+                {userPhonenumber && isInputPhonenumberValid && (
+                  <td>-를 포함하여 입력해주세요</td>
+                )}
+              </tr>
+              <tr>
                 <td>
                   <div className="receiveEvent">
                     <input type="checkbox" className="checkbox" value="y" />
@@ -312,12 +348,14 @@ const Join = () => {
                     </div>
                   </div>
                 </td>
+                {!userAddress && <td>반드시 입력해주세요</td>}
               </tr>
             </tbody>
           </table>
         </div>
         <div className="joinButton">
           <button
+            disabled={userPw !== userPwCheck || !userPw}
             onClick={e => {
               fetch('http://10.58.2.87:8000/users/signup', {
                 method: 'POST',
@@ -335,7 +373,14 @@ const Join = () => {
                 .then(response => response.json())
                 .then(data => {
                   console.log(data);
+                  if (data.message === 'Duplicated username') {
+                    alert('중복된 username입니다');
+                  } else {
+                    alert(SIGN_ERROR_MESSAGE[data.message]);
+                  }
+                  console.log('데이터', data);
                 })
+
                 .catch(error => console.log(error));
             }}
             className="button"

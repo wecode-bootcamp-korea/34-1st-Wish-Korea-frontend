@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.scss';
 
 const Login = () => {
   const [userId, setUserId] = useState('');
   const [userPw, setUserPw] = useState('');
+  const navigate = useNavigate();
 
   const USERNAME_REGEX = /^[가-힣a-zA-Z0-9]+$/;
   const PASSWORD_REGEX =
@@ -47,7 +49,7 @@ const Login = () => {
             className="userInput"
             type="submit"
             value="로그인"
-            disabled={!isInputIdValid || !isInputPwValid}
+            // disabled={!isInputIdValid || !isInputPwValid}
             onClick={e => {
               e.preventDefault();
               fetch('http://10.58.2.87:8000/users/signin', {
@@ -60,6 +62,8 @@ const Login = () => {
                 .then(response => response.json())
                 .then(data => {
                   console.log('결과', data);
+                  localStorage.setItem('Authorization', data.token);
+                  navigate('/');
                 })
                 .catch(error => console.log(error));
             }}
