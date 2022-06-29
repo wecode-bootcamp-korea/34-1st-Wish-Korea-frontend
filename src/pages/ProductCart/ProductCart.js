@@ -22,9 +22,15 @@ const ProductCart = () => {
   //     });
   // }, []);
 
+  localStorage.setItem(
+    'Authorization',
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.1xXqNmRbFrtT2HDALfjPWlxFNV367oVs9z77NlMWnHM'
+  );
+
   useEffect(() => {
     fetch('http://10.58.2.87:8000/orders/carts', {
       method: 'GET',
+      headers: { Authorization: localStorage.getItem('Authorization') },
     })
       .then(res => res.json())
       .then(data => {
@@ -161,6 +167,11 @@ const ProductCart = () => {
                         `http://10.58.2.87:8000/orders/carts/${cart.cart_id}`,
                         {
                           method: 'DELETE',
+
+                          headers: {
+                            Authorization:
+                              localStorage.getItem('Authorization'),
+                          },
                         }
                       );
                     }}

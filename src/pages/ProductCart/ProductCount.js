@@ -10,9 +10,11 @@ const ProductCount = ({ el, addCount, minusCount, onChange }) => {
           className="countBtn"
           onClick={() => {
             minusCount();
-            fetch('http://10.58.2.87:8000/orders/carts', {
+            console.log(el);
+            fetch('http://10.58.2.87:8000/orders/cart', {
               method: 'PATCH',
-              body: JSON.stringify({ item_id: el.items, quantity: -1 }),
+              headers: { Authorization: localStorage.getItem('Authorization') },
+              body: JSON.stringify({ cart_id: el.cart_id, quantity: -1 }),
             });
           }}
         >
@@ -29,9 +31,10 @@ const ProductCount = ({ el, addCount, minusCount, onChange }) => {
           className="countBtn"
           onClick={() => {
             addCount();
-            fetch('http://10.58.2.87:8000/orders/carts', {
+            fetch('http://10.58.2.87:8000/orders/cart', {
               method: 'PATCH',
-              body: JSON.stringify({ item_id: el.items, quantity: 1 }),
+              headers: { Authorization: localStorage.getItem('Authorization') },
+              body: JSON.stringify({ cart_id: el.cart_id, quantity: 1 }),
             });
           }}
         >
