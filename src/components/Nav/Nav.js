@@ -8,12 +8,12 @@ const Nav = () => {
   const [isMyHovering, setIsMyHovering] = useState(false);
 
   useEffect(() => {
-    fetch('/data/Nav.json', {
+    fetch('http://10.58.2.87:8000/products/categories', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
-        setCategoryList(data);
+        setCategoryList(data.result);
       });
   }, []);
 
@@ -25,26 +25,31 @@ const Nav = () => {
         </Link>
       </div>
       <ul className="navTitle">
-        <li className="navProduct">
-          <Link to="/list" onMouseOver={() => setIsHovering(true)}>
-            제품
-          </Link>
-          <div
-            className="navCateTitle"
-            onMouseOver={() => setIsHovering(true)}
-            onMouseOut={() => setIsHovering(false)}
-          >
+        <li
+          className="navProduct"
+          onMouseOver={() => setIsHovering(true)}
+          onMouseOut={() => setIsHovering(false)}
+        >
+          제품
+          <div className="navCateTitle">
             {isHovering && (
               <div className="navInner">
-                {categoryList.map(el => {
+                {categoryList.map(category => {
+                  const { category_id, name, sub_categories } = category;
+
                   return (
-                    <div key={el.id} className="cateTitle">
-                      <h1 className="title">{el.name}</h1>
-                      {el.category.map((ele, i) => {
+                    <div key={category_id} className="cateTitle">
+                      <Link to={`/list?category_id=${category_id}`}>
+                        <h1 className="title">{name}</h1>
+                      </Link>
+                      {sub_categories.map(subCategory => {
                         return (
-                          <p key={i} className="cateList">
-                            {ele.name}
-                          </p>
+                          <Link
+                            to={`/list?category_id=${category_id}&sub_category_id=${subCategory.id}`}
+                            key={subCategory.id}
+                          >
+                            <p className="cateList">{subCategory.name}</p>
+                          </Link>
                         );
                       })}
                     </div>
@@ -60,40 +65,51 @@ const Nav = () => {
         <li>이벤트</li>
       </ul>
       <div className="navIcon">
-        <a href="#">
+        <span className="search">
           <img
             src="https://www.lush.co.kr/data/skin/front/howling/_msc/images/header/icon_top_search.png"
             alt="search"
           />
-        </a>
+        </span>
         <Link to="/cart">
           <img
             src="https://www.lush.co.kr/data/skin/front/howling/_msc/images/header/icon_top_cart.png"
             alt="cart"
           />
-          <span className="count">0</span>
+          {/* <span className="count">0</span> */}
         </Link>
-        <a href="#">
+        <span
+          className="user"
+          onMouseOver={() => setIsMyHovering(true)}
+          onMouseOut={() => setIsMyHovering(false)}
+        >
           <img
             src="https://www.lush.co.kr/data/skin/front/howling/_msc/images/header/icon_top_mypage.png"
             alt="mypage"
-            onMouseOver={() => setIsMyHovering(true)}
           />
           {isMyHovering && (
             <ul className="myBox">
-              <li className="myList">
+              {localStorage.getItem('Authorization') ? (
+                <Link
+                  to="/"
+                  className="goToMy"
+                  onClick={() => {
+                    localStorage.removeItem('Authorization');
+                  }}
+                >
+                  <li className="myList">로그아웃</li>
+                </Link>
+              ) : (
                 <Link to="/login" className="goToMy">
-                  로그인
+                  <li className="myList">로그인</li>
                 </Link>
-              </li>
-              <li className="myList" onMouseOut={() => setIsMyHovering(false)}>
-                <Link to="/join" className="goToMy">
-                  회원가입
-                </Link>
-              </li>
+              )}
+              <Link to="/join" className="goToMy">
+                <li className="myList">회원가입</li>
+              </Link>
             </ul>
           )}
-        </a>
+        </span>
       </div>
     </div>
   );

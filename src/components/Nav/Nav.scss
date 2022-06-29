@@ -13,11 +13,14 @@
 
 .navBox {
   @include flex_space_evenly;
-  position: relative;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100px;
   background-color: black;
+  z-index: 10;
 
   .navLogo {
     width: 80px;
@@ -32,10 +35,18 @@
 
   .navTitle {
     @include flex_space_evenly;
+    align-items: center;
     width: 700px;
+    height: 100%;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+
+    .navProduct {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
 
     a {
       color: #fff;
@@ -50,6 +61,7 @@
       .navInner {
         position: relative;
         display: flex;
+        width: 1570px;
 
         &::before {
           content: '';
@@ -59,7 +71,7 @@
           width: 500%;
           height: 300px;
           background-color: #333;
-          margin-right: -100%;
+          margin-right: -50%;
         }
 
         &:after {
@@ -78,10 +90,10 @@
         .cateTitle {
           position: relative;
           top: 0;
-          left: -10px;
+          left: -430px;
           width: 300px;
           height: 300px;
-          padding-left: 10px;
+          padding: 0 30px;
           background-color: #333;
 
           .title {
@@ -92,7 +104,7 @@
 
           .cateList {
             color: #717171;
-            font-size: 15px;
+            font-size: 14px;
             line-height: 2;
 
             &:hover {
@@ -107,25 +119,40 @@
 
   .navIcon {
     @include flex_space_evenly;
+    align-items: center;
     position: relative;
     width: 200px;
+    height: 100%;
+
+    .search {
+      cursor: pointer;
+    }
 
     .count {
       display: inline-block;
       width: 15px;
       height: 15px;
       padding: 2px;
+      color: #333;
       background-color: #fff;
       border-radius: 50%;
       text-align: center;
     }
 
+    .user {
+      position: relative;
+      height: 100%;
+      padding-top: 38px;
+      cursor: pointer;
+    }
+
     .myBox {
       position: absolute;
-      top: 63px;
-      right: 20px;
+      top: 100px;
+      right: -5px;
       width: 200px;
       height: 100px;
+      z-index: 12;
 
       &:after {
         content: '';
@@ -140,6 +167,11 @@
         border-right: 13px solid transparent;
       }
 
+      .goToMy {
+        color: #333;
+        text-decoration: none;
+      }
+
       .myList {
         width: 200px;
         height: 50px;
@@ -148,16 +180,8 @@
         font-size: 13px;
         text-align: center;
 
-        .goToMy {
-          color: #333;
-          text-decoration: none;
-        }
-      }
-
-      .myList:hover {
-        background-color: #000;
-
-        & * {
+        &:hover {
+          background-color: #000;
           color: #fff;
         }
       }
