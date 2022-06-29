@@ -11,16 +11,6 @@ const ProductCart = () => {
   const isAllChecked = cartList.length === checkedBox.length;
 
   let sumPrice = 0;
-  // eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.1xXqNmRbFrtT2HDALfjPWlxFNV367oVs9z77NlMWnHM
-  // useEffect(() => {
-  //   fetch('/data/List.json', {
-  //     method: 'GET',
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setCartList(data.result.cart);
-  //     });
-  // }, []);
 
   localStorage.setItem(
     'Authorization',
@@ -44,7 +34,6 @@ const ProductCart = () => {
       setCheckedBox([]);
     }
   };
-  //전체 체크박스
 
   const handleCheck = e => {
     const { id, checked } = e.target;
@@ -52,25 +41,56 @@ const ProductCart = () => {
     if (!checked) {
       setCheckedBox(checkedBox.filter(item => item !== Number(id)));
     }
-  }; // 체크박스
+  };
 
   const addCount = id => {
-    setCartList(cart =>
-      cart.map(onecart => {
-        if (id === onecart.cart_id) onecart.quantity++;
-        return onecart;
-      })
-    );
-  }; //수량 증가
+    fetch('http://10.58.2.87:8000/orders/cart', {
+      method: 'PATCH',
+      headers: { Authorization: localStorage.getItem('Authorization') },
+      body: JSON.stringify({ cart_id: id, quantity: 1 }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.message === 'SUCCESS') {
+          setCartList(cart =>
+            cart.map(onecart => {
+              if (id === onecart.cart_id) onecart.quantity++;
+              return onecart;
+            })
+          );
+        } else if (data.message === 'Out of stock') {
+          alert('다시 시도해 주세요');
+        } else {
+          alert('ERROR');
+        }
+      });
+  };
 
   const minusCount = id => {
-    setCartList(cart =>
-      cart.map(onecart => {
-        if (id === onecart.cart_id && onecart.quantity > 1) onecart.quantity--;
-        return onecart;
-      })
-    );
-  }; //수량 감소
+    const selectedIdx = cartList.findIndex(el => id === el.cart_id);
+    const selectedQuantity = cartList[selectedIdx].quantity;
+
+    if (selectedQuantity === 1) {
+      alert('주문 가능한 수량은 1개 이상입니다.');
+      return;
+    }
+
+    fetch('http://10.58.2.87:8000/orders/cart', {
+      method: 'PATCH',
+      headers: { Authorization: localStorage.getItem('Authorization') },
+      body: JSON.stringify({ cart_id: id, quantity: -1 }),
+    }).then(res => {
+      if (res.ok) {
+        setCartList(cart =>
+          cart.map(onecart => {
+            if (id === onecart.cart_id && onecart.quantity > 1)
+              onecart.quantity--;
+            return onecart;
+          })
+        );
+      }
+    });
+  };
 
   const deleteAll = () => {
     if (window.confirm('모든 상품을 장바구니에서 삭제 하시겠습니까?')) {
@@ -81,10 +101,6 @@ const ProductCart = () => {
 
   const order = () => {
     if (window.confirm('주문을 완료하시겠습니까?')) {
-      // fetch('API', {
-      //   method: 'POST',
-      //   body: JSON.stringify({}),
-      // });
       alert('주문이 완료되었습니다.');
     } else {
       alert('주문이 취소되었습니다.');
@@ -160,20 +176,26 @@ const ProductCart = () => {
                   <button
                     className="listDelete"
                     onClick={() => {
-                      setCartList(
-                        cartList.filter(el => el.cart_id !== cart.cart_id)
-                      );
                       fetch(
                         `http://10.58.2.87:8000/orders/carts/${cart.cart_id}`,
                         {
                           method: 'DELETE',
-
                           headers: {
                             Authorization:
                               localStorage.getItem('Authorization'),
                           },
                         }
-                      );
+                      )
+                        .then(res => res.json())
+                        .then(data => {
+                          if (data.message === 'SUCCESS') {
+                            setCartList(
+                              cartList.filter(el => el.cart_id !== cart.cart_id)
+                            );
+                          } else {
+                            alert('삭제할 상품이 없습니다.');
+                          }
+                        });
                     }}
                   >
                     X
