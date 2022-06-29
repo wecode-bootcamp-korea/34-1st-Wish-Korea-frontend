@@ -29,7 +29,6 @@ const ProductCart = () => {
       .then(res => res.json())
       .then(data => {
         setCartList(data.result.carts);
-        console.log(data);
       });
   }, []);
 
