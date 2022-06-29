@@ -11,22 +11,8 @@
         "id": 1,
         "size_g": 270,
         "price": 19000,
-        "stock": 50,
+        "stock": 0,
         "image": "/images/view/viewImg1.png"
-      },
-      {
-        "id": 2,
-        "size_g": 550,
-        "price": 38000,
-        "stock": 50,
-        "image": "/images/view/viewImg2.png"
-      },
-      {
-        "id": 3,
-        "size_g": 880,
-        "price": 59000,
-        "stock": 50,
-        "image": "/images/view/viewImg3.png"
       }
     ],
     "components": [
