@@ -21,12 +21,12 @@ const Join = () => {
   const PHONE_NUMBER_REGEX = /d{3}-d{3,4}-d{4}/;
 
   const isInputIdValid = USERNAME_REGEX.test(userId);
-  const isInputPwValid = USERNAME_REGEX.test(userPw);
-  const isInputFirstnameValid = USERNAME_REGEX.test(userFirstname);
-  const isInputLastnameValid = USERNAME_REGEX.test(userLastname);
-  const isInputNicknameValid = USERNAME_REGEX.test(userNickname);
-  const isInputEmailValid = USERNAME_REGEX.test(userEmail);
-  const isInputPhonenumberValid = USERNAME_REGEX.test(userPhonenumber);
+  const isInputPwValid = PASSWORD_REGEX.test(userPw);
+  const isInputFirstnameValid = NAMES_REGEX.test(userFirstname);
+  const isInputLastnameValid = NAMES_REGEX.test(userLastname);
+  const isInputNicknameValid = NICK_NAME_REGEX.test(userNickname);
+  const isInputEmailValid = EMAIL_REGEX.test(userEmail);
+  const isInputPhonenumberValid = PHONE_NUMBER_REGEX.test(userPhonenumber);
   const inputId = e => {
     setUserId(e.target.value);
   };
@@ -242,6 +242,9 @@ const Join = () => {
                     />
                   </div>
                 </td>
+                {userFirstname && !isInputFirstnameValid && (
+                  <td>특수문자는 사용하실 수 없습니다</td>
+                )}
               </tr>
 
               <tr>
@@ -258,6 +261,9 @@ const Join = () => {
                     />
                   </div>
                 </td>
+                {userLastname && !isInputLastnameValid && (
+                  <td>특수문자는 사용하실 수 없습니다</td>
+                )}
               </tr>
 
               <tr>

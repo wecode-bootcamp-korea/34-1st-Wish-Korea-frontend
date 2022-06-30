@@ -10,6 +10,7 @@ const Login = () => {
   const USERNAME_REGEX = /^[가-힣a-zA-Z0-9]+$/;
   const PASSWORD_REGEX =
     /^(?=.*[A-Za-z])(?=.*d)(?=.*[$@$!%*#?&])[A-Za-zd$@$!%*#?&]{8,}$/;
+  // const isInputPwValid = userPw.includes('$@$!%*#?&') && userPw.length >= 8;
 
   const isInputIdValid = USERNAME_REGEX.test(userId);
   const isInputPwValid = PASSWORD_REGEX.test(userPw);
@@ -49,7 +50,7 @@ const Login = () => {
             className="userInput"
             type="submit"
             value="로그인"
-            // disabled={!isInputIdValid || !isInputPwValid}
+            disabled={!isInputIdValid || !isInputPwValid}
             onClick={e => {
               e.preventDefault();
               fetch('http://10.58.2.87:8000/users/signin', {
