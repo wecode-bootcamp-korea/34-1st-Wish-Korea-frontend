@@ -13,13 +13,8 @@ const ProductCart = () => {
 
   let sumPrice = 0;
 
-  localStorage.setItem(
-    'Authorization',
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.1xXqNmRbFrtT2HDALfjPWlxFNV367oVs9z77NlMWnHM'
-  );
-
   useEffect(() => {
-    fetch('http://10.58.2.87:8000/orders/carts', {
+    fetch('http://10.58.4.185:8000/orders/carts', {
       method: 'GET',
       headers: { Authorization: localStorage.getItem('Authorization') },
     })
@@ -45,7 +40,7 @@ const ProductCart = () => {
   };
 
   const addCount = id => {
-    fetch('http://10.58.2.87:8000/orders/cart', {
+    fetch('http://10.58.4.185:8000/orders/cart', {
       method: 'PATCH',
       headers: { Authorization: localStorage.getItem('Authorization') },
       body: JSON.stringify({ cart_id: id, quantity: 1 }),
@@ -76,7 +71,7 @@ const ProductCart = () => {
       return;
     }
 
-    fetch('http://10.58.2.87:8000/orders/cart', {
+    fetch('http://10.58.4.185:8000/orders/cart', {
       method: 'PATCH',
       headers: { Authorization: localStorage.getItem('Authorization') },
       body: JSON.stringify({ cart_id: id, quantity: -1 }),
@@ -95,7 +90,7 @@ const ProductCart = () => {
 
   const deleteAll = () => {
     if (window.confirm('모든 상품을 장바구니에서 삭제 하시겠습니까?')) {
-      fetch(`http://10.58.2.87:8080/orders/carts`, {
+      fetch(`http://10.58.4.185:8080/orders/carts`, {
         method: 'DELETE',
         headers: {
           Authorization: localStorage.getItem('Authorization'),
@@ -189,7 +184,7 @@ const ProductCart = () => {
                     className="listDelete"
                     onClick={() => {
                       fetch(
-                        `http://10.58.2.87:8000/orders/carts/${cart.cart_id}`,
+                        `http://10.58.4.185:8000/orders/carts/${cart.cart_id}`,
                         {
                           method: 'DELETE',
                           headers: {
