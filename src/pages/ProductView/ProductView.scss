@@ -1,0 +1,375 @@
+.productView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  margin-top: 50px;
+
+  .detailInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .detailImgBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .detailImg {
+        width: 350px;
+        height: 350px;
+      }
+
+      .detailThumbnailBox {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+
+        .detailThumbnail {
+          width: 60px;
+          margin: 10px;
+          border: 1px solid #e9e9e9;
+        }
+      }
+    }
+
+    .detailBox {
+      position: relative;
+      margin-left: 120px;
+
+      .detailTotalPrice {
+        margin-top: 20px;
+        text-align: right;
+      }
+
+      .priceTitle {
+        font-size: 13px;
+        font-weight: 100;
+      }
+
+      .tPrice {
+        margin-left: 18px;
+        font-size: 25px;
+      }
+
+      .optionLine {
+        padding: 10px 0;
+        border-top: 0.5px solid gray;
+      }
+
+      .noOptionLine {
+        padding-bottom: 15px;
+        border-bottom: 0.5px solid gray;
+      }
+
+      .countLine {
+        display: inline-block;
+        width: 140px;
+        margin-right: 15px;
+        border: 0.5px solid gray;
+      }
+
+      .optionCount {
+        width: 45px;
+        height: 35px;
+        border: none;
+        text-align: center;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .optionBtn {
+        width: 45px;
+        height: 35px;
+        background-color: white;
+        border: none;
+        font-size: 15px;
+      }
+
+      .optionText {
+        margin-right: 15px;
+        font-size: 15px;
+      }
+
+      .optionDelete {
+        width: 25px;
+        height: 25px;
+        background-color: white;
+        border: 0.5px solid gray;
+        font-size: 7px;
+        font-weight: 900;
+      }
+
+      .detailName {
+        padding-right: 120px;
+        font-size: 30px;
+        font-weight: 450;
+        line-height: 50px;
+      }
+
+      .detailKeyword {
+        padding-bottom: 20px;
+        border-bottom: solid 1px gray;
+        color: gray;
+      }
+
+      .detailShare {
+        width: 40px;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        right: 40px;
+      }
+
+      .detailHeart {
+        width: 40px;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      .detailList {
+        margin-top: 30px;
+
+        .detailPrice {
+          margin-top: 0px;
+          color: black;
+          font-size: 17px;
+          font-weight: bold;
+        }
+      }
+
+      .detailText {
+        position: relative;
+        margin: 35px 0px;
+        font-size: 15px;
+
+        .know {
+          width: 15px;
+        }
+      }
+
+      .detailClass {
+        display: inline-block;
+        width: 93px;
+        color: #343434;
+      }
+
+      .optionBox {
+        margin-bottom: 25px;
+
+        .select {
+          display: inline-block;
+          width: 250px;
+          height: 40px;
+          border: 1px solid #b7b7b7;
+          font-size: 14px;
+
+          .selectTitle {
+            padding-left: 10px;
+          }
+
+          .selectFlex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+
+            .arrow {
+              width: 20px;
+              height: 20px;
+            }
+          }
+
+          .selectList {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 250px;
+            padding-left: 0px;
+            background-color: white;
+            border: 1px solid #b7b7b7;
+            list-style-type: none;
+            cursor: pointer;
+
+            .option {
+              display: flex;
+              align-items: center;
+              width: 250px;
+              height: 30px;
+              margin: 3px;
+              padding-left: 7px;
+              border: none;
+
+              &:hover {
+                width: 242px;
+                background: #e9e9e9;
+              }
+            }
+
+            .optionImage {
+              margin: 0;
+              padding: 0;
+              height: 20px;
+            }
+          }
+        }
+      }
+
+      .detailBtnBox {
+        width: 100%;
+        margin-top: 35px;
+
+        .detailBtn {
+          width: calc(50% - 10px);
+          min-width: 230px;
+          margin: 5px;
+          padding: 15px;
+          font-size: 15px;
+        }
+
+        .type1 {
+          background-color: white;
+          border: solid 1px black;
+        }
+
+        .type2 {
+          color: white;
+          background-color: black;
+          border: solid 1px black;
+        }
+
+        .type3 {
+          color: white;
+          background-color: gray;
+          border: solid 1px black;
+        }
+      }
+    }
+
+    .popBox {
+      position: absolute;
+      left: 22%;
+      top: 0px;
+      width: 450px;
+      height: 250px;
+      border: 1px solid #e6e6e6;
+      z-index: 1;
+    }
+    .knowPop {
+      width: 448px;
+      height: 248px;
+    }
+    .knowX {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #8f8f8f;
+    }
+  }
+
+  .detailProduct {
+    width: 80%;
+    text-align: center;
+
+    .tabBox {
+      display: flex;
+      justify-content: space-around;
+      margin: 80px 0 80px 0;
+
+      .tab {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        color: black;
+        text-decoration: none;
+      }
+
+      .clicked {
+        border: solid 1px black;
+        border-bottom: solid 1px white;
+      }
+
+      .unclicked {
+        color: #8f8f8f;
+        border: solid 1px #e9e9e9;
+        border-bottom: solid 1px black;
+      }
+    }
+
+    .detailContent {
+      .contentTitle {
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .detailComponents {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        line-height: 27px;
+
+        .components {
+          width: 50%;
+          margin: 100px;
+          color: #898989;
+          font-size: 17px;
+          text-align: left;
+
+          .importantCompo {
+            &:after {
+              content: ',';
+              display: inline-block;
+              padding-right: 5px;
+            }
+
+            &:last-child::after {
+              display: none;
+            }
+          }
+
+          .compoTitle {
+            color: black;
+            font-size: 35px;
+            font-weight: bold;
+          }
+
+          .compoSubTitle {
+            margin-bottom: 50px;
+          }
+        }
+
+        .compoImg {
+          width: 50%;
+        }
+
+        .compoImg2 {
+          width: 100%;
+          margin-top: 50px;
+        }
+      }
+
+      .contentImage {
+        width: 100%;
+      }
+    }
+  }
+}
+.detailGram {
+  &:before {
+    content: '/';
+    display: inline-block;
+  }
+
+  &:first-child::before {
+    content: none;
+  }
+}

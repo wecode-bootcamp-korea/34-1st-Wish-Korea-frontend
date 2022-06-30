@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import Main from './pages/Main/Main';
@@ -20,7 +19,7 @@ const Router = () => {
         <Route path="/join" element={<Join />} />
         <Route path="/cart" element={<ProductCart />} />
         <Route path="/list" element={<ProductList />} />
-        <Route path="/view" element={<ProductView />} />
+        <Route path="/view/:id" element={<ProductView />} />
       </Routes>
       <Footer />
     </BrowserRouter>

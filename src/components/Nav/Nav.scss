@@ -1,0 +1,190 @@
+@font-face {
+  font-family: 'GangwonEduPowerExtraBoldA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin flex_space_evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.navBox {
+  @include flex_space_evenly;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: black;
+  z-index: 10;
+
+  .navLogo {
+    width: 80px;
+    height: 30px;
+    font: 28px 'GangwonEduPowerExtraBoldA';
+
+    .logo {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  .navTitle {
+    @include flex_space_evenly;
+    align-items: center;
+    width: 700px;
+    height: 100%;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+
+    .navProduct {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .navCateTitle {
+      position: absolute;
+      top: 100px;
+      height: 300px;
+
+      .navInner {
+        position: relative;
+        display: flex;
+        width: 1570px;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 50%;
+          width: 500%;
+          height: 300px;
+          background-color: #333;
+          margin-right: -50%;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          margin-top: -10px;
+          width: 0;
+          height: 0;
+          border-bottom: 10px solid #333;
+          border-left: 13px solid transparent;
+          border-right: 13px solid transparent;
+        }
+
+        .cateTitle {
+          position: relative;
+          top: 0;
+          left: -430px;
+          width: 300px;
+          height: 300px;
+          padding: 0 30px;
+          background-color: #333;
+
+          .title {
+            margin: 30px 0;
+            font-size: 18px;
+            font-weight: bold;
+          }
+
+          .cateList {
+            color: #717171;
+            font-size: 14px;
+            line-height: 2;
+
+            &:hover {
+              color: #fff;
+              transition: all 0.8s;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .navIcon {
+    @include flex_space_evenly;
+    align-items: center;
+    position: relative;
+    width: 200px;
+    height: 100%;
+
+    .search {
+      cursor: pointer;
+    }
+
+    .count {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      padding: 2px;
+      color: #333;
+      background-color: #fff;
+      border-radius: 50%;
+      text-align: center;
+    }
+
+    .user {
+      position: relative;
+      height: 100%;
+      padding-top: 38px;
+      cursor: pointer;
+    }
+
+    .myBox {
+      position: absolute;
+      top: 100px;
+      right: -5px;
+      width: 200px;
+      height: 100px;
+      z-index: 12;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 5px;
+        margin-top: -10px;
+        width: 0;
+        height: 0;
+        border-bottom: 10px solid #fff;
+        border-left: 13px solid transparent;
+        border-right: 13px solid transparent;
+      }
+
+      .goToMy {
+        color: #333;
+        text-decoration: none;
+      }
+
+      .myList {
+        width: 200px;
+        height: 50px;
+        padding: 17px 7px;
+        border: 1px solid #eee;
+        font-size: 13px;
+        text-align: center;
+
+        &:hover {
+          background-color: #000;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

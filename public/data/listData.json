@@ -1,0 +1,48 @@
+[
+  {
+    "category_id": 1,
+    "name": "배쓰",
+    "content": "",
+    "image_url": "",
+    "products_count": 40,
+    "sub_categories": [
+      {
+        "id": 1,
+        "name": "배쓰 밤",
+        "content": "",
+        "image_url": "",
+        "products_count": 10
+      },
+      { "id": 2, "name": "버블 바", "products_count": 10 },
+      { "id": 3, "name": "배쓰 오일", "products_count": 10 },
+      { "id": 4, "name": "펀", "products_count": 10 }
+    ]
+  },
+  {
+    "category_id": 2,
+    "name": "샤워",
+    "products_count": 70,
+    "sub_categories": [
+      { "id": 1, "name": "솝", "products_count": 10 },
+      { "id": 2, "name": "샤워 젤&젤리", "products_count": 10 },
+      { "id": 3, "name": "보디 컨디셔너", "products_count": 10 },
+      { "id": 4, "name": "샤워 밤", "products_count": 10 },
+      { "id": 5, "name": "샤워 오일", "products_count": 10 },
+      { "id": 6, "name": "스크럽&버터", "products_count": 10 },
+      { "id": 7, "name": "펀", "products_count": 10 }
+    ]
+  },
+  {
+    "category_id": 3,
+    "name": "보디",
+    "products_count": 60,
+    "sub_categories": [
+      { "id": 1, "name": "클렌저", "products_count": 10 },
+      { "id": 2, "name": "로션", "products_count": 10 },
+      { "id": 3, "name": "핸드 앤 풋", "products_count": 10 },
+      { "id": 4, "name": "마사지 바", "products_count": 10 },
+      { "id": 5, "name": "더스팅 파우더", "products_count": 10 },
+      { "id": 6, "name": "쉐이빙 크림", "products_count": 10 }
+    ]
+  }
+]
