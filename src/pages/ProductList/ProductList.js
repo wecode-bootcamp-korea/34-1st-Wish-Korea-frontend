@@ -4,54 +4,33 @@ import ProductCard from './ProductCard';
 import './ProductList.scss';
 
 const ProductList = () => {
-  const [categoryList, setCategoryList] = useState({});
+  const [category, setCategory] = useState({});
   const [details, setDetails] = useState({});
   const navigate = useNavigate();
   const location = useLocation();
 
   const [sort, setSort] = useState();
 
-  // useEffect(() => {
-  //   fetch('/data/listData.json', {
-  //     method: 'GET',
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setCategoryList(data[1]);
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   fetch('/data/detailsData.json', {
-  //     method: 'GET',
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setDetails(data);
-  //     });
-  // }, []);
-
   const params = new URLSearchParams(location.search);
 
   const mainLink = params.get('category_id');
   const subLink = params.get('sub_category_id');
 
-  // 데이터 통신용
   useEffect(() => {
-    fetch('http://10.58.2.87:8000/products/categories', {
+    fetch('http://10.58.4.185:8000/products/categories', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
-        data.result.map(item => {
-          if (item.category_id === Number(mainLink)) setCategoryList(item);
+        data.result.forEach(item => {
+          if (item.category_id === Number(mainLink)) setCategory(item);
         });
       });
   }, []);
 
   useEffect(() => {
     fetch(
-      `http://10.58.2.87:8000/products?category_id=${mainLink}${
+      `http://10.58.4.185:8000/products?category_id=${mainLink}${
         subLink ? `&sub_category_id=${subLink}` : ''
       }`,
       {
@@ -68,12 +47,12 @@ const ProductList = () => {
     navigate(`/list?category_id=${id}`);
   };
 
-  if (Object.keys(categoryList).length === 0) return <>Loding..</>;
+  if (Object.keys(category).length === 0) return <>Loding..</>;
 
   let subIndex = 0;
-  if (subLink && Object.keys(categoryList).length) {
-    categoryList.sub_categories.map((el, index) => {
-      if (el.id == subLink) {
+  if (subLink && Object.keys(category).length) {
+    category.sub_categories.forEach((el, index) => {
+      if (el.id === subLink) {
         subIndex = index;
       }
     });
@@ -85,9 +64,9 @@ const ProductList = () => {
         <div className="img">
           <img
             src={`${
-              !subLink
-                ? categoryList.image_url
-                : categoryList.sub_categories[subIndex]?.image_url
+              subLink
+                ? category.sub_categories[subIndex]?.image_url
+                : category.image_url
             }`}
             alt="sub visual"
           />
@@ -95,21 +74,19 @@ const ProductList = () => {
         <div className="svTitle">
           <div className="innerText">
             <h2>{`${
-              !subLink
-                ? categoryList.name
-                : categoryList.sub_categories[subIndex]?.name
+              subLink ? category.sub_categories[subIndex]?.name : category.name
             }`}</h2>
             <p>{`${
-              !subLink
-                ? categoryList.content
-                : categoryList.sub_categories[subIndex]?.content
+              subLink
+                ? category.sub_categories[subIndex]?.content
+                : category.content
             }`}</p>
           </div>
         </div>
       </section>
       <section className="subContent">
         <div className="subTitle">
-          <h3>{categoryList.name}</h3>
+          <h3>{category.name}</h3>
           <div className="sort">
             <select
               onChange={e => {
@@ -124,40 +101,38 @@ const ProductList = () => {
             </select>
           </div>
         </div>
-        <div className="subMenu">
-          <ul>
-            <li
-              className={`${!subLink ? 'active' : ''}`}
-              onClick={() => goToMenu(categoryList.category_id)}
-            >
-              <Link to={`/list?category_id=${mainLink}`}>
-                전체
-                <span>({categoryList.products_count})</span>
-              </Link>
-            </li>
-            {categoryList.sub_categories?.map(submenu => {
-              return (
-                <li
-                  key={submenu.id}
-                  className={
-                    submenu.id === Number(params.get('sub_category_id'))
-                      ? 'active'
-                      : ''
-                  }
+        <ul className="subMenu">
+          <li
+            className={`${subLink ? '' : 'active'}`}
+            onClick={() => goToMenu(category.category_id)}
+          >
+            <Link to={`/list?category_id=${mainLink}`}>
+              전체
+              <span>({category.products_count})</span>
+            </Link>
+          </li>
+          {category.sub_categories?.map(submenu => {
+            return (
+              <li
+                key={submenu.id}
+                className={
+                  submenu.id === Number(params.get('sub_category_id'))
+                    ? 'active'
+                    : ''
+                }
+              >
+                <Link
+                  to={`/list?category_id=${mainLink}&sub_category_id=${submenu.id}`}
                 >
-                  <Link
-                    to={`/list?category_id=${mainLink}&sub_category_id=${submenu.id}`}
-                  >
-                    {submenu.name}
-                    <span>({submenu.products_count})</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+                  {submenu.name}
+                  <span>({submenu.products_count})</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
         {details.products.length === 0 ? (
-          <div className="noList">내용이 없습니다.</div>
+          <div className="noList">상품이 없습니다.</div>
         ) : (
           <ProductCard sort={sort} details={details} />
         )}
