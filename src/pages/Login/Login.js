@@ -9,8 +9,7 @@ const Login = () => {
 
   const USERNAME_REGEX = /^[가-힣a-zA-Z0-9]+$/;
   const PASSWORD_REGEX =
-    /^(?=.*[A-Za-z])(?=.*d)(?=.*[$@$!%*#?&])[A-Za-zd$@$!%*#?&]{8,}$/;
-  // const isInputPwValid = userPw.includes('$@$!%*#?&') && userPw.length >= 8;
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
   const isInputIdValid = USERNAME_REGEX.test(userId);
   const isInputPwValid = PASSWORD_REGEX.test(userPw);

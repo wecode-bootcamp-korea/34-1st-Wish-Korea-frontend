@@ -14,7 +14,7 @@ const Join = () => {
 
   const USERNAME_REGEX = /^[가-힣a-zA-Z0-9]+$/;
   const PASSWORD_REGEX =
-    /^(?=.*[A-Za-z])(?=.*d)(?=.*[$@$!%*#?&])[A-Za-zd$@$!%*#?&]{8,}$/;
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
   const NAMES_REGEX = /^[가-힣a-zA-Z]+$/;
   const NICK_NAME_REGEX = /^[가-힣a-zA-Z0-9]*$/;
   const EMAIL_REGEX = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
@@ -27,6 +27,8 @@ const Join = () => {
   const isInputNicknameValid = NICK_NAME_REGEX.test(userNickname);
   const isInputEmailValid = EMAIL_REGEX.test(userEmail);
   const isInputPhonenumberValid = PHONE_NUMBER_REGEX.test(userPhonenumber);
+  const pwEqualvalid = userPw === userPwCheck;
+
   const inputId = e => {
     setUserId(e.target.value);
   };
@@ -226,6 +228,7 @@ const Join = () => {
                     />
                   </div>
                 </td>
+                {!pwEqualvalid && <td>비밀번호가 일치하지 않습니다</td>}
               </tr>
 
               <tr>
