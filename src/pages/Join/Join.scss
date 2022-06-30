@@ -1,0 +1,118 @@
+.join {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+
+  .joinTitle {
+    margin-top: 100px;
+    text-align: center;
+
+    h1 {
+      font-size: 40px;
+      line-height: 1.3em;
+      font-weight: bold;
+    }
+  }
+  .termsAgreement {
+    margin-bottom: 80px;
+
+    .agreementTitle {
+      border-bottom: 1px solid black;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    .agreementLists {
+      display: flex;
+      flex-direction: column;
+
+      .terms {
+        width: 1004px;
+        height: 100px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #e7e7e7;
+        border-top: 1px solid black;
+        font-size: 13px;
+        line-height: 1.4em;
+        overflow: auto;
+      }
+
+      .viewAgreement {
+        margin-top: 20px;
+      }
+    }
+  }
+  .userInformation {
+    .informationTitle {
+      display: flex;
+      justify-content: space-between;
+      width: 1080px;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid black;
+    }
+
+    .must {
+      color: red;
+    }
+
+    .tableForm {
+      margin-bottom: 40px;
+      border-bottom: 1px solid #e7e7e7;
+
+      .inputBoxTitle {
+        width: 150px;
+        padding: 12px;
+        text-align: left;
+        font-size: 16px;
+        line-height: 1.4em;
+        color: #333;
+      }
+
+      .inputbox {
+        padding: 12px;
+        font-size: 15px;
+        line-height: 1.4em;
+
+        input:not(.checkbox) {
+          width: 400px;
+          height: 45px;
+          padding: 0 8px;
+          border: 1px solid #666;
+          font-size: 14px;
+          line-height: 43px;
+        }
+
+        .receiveEvent {
+          display: flex;
+          align-items: center;
+          margin-left: 30px;
+          height: 10px;
+          .checkBox {
+            display: inline;
+            vertical-align: middle;
+          }
+        }
+
+        .informaion {
+          margin-left: 100px;
+
+          .text {
+            width: 600px;
+            margin: 10px;
+          }
+        }
+      }
+    }
+    .joinButton {
+      width: 100%;
+      text-align: center;
+
+      .button {
+        width: 283px;
+        height: 63px;
+        display: inline-block;
+      }
+    }
+  }
+}
