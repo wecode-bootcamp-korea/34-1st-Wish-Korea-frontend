@@ -1,94 +1,36 @@
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
-:root {
-  --up: 1;
-  --card-shadow: rgba(46, 49, 52, 0.4);
-  --color-white: #fff;
-  --color-lightgrey: #ccc;
-  --color-ui: #999;
-  --color-ui-hover: #666;
-  --cardWidth: calc(100vw / var(--up));
-  --carouselWidth: calc(var(--cardWidth) * var(--num));
-}
-
 .main {
   position: relative;
 
   .mainVisual {
     position: relative;
     width: 100%;
+    height: 100vh;
     overflow: hidden;
     z-index: 1;
 
-    .items {
-      display: flex;
-      flex-wrap: wrap;
-      width: var(--carouselWidth);
-      padding: 0;
-
-      &.prev {
-        animation-duration: 0.6s;
-        animation-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
-        animation-name: prev;
-      }
-
-      &.next {
-        animation-duration: 0.6s;
-        animation-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
-        animation-name: next;
-      }
-
-      .item {
-        position: relative;
-        width: calc(var(--cardWidth));
-        height: 580px;
-        overflow: hidden;
-
-        img {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 100%;
-          height: auto;
-          transform: translate(-50%, -50%);
-          object-fit: cover;
-        }
-      }
-    }
-
-    .visualUi {
+    h1 {
       position: absolute;
       top: 50%;
-      display: flex;
-      justify-content: space-between;
+      left: 0;
       width: 100%;
-      transform: translateY(-50%);
-      padding: 12px;
-      z-index: 100;
+      margin-top: -75px;
+      font-size: 120px;
+      line-height: 150px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 800;
+      text-align: center;
+      z-index: 10;
+    }
 
-      button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background: var(--color-ui);
-        border-radius: 50%;
-        color: var(--color-white);
-        box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.25);
-        border: 0;
-        transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
-        cursor: pointer;
-
-        &:hover {
-          background: var(--color-ui-hover);
-        }
-
-        &:focus {
-          outline: none;
-          border: 1px solid rgba(255, 255, 255, 1);
-        }
-      }
+    video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 1;
     }
   }
 

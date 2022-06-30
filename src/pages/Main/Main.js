@@ -1,83 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './Main.scss';
 
-const SLIDER_LIST = [
-  {
-    id: 1,
-    image_url: '/images/main_img3.jpg',
-  },
-  {
-    id: 2,
-    image_url: '/images/vs1.jpg',
-  },
-  {
-    id: 3,
-    image_url: '/images/main_img4.jpg',
-  },
-];
-
 const Main = () => {
   const [listItem, setListItem] = useState([]);
-
-  const [moveClass, setMoveClass] = useState('');
-  const [carouselItems, setCarouselItems] = useState(SLIDER_LIST);
-
-  // useEffect(() => {
-  //   document.documentElement.style.setProperty('--num', carouselItems.length);
-  // }, [carouselItems]);
-
-  useEffect(() => {
-    fetch('/data/productsData.json', {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(data => {
-        setListItem(data);
-      });
-  }, []);
-
-  const handleAnimationEnd = () => {
-    if (moveClass === 'prev') {
-      shiftNext([...carouselItems]);
-    } else if (moveClass === 'next') {
-      shiftPrev([...carouselItems]);
-    }
-    setMoveClass('');
-  };
-
-  const shiftPrev = copy => {
-    let lastcard = copy.pop();
-    copy.splice(0, 0, lastcard);
-    setCarouselItems(copy);
-  };
-
-  const shiftNext = copy => {
-    let firstcard = copy.shift();
-    copy.splice(copy.length, 0, firstcard);
-    setCarouselItems(copy);
-  };
 
   return (
     <div className="main">
       <div className="mainVisual">
-        <div className="visualUi">
-          <button onClick={() => setMoveClass('next')} className="prev">
-            <span className="material-icons">chevron_left</span>
-          </button>
-          <button onClick={() => setMoveClass('prev')} className="next">
-            <span className="material-icons">chevron_right</span>
-          </button>
-        </div>
-        <div
-          onAnimationEnd={handleAnimationEnd}
-          className={`${moveClass} items`}
-        >
-          {SLIDER_LIST.map(sliderItem => (
-            <div key={sliderItem.id} className="item">
-              <img src={sliderItem.image_url} alt="" />
-            </div>
-          ))}
-        </div>
+        <h1>WISH KOREA</h1>
+        <video autoPlay muted loop width="100%" height="100%">
+          <source src="/images/mainVs.mp4" type="video/mp4" />
+          Sorry, your browser doesn't support embedded videos.
+        </video>
       </div>
       <div className="mainList">
         <h2 className="title">나만 알고 싶은 향기</h2>
