@@ -73,7 +73,8 @@
         font-size: 15px;
         line-height: 1.4em;
 
-        input {
+        input:not(.checkbox) {
+          width: 400px;
           height: 45px;
           padding: 0 8px;
           border: 1px solid #666;
@@ -82,15 +83,21 @@
         }
 
         .receiveEvent {
+          display: flex;
+          align-items: center;
           margin-left: 30px;
           height: 10px;
+          .checkBox {
+            display: inline;
+            vertical-align: middle;
+          }
         }
 
         .informaion {
           margin-left: 100px;
 
           .text {
-            width: 380px;
+            width: 600px;
             margin: 10px;
           }
         }
