@@ -194,7 +194,7 @@ const Join = () => {
                   </div>
                 </td>
                 {userId && !isInputIdValid && (
-                  <td>한글, 영문, 숫자만 입력 가능합니다.</td>
+                  <td>* 한글, 영문, 숫자만 입력 가능합니다.</td>
                 )}
               </tr>
 
@@ -212,7 +212,7 @@ const Join = () => {
                   </div>
                 </td>
                 {!isInputPwValid && (
-                  <td>영문,숫자,특수문자를 조합하여 8자리상 입력해주세요</td>
+                  <td>* 영문,숫자,특수문자를 조합하여 8자리상 입력해주세요</td>
                 )}
               </tr>
 
@@ -227,7 +227,7 @@ const Join = () => {
                     />
                   </div>
                 </td>
-                {!pwEqualvalid && <td>비밀번호가 일치하지 않습니다</td>}
+                {!pwEqualvalid && <td>* 비밀번호가 일치하지 않습니다</td>}
               </tr>
 
               <tr className="row">
@@ -245,7 +245,7 @@ const Join = () => {
                   </div>
                 </td>
                 {userFirstname && !isInputFirstnameValid && (
-                  <td>특수문자는 사용하실 수 없습니다</td>
+                  <td>* 특수문자는 사용하실 수 없습니다</td>
                 )}
               </tr>
 
@@ -264,7 +264,7 @@ const Join = () => {
                   </div>
                 </td>
                 {userLastname && !isInputLastnameValid && (
-                  <td>특수문자는 사용하실 수 없습니다</td>
+                  <td>* 특수문자는 사용하실 수 없습니다</td>
                 )}
               </tr>
 
@@ -281,7 +281,7 @@ const Join = () => {
                   </div>
                 </td>
                 {userNickname && !isInputNicknameValid && (
-                  <td>특수문자는 사용하실 수 없습니다</td>
+                  <td>* 특수문자는 사용하실 수 없습니다</td>
                 )}
               </tr>
 
@@ -301,7 +301,7 @@ const Join = () => {
                   </div>
                 </td>
                 {userEmail && !isInputEmailValid && (
-                  <td>@를 제외한 특수문자는 사용할 수 없습니다</td>
+                  <td>* @를 제외한 특수문자는 사용할 수 없습니다</td>
                 )}
               </tr>
               <tr className="row">
@@ -356,7 +356,7 @@ const Join = () => {
                     </div>
                   </div>
                 </td>
-                {!userAddress && <td>반드시 입력해주세요</td>}
+                {!userAddress && <td>* 반드시 입력해주세요</td>}
               </tr>
             </tbody>
           </table>
