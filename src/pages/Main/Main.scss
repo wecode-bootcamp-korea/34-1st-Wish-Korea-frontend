@@ -1,0 +1,336 @@
+.main {
+  position: relative;
+
+  .mainVisual {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      margin-top: -75px;
+      font-size: 120px;
+      line-height: 150px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 800;
+      text-align: center;
+      z-index: 10;
+    }
+
+    video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 1;
+    }
+  }
+
+  .mainList {
+    position: relative;
+    width: 100%;
+    max-width: 1180px;
+    margin: 80px auto 120px;
+
+    .title {
+      margin-bottom: 20px;
+      font-size: 42px;
+      line-height: 1.4em;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .listInner {
+      display: flex;
+      width: 100%;
+
+      li {
+        position: relative;
+        width: 25%;
+        padding: 0 15px;
+        text-align: center;
+
+        .thumb {
+          position: relative;
+          width: 100%;
+          height: 0;
+          padding-bottom: 100%;
+          overflow: hidden;
+
+          img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease-in-out;
+            object-fit: cover;
+
+            &:hover {
+              transform: scale(1.02) translate(-50%, -50%);
+            }
+          }
+        }
+
+        .tit {
+          width: 100%;
+          margin-bottom: 3px;
+          font-size: 18px;
+          line-height: 1.3em;
+          color: #333;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
+        .tag {
+          font-size: 14px;
+          line-height: 1.3em;
+          color: #8f8f8f;
+        }
+
+        .price {
+          margin-top: 20px;
+          font-size: 16px;
+          line-height: 1.3em;
+          color: #333;
+        }
+      }
+    }
+  }
+
+  .mainEvent {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto 120px;
+
+    .campaign {
+      position: relative;
+      width: 43.57%;
+      height: 559px;
+
+      .title {
+        position: absolute;
+        top: 22px;
+        left: 22px;
+        z-index: 2;
+
+        span {
+          display: inline-block;
+          margin-bottom: 5px;
+          font-size: 16px;
+          line-height: 1.4em;
+          color: #fff;
+        }
+
+        h2 {
+          font-size: 32px;
+          line-height: 1.5em;
+          font-weight: 700;
+          color: #fff;
+        }
+      }
+
+      .pic {
+        position: relative;
+        width: 100%;
+        height: 559px;
+        overflow: hidden;
+
+        img {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: auto;
+          height: 100%;
+          transform: translateY(-50%);
+          object-fit: cover;
+        }
+      }
+    }
+
+    .eventBox {
+      width: 56.43%;
+
+      .fragrance {
+        position: relative;
+        width: 100%;
+        height: 280px;
+
+        .title {
+          position: absolute;
+          top: 22px;
+          left: 22px;
+          z-index: 2;
+
+          span {
+            display: inline-block;
+            margin-bottom: 5px;
+            font-size: 16px;
+            line-height: 1.4em;
+            color: #fff;
+          }
+
+          h2 {
+            font-size: 32px;
+            line-height: 1.5em;
+            font-weight: 700;
+            color: #fff;
+          }
+        }
+
+        .video {
+          position: relative;
+          width: 100%;
+          height: 280px;
+          overflow: hidden;
+
+          video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+          }
+        }
+      }
+
+      .eventBoxList {
+        display: flex;
+        width: 100%;
+        line-height: 0;
+        list-style: none;
+
+        li {
+          position: relative;
+          width: 50%;
+          height: 279px;
+
+          .title {
+            position: absolute;
+            top: 22px;
+            left: 22px;
+            z-index: 2;
+
+            span {
+              display: inline-block;
+              margin-bottom: 5px;
+              font-size: 16px;
+              line-height: 1.4em;
+              color: #fff;
+            }
+
+            h2 {
+              font-size: 32px;
+              line-height: 1.5em;
+              font-weight: 700;
+              color: #fff;
+            }
+          }
+
+          .pic {
+            position: relative;
+            width: 100%;
+            height: 279px;
+            overflow: hidden;
+
+            img {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              width: 100%;
+              height: 100%;
+              transform: translate(-50%, -50%);
+              object-fit: cover;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mainMassage {
+    position: relative;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto 120px;
+
+    .innerBox {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding-right: 100px;
+      padding-left: 300px;
+
+      .video {
+        position: relative;
+        order: 2;
+        flex: 1 1 380px;
+        width: 380px;
+        height: 489px;
+        overflow: hidden;
+
+        video {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          width: auto;
+          height: 100%;
+          transform: translateX(-50%);
+          object-fit: cover;
+        }
+      }
+
+      .txt {
+        flex: 1 auto;
+        width: 350px;
+        padding-right: 30px;
+
+        dt {
+          margin-bottom: 20px;
+          font-size: 42px;
+          line-height: 1.3em;
+          font-weight: 700;
+          color: #000;
+        }
+
+        dd {
+          font-size: 16px;
+          line-height: 26px;
+          color: #333;
+        }
+      }
+    }
+  }
+}
+
+@keyframes next {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(calc(0px + var(--cardWidth)));
+  }
+}
+
+@keyframes prev {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(calc(0px - var(--cardWidth)));
+  }
+}
