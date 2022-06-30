@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
@@ -14,11 +14,12 @@ const ProductView = () => {
   const [isKnowClick, setIsKnowClick] = useState(false);
   const [totalList, setTotalList] = useState([]);
   const [thumbnailImage, setThumbnailImage] = useState();
+  const navigate = useNavigate();
   const params = useParams();
   let tPrice = 0;
 
   useEffect(() => {
-    fetch(`http://10.58.2.87:8000/products/${params.id}`, {
+    fetch(`http://10.58.4.185:8000/products/${params.id}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -72,7 +73,7 @@ const ProductView = () => {
   };
 
   const goToCart = () => {
-    fetch('http://10.58.2.87:8000/orders/carts', {
+    fetch('http://10.58.4.185:8000/orders/carts', {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('Authorization') },
       body: JSON.stringify({
@@ -81,12 +82,15 @@ const ProductView = () => {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.message === 'Out of stock') {
+        if (data.message === 'INVALID_TOKEN') {
+          alert('로그인 하세요');
+          navigate('/login');
+        } else if (data.message === 'Out of stock') {
           alert('재고가 부족합니다');
         } else {
-          if (totalList.length !== 0) {
-            alert('장바구니에 담았습니다');
-          } else alert('옵션을 선택해주세요');
+          totalList.length === 0
+            ? alert('옵션을 선택해주세요')
+            : alert('장바구니에 담았습니다');
         }
       });
     if (isOption) {

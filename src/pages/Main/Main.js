@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Main.scss';
 
 const Main = () => {
   const [listItem, setListItem] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     fetch('/data/productsData.json', {
       method: 'GET',
@@ -27,7 +29,12 @@ const Main = () => {
         <ul className="listInner">
           {listItem.products?.map(list => {
             return (
-              <li key={list.id}>
+              <li
+                key={list.id}
+                onClick={() => {
+                  navigate('list?category_id=4');
+                }}
+              >
                 <div className="thumb">
                   <img src={list.image_url} alt="" />
                 </div>

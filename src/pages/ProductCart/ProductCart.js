@@ -90,12 +90,13 @@ const ProductCart = () => {
 
   const deleteAll = () => {
     if (window.confirm('모든 상품을 장바구니에서 삭제 하시겠습니까?')) {
-      fetch(`http://10.58.4.185:8080/orders/carts`, {
+      fetch(`http://10.58.4.185:8000/orders/carts`, {
         method: 'DELETE',
         headers: {
           Authorization: localStorage.getItem('Authorization'),
         },
       }).then(res => {
+        console.log(res);
         if (res.status === 204) {
           setCartList([]);
           setCheckedBox('');
@@ -192,17 +193,15 @@ const ProductCart = () => {
                               localStorage.getItem('Authorization'),
                           },
                         }
-                      )
-                        .then(res => res.json())
-                        .then(data => {
-                          if (data.message === 'SUCCESS') {
-                            setCartList(
-                              cartList.filter(el => el.cart_id !== cart.cart_id)
-                            );
-                          } else {
-                            alert('삭제할 상품이 없습니다.');
-                          }
-                        });
+                      ).then(res => {
+                        if (res.status === 204) {
+                          setCartList(
+                            cartList.filter(el => el.cart_id !== cart.cart_id)
+                          );
+                        } else {
+                          alert('삭제할 상품이 없습니다.');
+                        }
+                      });
                     }}
                   >
                     X

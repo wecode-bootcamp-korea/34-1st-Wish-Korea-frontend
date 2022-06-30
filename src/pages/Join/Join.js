@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Join.scss';
 
 const Join = () => {
@@ -11,6 +12,8 @@ const Join = () => {
   const [userEmail, setUserEmail] = useState('');
   const [userPhonenumber, setUserPhonenumber] = useState('');
   const [userAddress, setUserAddress] = useState('');
+  const [isChecked, setIsChecked] = useState(false);
+  const navigate = useNavigate();
 
   const USERNAME_REGEX = /^[가-힣a-zA-Z0-9]+$/;
   const PASSWORD_REGEX =
@@ -68,6 +71,9 @@ const Join = () => {
     'Invalid Password': '부적절한 Password입니다',
     'Invalid PhoneNumber': '부적절한 PhoneNumber입니다',
   };
+  const clickBox = () => {
+    setIsChecked(!isChecked);
+  };
 
   return (
     <div className="join">
@@ -80,14 +86,19 @@ const Join = () => {
         </div>
         <form className="agreementLists">
           <div className="allAgreement">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onClick={() => {
+                setIsChecked(!isChecked);
+              }}
+            />
             <label>
               러쉬코리아의 모든 약관을 확인하고
               전체동의합니다.(전체동의,선택항목도 포함됩니다.)
             </label>
           </div>
           <div className="viewAgreement">
-            <input type="checkbox" />
+            <input type="checkbox" checked={isChecked} onChange={() => {}} />
             <label>(필수)이용약관 전체보기</label>
           </div>
           <div className="terms">
@@ -113,7 +124,7 @@ const Join = () => {
             <br />
           </div>
           <div className="necessaryInformation">
-            <input type="checkbox" />
+            <input type="checkbox" checked={isChecked} onChange={() => {}} />
             <label>(필수)개인정보 수집 및 이용 전체보기</label>
           </div>
           <div className="terms">
@@ -138,7 +149,7 @@ const Join = () => {
             회원 및 비회원을 말합니다.
           </div>
           <div className="optionalInformation">
-            <input type="checkbox" />
+            <input type="checkbox" checked={isChecked} onChange={() => {}} />
             <label>(선택)개인정보 수집 및 이용 전체보기</label>
           </div>
           <div className="terms">
@@ -305,7 +316,7 @@ const Join = () => {
                 )}
               </tr>
               <tr className="row">
-                <td colspan="2" className="inputbox">
+                <td colSpan="2" className="inputbox">
                   <div className="receiveEvent">
                     <input type="checkbox" className="checkbox" value="y" />
                     <label>정보/이벤트 메일 수신에 동의합니다.</label>
@@ -333,7 +344,7 @@ const Join = () => {
                 )}
               </tr>
               <tr className="row">
-                <td colspan="2" className="inputbox">
+                <td colSpan="2" className="inputbox">
                   <div className="receiveEvent">
                     <input type="checkbox" className="checkbox" value="y" />
                     <label>정보/이벤트 SMS 수신에 동의합니다.</label>
@@ -365,7 +376,7 @@ const Join = () => {
           <button
             disabled={userPw !== userPwCheck || !userPw}
             onClick={e => {
-              fetch('http://10.58.2.87:8000/users/signup', {
+              fetch('http://10.58.4.185:8000/users/signup', {
                 method: 'POST',
                 body: JSON.stringify({
                   username: userId,
@@ -380,16 +391,16 @@ const Join = () => {
               })
                 .then(response => response.json())
                 .then(data => {
-                  console.log(data);
                   if (data.message === 'Duplicated username') {
                     alert('중복된 username입니다');
+                  } else if (data.message === 'SUCCESS') {
+                    alert('회원가입 되었습니다');
+                    navigate('/login');
                   } else {
                     alert(SIGN_ERROR_MESSAGE[data.message]);
                   }
-                  console.log('데이터', data);
                 })
-
-                .catch(error => console.log(error));
+                .catch(error => alert(error));
             }}
             className="button"
           >

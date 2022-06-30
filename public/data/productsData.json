@@ -19,7 +19,7 @@
     },
     {
       "id": 2,
-      "name": "라이트 더 나이트",
+      "name": "감자튀김",
       "is_new": 0,
       "is_vegan": 0,
       "is_only_online": 1,
@@ -31,7 +31,7 @@
     },
     {
       "id": 3,
-      "name": "라이트 더 나이트",
+      "name": "햄버거",
       "is_new": 0,
       "is_vegan": 0,
       "is_only_online": 0,
@@ -43,7 +43,7 @@
     },
     {
       "id": 4,
-      "name": "라이트 더 나이트",
+      "name": "피자",
       "is_new": 1,
       "is_vegan": 1,
       "is_only_online": 0,

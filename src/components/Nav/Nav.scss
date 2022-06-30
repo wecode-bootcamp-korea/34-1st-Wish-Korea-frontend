@@ -36,7 +36,6 @@
   .navTitle {
     @include flex_space_evenly;
     align-items: center;
-    width: 700px;
     height: 100%;
     color: #fff;
     font-size: 16px;
@@ -46,6 +45,7 @@
       display: flex;
       align-items: center;
       height: 100%;
+      padding: 0 40px;
     }
 
     a {
@@ -141,8 +141,8 @@
 
     .user {
       position: relative;
-      height: 100%;
       padding-top: 38px;
+      height: 100%;
       cursor: pointer;
     }
 
@@ -151,7 +151,7 @@
       top: 100px;
       right: -5px;
       width: 200px;
-      height: 100px;
+      background-color: white;
       z-index: 12;
 
       &:after {

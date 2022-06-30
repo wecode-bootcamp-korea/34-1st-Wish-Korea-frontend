@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Nav.scss';
 
 const Nav = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [isHovering, setIsHovering] = useState(false);
   const [isMyHovering, setIsMyHovering] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    fetch('http://10.58.2.87:8000/products/categories', {
+    fetch('http://10.58.4.185:8000/products/categories', {
       method: 'GET',
     })
       .then(res => res.json())
@@ -59,10 +60,10 @@ const Nav = () => {
             )}
           </div>
         </li>
-        <li>러쉬 소개</li>
-        <li>매장 안내</li>
-        <li>스파</li>
-        <li>이벤트</li>
+        <li className="navProduct">러쉬 소개</li>
+        <li className="navProduct">매장 안내</li>
+        <li className="navProduct">스파</li>
+        <li className="navProduct">이벤트</li>
       </ul>
       <div className="navIcon">
         <span className="search">
@@ -95,18 +96,21 @@ const Nav = () => {
                   className="goToMy"
                   onClick={() => {
                     localStorage.removeItem('Authorization');
+                    location.reload();
                   }}
                 >
                   <li className="myList">로그아웃</li>
                 </Link>
               ) : (
-                <Link to="/login" className="goToMy">
-                  <li className="myList">로그인</li>
-                </Link>
+                <>
+                  <Link to="/login" className="goToMy">
+                    <li className="myList">로그인</li>
+                  </Link>
+                  <Link to="/join" className="goToMy">
+                    <li className="myList">회원가입</li>
+                  </Link>
+                </>
               )}
-              <Link to="/join" className="goToMy">
-                <li className="myList">회원가입</li>
-              </Link>
             </ul>
           )}
         </span>

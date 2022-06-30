@@ -26,7 +26,7 @@ const ProductList = () => {
           if (item.category_id === Number(mainLink)) setCategory(item);
         });
       });
-  }, []);
+  }, [location.search]);
 
   useEffect(() => {
     fetch(
@@ -131,7 +131,7 @@ const ProductList = () => {
             );
           })}
         </ul>
-        {details.products.length === 0 ? (
+        {details.products && details.products.length === 0 ? (
           <div className="noList">상품이 없습니다.</div>
         ) : (
           <ProductCard sort={sort} details={details} />

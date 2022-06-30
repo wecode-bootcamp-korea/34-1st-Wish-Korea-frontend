@@ -8,11 +8,13 @@ import Join from './pages/Join/Join';
 import ProductCart from './pages/ProductCart/ProductCart';
 import ProductList from './pages/ProductList/ProductList';
 import ProductView from './pages/ProductView/ProductView';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Nav />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
