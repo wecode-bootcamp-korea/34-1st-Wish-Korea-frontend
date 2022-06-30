@@ -3,6 +3,15 @@ import './Main.scss';
 
 const Main = () => {
   const [listItem, setListItem] = useState([]);
+  useEffect(() => {
+    fetch('/data/productsData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setListItem(data);
+      });
+  }, []);
 
   return (
     <div className="main">
@@ -63,7 +72,7 @@ const Main = () => {
                 <span>BEST</span>
                 <h2>
                   모두가 사랑하는 <br />
-                  러쉬 베스트
+                  위시 베스트
                 </h2>
               </div>
               <div className="pic">
