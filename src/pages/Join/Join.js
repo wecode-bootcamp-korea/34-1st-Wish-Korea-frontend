@@ -170,7 +170,7 @@ const Join = () => {
           </div>
         </form>
       </div>
-      <div className="userInfomation">
+      <div className="userInformation">
         <div className="informationTitle">
           <h3>기본정보</h3>
           <p>
@@ -179,17 +179,16 @@ const Join = () => {
           </p>
         </div>
         <div className="tableForm">
-          <table>
+          <table className="userInformationTable">
             <colgroup>
               <col />
-              <col />
             </colgroup>
-            <tbody>
-              <tr>
-                <th className="inputBox">
+            <tbody className="userInformationTbody">
+              <tr className="row">
+                <th className="inputBoxTitle">
                   <span className="must">*</span> 아이디
                 </th>
-                <td>
+                <td className="inputbox">
                   <div className="information">
                     <input type="text" className="text" onChange={inputId} />
                   </div>
@@ -199,11 +198,11 @@ const Join = () => {
                 )}
               </tr>
 
-              <tr>
-                <th className="inputBox">
+              <tr className="row">
+                <th className="inputBoxTitle">
                   <span className="must">*</span> 비밀번호
                 </th>
-                <td>
+                <td className="inputbox">
                   <div className="information">
                     <input
                       type="password"
@@ -217,9 +216,9 @@ const Join = () => {
                 )}
               </tr>
 
-              <tr>
-                <th className="inputBox">&nbsp;&nbsp;비밀번호 확인</th>
-                <td>
+              <tr className="row">
+                <th className="inputBoxTitle">&nbsp;&nbsp;비밀번호 확인</th>
+                <td className="inputbox">
                   <div className="information">
                     <input
                       type="password"
@@ -231,11 +230,11 @@ const Join = () => {
                 {!pwEqualvalid && <td>비밀번호가 일치하지 않습니다</td>}
               </tr>
 
-              <tr>
-                <th className="inputBox">
+              <tr className="row">
+                <th className="inputBoxTitle">
                   <span className="must">*</span> 성
                 </th>
-                <td>
+                <td className="inputbox">
                   <div className="information">
                     <input
                       type="text"
@@ -250,11 +249,11 @@ const Join = () => {
                 )}
               </tr>
 
-              <tr>
-                <th className="inputBox">
+              <tr className="row">
+                <th className="inputBoxTitle">
                   <span className="must">*</span> 이름
                 </th>
-                <td>
+                <td className="inputbox">
                   <div className="information">
                     <input
                       type="text"
@@ -269,9 +268,9 @@ const Join = () => {
                 )}
               </tr>
 
-              <tr>
-                <th className="inputBox">&nbsp;&nbsp;닉네임</th>
-                <td>
+              <tr className="row">
+                <th className="inputBoxTitle">&nbsp;&nbsp;닉네임</th>
+                <td className="inputbox">
                   <div className="information">
                     <input
                       type="text"
@@ -286,11 +285,11 @@ const Join = () => {
                 )}
               </tr>
 
-              <tr>
-                <th className="inputBox">
+              <tr className="row">
+                <th className="inputBoxTitle">
                   <span className="must">*</span> 이메일
                 </th>
-                <td>
+                <td className="inputbox">
                   <div className="email">
                     <div className="information">
                       <input
@@ -305,8 +304,8 @@ const Join = () => {
                   <td>@를 제외한 특수문자는 사용할 수 없습니다</td>
                 )}
               </tr>
-              <tr>
-                <td>
+              <tr className="row">
+                <td colspan="2" className="inputbox">
                   <div className="receiveEvent">
                     <input type="checkbox" className="checkbox" value="y" />
                     <label>정보/이벤트 메일 수신에 동의합니다.</label>
@@ -314,11 +313,11 @@ const Join = () => {
                 </td>
               </tr>
 
-              <tr>
-                <th className="inputBox">
+              <tr className="row">
+                <th className="inputBoxTitle">
                   <span className="must">*</span> 휴대폰번호
                 </th>
-                <td>
+                <td className="inputbox">
                   <div className="information">
                     <input
                       type="text"
@@ -333,8 +332,8 @@ const Join = () => {
                   <td>-를 포함하여 입력해주세요</td>
                 )}
               </tr>
-              <tr>
-                <td>
+              <tr className="row">
+                <td colspan="2" className="inputbox">
                   <div className="receiveEvent">
                     <input type="checkbox" className="checkbox" value="y" />
                     <label>정보/이벤트 SMS 수신에 동의합니다.</label>
@@ -342,11 +341,11 @@ const Join = () => {
                 </td>
               </tr>
 
-              <tr>
-                <th className="inputBox">
+              <tr className="row">
+                <th className="inputBoxTitle">
                   <span className="must">*</span> 주소
                 </th>
-                <td>
+                <td className="inputbox">
                   <div className="post">
                     <div className="information">
                       <input
