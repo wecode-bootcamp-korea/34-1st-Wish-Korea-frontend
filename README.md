@@ -9,15 +9,8 @@
 
 - 개발기간 : 2022/6/20 ~ 2030/7/1
 - 개발 인원 : 프론트엔드 4명, 백엔드 1명 
-<br />
-- Front-end
-<br />
-  [하상원](https://github.com/hasangwon)
-  [우혜림](https://github.com/wooohyerim)
-  [정예지](https://github.com/dingwan0331)
-  [안중영](https://github.com/Ahnjungyoung)
-- Back-end<br/>
-[백엔드 github 링크](https://github.com/wecode-bootcamp-korea/34-1st-Wish-Korea-backend)
+* Front-end : [하상원](https://github.com/hasangwon), [우혜림](https://github.com/wooohyerim), [안중영](https://github.com/Ahnjungyoung), [정예지](https://github.com/dingwan0331)
+* Back-end : [정진관](https://github.com/dingwan0331) 
 
 ### 프로젝트 선정이유
 
