@@ -376,7 +376,7 @@ const Join = () => {
           <button
             disabled={userPw !== userPwCheck || !userPw}
             onClick={e => {
-              fetch('http://10.58.4.185:8000/users/signup', {
+              fetch('http://10.58.7.165:8000/users/signup', {
                 method: 'POST',
                 body: JSON.stringify({
                   username: userId,

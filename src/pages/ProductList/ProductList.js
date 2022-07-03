@@ -17,7 +17,7 @@ const ProductList = () => {
   const subLink = params.get('sub_category_id');
 
   useEffect(() => {
-    fetch('http://10.58.4.185:8000/products/categories', {
+    fetch('http://10.58.7.165:8000/products/categories', {
       method: 'GET',
     })
       .then(res => res.json())
@@ -30,7 +30,7 @@ const ProductList = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.4.185:8000/products?category_id=${mainLink}${
+      `http://10.58.7.165:8000/products?category_id=${mainLink}${
         subLink ? `&sub_category_id=${subLink}` : ''
       }`,
       {

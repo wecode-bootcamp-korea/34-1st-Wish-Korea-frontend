@@ -10,11 +10,12 @@ const ProductCart = () => {
   const [checkedBox, setCheckedBox] = useState([]);
   const isAllChecked =
     cartList.length !== 0 && cartList.length === checkedBox.length;
+  // const [isAllchecked, setIsAllChecked] = useState(false)
 
   let sumPrice = 0;
 
   useEffect(() => {
-    fetch('http://10.58.4.185:8000/orders/carts', {
+    fetch('http://10.58.7.165:8000/orders/carts', {
       method: 'GET',
       headers: { Authorization: localStorage.getItem('Authorization') },
     })
@@ -40,7 +41,7 @@ const ProductCart = () => {
   };
 
   const addCount = id => {
-    fetch('http://10.58.4.185:8000/orders/cart', {
+    fetch('http://10.58.7.165:8000/orders/cart', {
       method: 'PATCH',
       headers: { Authorization: localStorage.getItem('Authorization') },
       body: JSON.stringify({ cart_id: id, quantity: 1 }),
@@ -55,7 +56,7 @@ const ProductCart = () => {
             })
           );
         } else if (data.message === 'Out of stock') {
-          alert('다시 시도해 주세요');
+          alert('재고가 없습니다');
         } else {
           alert('ERROR');
         }
@@ -71,7 +72,7 @@ const ProductCart = () => {
       return;
     }
 
-    fetch('http://10.58.4.185:8000/orders/cart', {
+    fetch('http://10.58.7.165:8000/orders/cart', {
       method: 'PATCH',
       headers: { Authorization: localStorage.getItem('Authorization') },
       body: JSON.stringify({ cart_id: id, quantity: -1 }),
@@ -90,13 +91,12 @@ const ProductCart = () => {
 
   const deleteAll = () => {
     if (window.confirm('모든 상품을 장바구니에서 삭제 하시겠습니까?')) {
-      fetch(`http://10.58.4.185:8000/orders/carts`, {
+      fetch(`http://10.58.7.165:8000/orders/carts`, {
         method: 'DELETE',
         headers: {
           Authorization: localStorage.getItem('Authorization'),
         },
       }).then(res => {
-        console.log(res);
         if (res.status === 204) {
           setCartList([]);
           setCheckedBox('');
@@ -168,6 +168,8 @@ const ProductCart = () => {
                     <img src={cart.image_url} alt="img" className="prImg" />
                     <h1 className="prTitle">
                       {cart.name}
+                      <br />
+                      <span className="prCate">{cart.size}g</span>
                       <br />
                       <span className="prCate">{cart.sub_catgory_name}</span>
                     </h1>
