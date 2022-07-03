@@ -61,21 +61,23 @@ HTML/CSS, Javascript, React, Sass, React Router Dom
 
 #### 상품 상세 페이지
 
-<img width="1025" alt="스크린샷 2022-07-03 오후 11 28 28" src="https://user-images.githubusercontent.com/75872687/177045130-a2f949fd-27b7-4b09-95c4-5581708b05d6.png">
-<img width="1025" alt="스크린샷 2022-07-03 오후 11 28 39" src="https://user-images.githubusercontent.com/75872687/177045131-5b6c29a7-6686-4c68-9a9b-42288eb7227e.png">
+<img width="1025" alt="스크린샷 2022-07-03 오후 11 28 28" src="https://user-images.githubusercontent.com/75872687/177045130-a2f949fd-27b7-4b09-95c4-5581708b05d6.png"><img width="1025" alt="스크린샷 2022-07-03 오후 11 28 39" src="https://user-images.githubusercontent.com/75872687/177045131-5b6c29a7-6686-4c68-9a9b-42288eb7227e.png">
 옵션이 한 개일 때와 여러 개일 때를 구분하여,
 한 개일땐 바로 수량 칸을 나타냈고, 받는 데이터에서 바로 옵션에 수량  컬럼 : 1을 추가했습니다
 여러 개일땐 css로 select 박스를 만들어서 옵션을 선택하게 만들고, 옵션을 클릭했을 때 수량 컬럼을 추가하게 구현했습니다.
 
 
 ![화면_기록_2022-07-03_오후_11_47_39_AdobeExpress](https://user-images.githubusercontent.com/75872687/177045107-006cb88e-065e-4938-ae79-9bfb04890450.gif)
+
 옵션에서 +, - 버튼을 누르면 현재 클릭된 버튼의 id와 일치하는 id의 객체를 찾아서
 그 객체의 수량 값을 더하거나(+), 빼거나(-) 하게 했습니다.
 수량 값이 재고와 같아지면 alert를 띄우고 수량이 증가하지 않게 했습니다.
 
 
 추가 구현
+
 ![화면_기록_2022-07-03_오후_11_39_54_AdobeExpress](https://user-images.githubusercontent.com/75872687/177045008-6965df4a-32a1-4a34-9024-091d31c31b74.gif)
+
 추가 구현 기능으로
 ? 버튼 클릭 시 이미지 나타나고 사라짐.
 공유 버튼 클릭 시 클립보드에 주소 복사를 구현하였습니다.
