@@ -19,7 +19,7 @@ const ProductView = () => {
   let tPrice = 0;
 
   useEffect(() => {
-    fetch(`http://10.58.4.185:8000/products/${params.id}`, {
+    fetch(`http://10.58.7.165:8000/products/${params.id}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -73,7 +73,7 @@ const ProductView = () => {
   };
 
   const goToCart = () => {
-    fetch('http://10.58.4.185:8000/orders/carts', {
+    fetch('http://10.58.7.165:8000/orders/carts', {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('Authorization') },
       body: JSON.stringify({

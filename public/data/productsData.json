@@ -15,11 +15,11 @@
       "is_sold_out": 0,
       "tag": "#배쓰밤 #EID",
       "price": "8,000",
-      "image_url": "/images/list_img2.jpg"
+      "image_url": "/images/view/viewImg1.png"
     },
     {
       "id": 2,
-      "name": "감자튀김",
+      "name": "샤워 밤",
       "is_new": 0,
       "is_vegan": 0,
       "is_only_online": 1,
@@ -31,7 +31,7 @@
     },
     {
       "id": 3,
-      "name": "햄버거",
+      "name": "비누",
       "is_new": 0,
       "is_vegan": 0,
       "is_only_online": 0,
@@ -39,7 +39,7 @@
       "is_sold_out": 1,
       "tag": "#배쓰밤 #EID",
       "price": "19,000",
-      "image_url": "/images/list_img2.jpg"
+      "image_url": "/images/not.png"
     },
     {
       "id": 4,
@@ -51,7 +51,7 @@
       "is_sold_out": 0,
       "tag": "#배쓰밤 #EID",
       "price": "14,000",
-      "image_url": "/images/list_img2.jpg"
+      "image_url": "/images/view/comImg.png"
     }
   ]
 }

@@ -9,7 +9,7 @@ const Nav = () => {
   const location = useLocation();
 
   useEffect(() => {
-    fetch('http://10.58.4.185:8000/products/categories', {
+    fetch('http://10.58.7.165:8000/products/categories', {
       method: 'GET',
     })
       .then(res => res.json())
