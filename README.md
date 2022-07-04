@@ -44,8 +44,10 @@ HTML/CSS, Javascript, React, Sass, React Router Dom
 
 #### 메인페이지
 
-- 영상
-- 구현 기능
+![main02](https://user-images.githubusercontent.com/99022588/177146406-5831fa79-e5b2-4636-aa43-5d72b75e275f.gif)
+<br />
+동적인 기능없이 메인영상과 이미지로 디자인완성했습니다.<br />
+중간에
 
 #### Nav, Footer Bar
 
@@ -58,8 +60,12 @@ Nav : 마우스를 올렸을 때 하위 카테고리가 나오며, 마우스를 
 
 #### 상품 리스트 페이지
 
-- 영상
-- 구현 기능
+![list02](https://user-images.githubusercontent.com/99022588/177147470-989af989-2a4d-4dd5-a86a-1d2caa3858fd.gif)
+<br/>
+
+*백엔드에서 데이터 받아와서 서브 비주얼이미지부터 ~ 타이틀 리스트내용까지 나타나게 구현했습니다
+*sort함수를 사용해서 분류탭에서 낮은가격순/높은가격순 분류 변하게 작업했습니다.
+
 
 
 #### 상품 상세 페이지
