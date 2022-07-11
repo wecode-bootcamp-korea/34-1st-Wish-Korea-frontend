@@ -39,6 +39,8 @@ HTML/CSS, Javascript, React, Sass, React Router Dom
 #### 회원가입 / 로그인
 
 - 영상
+![회원가입진짜진짜마지막](https://user-images.githubusercontent.com/90163269/178359722-a2394f55-b22b-44d4-9f3e-5db8fd2cd37f.gif)
+
 - 구현 기능
 
 필수 이용약관을 체크해야 회원가입 버튼이 활성화 되게 코드를 작성하였습니다.
